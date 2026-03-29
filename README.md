@@ -1,3 +1,7 @@
+![Status](https://img.shields.io/badge/status-testnet-yellow?style=for-the-badge)
+![License](https://img.shields.io/badge/license-MIT-yellow?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-v0.9.4-yellow?style=for-the-badge)
+
 # AequitasLabs
 
 **Trustless AI Execution Layer**
@@ -113,3 +117,4 @@ aequitaslabs/
 ## License
 
 [MIT](./LICENSE)
+
