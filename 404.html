@@ -73,7 +73,7 @@
 </div>
 
 <script>
-  const cv=document.getElementById('canvas-bg'),ctx=cv.getContext('2d');
+  const cv=document.getElementById('canvas-bg');if(!cv)return;const ctx=cv.getContext('2d');
   let W,H;const G='rgba(201,168,76,';
   function resize(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight;}
   resize();window.addEventListener('resize',resize);
@@ -97,5 +97,6 @@
 </script>
 </body>
 </html>
+
 
 

@@ -509,7 +509,7 @@
 <script>
 /* â”€â”€ GLOBAL PARTICLE + HEX CANVAS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 (function(){
-  const cv=document.getElementById('canvas-bg'),ctx=cv.getContext('2d');
+  const cv=document.getElementById('canvas-bg');if(!cv)return;const ctx=cv.getContext('2d');
   let W,H,frame=0;const G='rgba(201,168,76,';
   function resize(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight;}
   resize();window.addEventListener('resize',resize);
@@ -543,7 +543,7 @@
 
 /* â”€â”€ HERO ORBITAL CANVAS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 (function(){
-  const cv=document.getElementById('hero-canvas'),ctx=cv.getContext('2d');
+  const cv=document.getElementById('hero-canvas');if(!cv)return;const ctx=cv.getContext('2d');
   let t=0;
   function resize(){cv.width=cv.offsetWidth;cv.height=cv.offsetHeight;}
   resize();window.addEventListener('resize',resize);
@@ -743,7 +743,7 @@ function toggleMobileMenu(){
 }
 
 /* â”€â”€ PRELOADER DISMISS â”€â”€ */
-window.addEventListener('load', () => {
+window.addEventListener('DOMContentLoaded', () => { setTimeout(() => { const p=document.getElementById('preloader'); if(p) { p.style.opacity=0; setTimeout(()=>p.remove(), 600); } }, 2000); 
   const p = document.getElementById('preloader');
   if(p) { p.style.opacity = 0; setTimeout(() => p.remove(), 600); }
 });
@@ -812,6 +812,8 @@ window.addEventListener('load', () => {
 </script>
 </body>
 </html>
+
+
 
 
 
