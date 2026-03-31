@@ -126,7 +126,6 @@ nav{
 }
 .sb-item-icon svg{width:13px;height:13px;stroke-width:1.5;}
 .sb-item.active .sb-item-icon{background:var(--gold-glow);border-color:var(--gold-dim);}
-.sb-item-text{}
 .sb-item-name{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.04em;}
 .sb-item-layer{font-size:10px;color:var(--text-4);margin-top:1px;}
 .sb-divider{height:1px;background:var(--rim);margin:16px 24px;}
@@ -368,9 +367,24 @@ pre .err{color:#f08080;}
   color:var(--gold);letter-spacing:0.08em;display:block;margin-bottom:3px;}
 
 /* mobile */
+.docs-mobile-toggle{display:none;}
+
 @media(max-width:800px){
   .docs-layout{grid-template-columns:1fr;}
-  .sidebar{display:none;}
+  .sidebar{
+    display:block;position:fixed;top:61px;left:0;bottom:0;
+    width:280px;background:rgba(6,5,10,0.98);backdrop-filter:blur(24px);
+    z-index:190;border-right:1px solid var(--rim);
+    transform:translateX(-100%);transition:transform 0.4s var(--ease);
+  }
+  .sidebar.open{transform:translateX(0);}
+  .docs-mobile-toggle{
+    display:flex;align-items:center;justify-content:center;
+    width:30px;height:30px;background:none;border:1px solid var(--rim);
+    border-radius:var(--r-xs);color:var(--text-3);cursor:pointer;
+  }
+  .docs-mobile-toggle svg{width:16px;height:16px;stroke-width:2;}
+  .docs-mobile-toggle:active{color:var(--gold);border-color:var(--gold-dim);}
   .content{padding:32px 20px 80px;}
   .overview-grid{grid-template-columns:1fr;}
   .input-row{grid-template-columns:1fr;gap:2px;}
@@ -427,6 +441,9 @@ pre .err{color:#f08080;}
       Back to Home
     </a>
     <div class="nav-badge">Testnet v0.9.4</div>
+    <button class="docs-mobile-toggle" onclick="toggleSidebar()" aria-label="Toggle Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
   </div>
 </nav>
 
@@ -1183,7 +1200,16 @@ log({task_id, amount: event.amount, new_rep, status: <span class="ok">"SETTLED"<
 </div>
 
 <script>
+function toggleSidebar(){
+  const sb = document.querySelector('.sidebar');
+  if(sb) sb.classList.toggle('open');
+}
+
 function showPage(id, sidebarItem) {
+  // close sidebar on mobile click
+  const sb = document.querySelector('.sidebar');
+  if(sb && sb.classList.contains('open')) sb.classList.remove('open');
+
   // hide all pages
   document.querySelectorAll('.prim-page').forEach(p => p.classList.remove('active'));
   // show target

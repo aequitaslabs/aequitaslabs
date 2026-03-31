@@ -130,6 +130,10 @@ nav.scrolled{background:rgba(6,5,10,0.92);backdrop-filter:blur(28px) saturate(1.
 .btn-primary:hover{background:var(--gold-bright);border-color:var(--gold-bright);
   box-shadow:0 0 22px rgba(201,168,76,0.35);}
 
+/* ── MOBILE MENU (Hidden on Desktop) ── */
+.mobile-toggle{display:none;}
+.mobile-overlay{display:none;}
+
 /* ═══════════════════════════ HERO ══════════════════════════════════════════ */
 #hero{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;
   align-items:center;justify-content:center;text-align:center;padding:160px 24px 120px;overflow:hidden;}
@@ -490,6 +494,35 @@ footer{position:relative;z-index:2;padding:52px 64px;border-top:1px solid var(--
   .nav-links{display:none;}
   .btn-ghost{display:none;}
   .btn-primary{padding:8px 16px;font-size:11px;}
+  
+  .mobile-toggle{
+    display:flex;flex-direction:column;justify-content:center;gap:4px;
+    width:34px;height:34px;background:none;border:1px solid var(--rim);border-radius:var(--r-xs);
+    cursor:pointer;padding:0 7px;z-index:205;position:relative;
+  }
+  .mobile-toggle span{
+    display:block;width:100%;height:1px;background:var(--text-1);
+    transition:transform 0.3s, opacity 0.3s;
+  }
+  .mobile-toggle.open span:nth-child(1){transform:translateY(5px) rotate(45deg);}
+  .mobile-toggle.open span:nth-child(2){opacity:0;}
+  .mobile-toggle.open span:nth-child(3){transform:translateY(-5px) rotate(-45deg);}
+  
+  .mobile-overlay{
+    display:flex;position:fixed;top:0;left:0;right:0;bottom:0;
+    background:rgba(6,5,10,0.96);backdrop-filter:blur(32px);
+    z-index:199;flex-direction:column;
+    padding:110px 32px 40px;
+    opacity:0;pointer-events:none;transition:opacity 0.4s var(--ease);
+  }
+  .mobile-overlay.open{opacity:1;pointer-events:auto;}
+  .mobile-overlay-links{display:flex;flex-direction:column;gap:28px;}
+  .mobile-overlay-links a{
+    font-size:24px;font-family:'Cormorant Garant',serif;font-weight:300;
+    color:var(--text-2);letter-spacing:0.02em;text-decoration:none;
+    transition:color 0.2s;
+  }
+  .mobile-overlay-links a:hover,.mobile-overlay-links a:active{color:var(--gold);}
   .logo-mark{width:26px;height:26px;}
   .logo-name{font-size:10px;letter-spacing:0.15em;}
   .logo-sub{font-size:7px;letter-spacing:0.20em;}
@@ -1192,9 +1225,25 @@ footer{position:relative;z-index:2;padding:52px 64px;border-top:1px solid var(--
     </div>
     <div class="nav-cta">
       <a href="waitlist.html" class="btn-primary">Join Waitlist</a>
+      <button class="mobile-toggle" aria-label="Toggle Mobile Menu" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </nav>
+
+<!-- MOBILE OVERLAY -->
+<div class="mobile-overlay" id="mobile-menu">
+  <div class="mobile-overlay-links">
+    <a href="#how" onclick="toggleMobileMenu()">How It Works</a>
+    <a href="#modules" onclick="toggleMobileMenu()">Modules</a>
+    <a href="#primitives" onclick="toggleMobileMenu()">Primitives</a>
+    <a href="#roadmap" onclick="toggleMobileMenu()">Roadmap</a>
+    <a href="whitepaper.html">Whitepaper</a>
+    <a href="docs.html">Docs</a>
+    <a href="#faq" onclick="toggleMobileMenu()">FAQ</a>
+  </div>
+</div>
 
 <!-- HERO -->
 <section id="hero">
@@ -3241,10 +3290,16 @@ function runDemo(){
   }, 2200);
 })();
 
-/* ── FIX DOCS LINK ────────────────────────────────────────────────────────── */
-document.querySelectorAll('a').forEach(a=>{
-  if(a.textContent.trim()==='Read the Docs'||a.textContent.trim()==='Docs') a.href='docs.html';
-});
+/* ── MOBILE MENU TOGGLE ───────────────────────────────────────────────────── */
+function toggleMobileMenu(){
+  const menu = document.getElementById('mobile-menu');
+  const btn = document.querySelector('.mobile-toggle');
+  if(!menu || !btn) return;
+  menu.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+
+
 </script>
 </body>
 </html>
