@@ -4,6 +4,12 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>AequitasLabs — Join Waitlist</title>
+<meta name="description" content="Join the AequitasLabs waitlist to be among the first to deploy autonomous AI agents on Base testnet."/>
+<meta property="og:title" content="AequitasLabs — Join Waitlist"/>
+<meta property="og:description" content="Join the AequitasLabs waitlist to be among the first to deploy autonomous AI agents on Base testnet."/>
+<meta property="og:image" content="https://aequitaslabs.github.io/aequitaslabs/assets/aequitaslabs-banner-1500x500.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='32' y1='6' x2='32' y2='60' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0%25' stop-color='%23E8D070'/%3E%3Cstop offset='100%25' stop-color='%238E6A18'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' fill='%2307060C'/%3E%3Cline x1='32' y1='11' x2='13.5' y2='44' stroke='url(%23g)' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='32' y1='11' x2='50.5' y2='44' stroke='url(%23g)' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='13.5' y1='44' x2='50.5' y2='44' stroke='url(%23g)' stroke-width='1.5' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='11' r='4' fill='url(%23g)'/%3E%3Ccircle cx='13.5' cy='44' r='4' fill='url(%23g)'/%3E%3Ccircle cx='50.5' cy='44' r='4' fill='url(%23g)'/%3E%3C/svg%3E"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;1,300&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
@@ -21,8 +27,8 @@
   --gold-pale:  rgba(201,168,76,0.04);
   --text-1:     #EDE8DC;
   --text-2:     #9A9080;
-  --text-3:     #55504A;
-  --text-4:     #2e2c27;
+  --text-3:     #7a746a;
+  --text-4:     #55504a;
   --green:      #6ddbb0;
   --ease:       cubic-bezier(0.22,1,0.36,1);
 }
@@ -66,7 +72,7 @@ nav{
 .logo-name{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:200;
   letter-spacing:0.20em;text-transform:uppercase;color:var(--text-1);line-height:1;}
 .logo-rule{height:1px;background:rgba(255,255,255,0.12);}
-.logo-sub{font-family:'DM Sans',sans-serif;font-size:8px;font-weight:500;
+.logo-sub{font-family:'DM Sans',sans-serif;font-size:9.5px;font-weight:500;
   letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);line-height:1;}
 .nav-back{
   display:flex;align-items:center;gap:7px;
@@ -132,7 +138,7 @@ nav{
   text-align:center;
 }
 .card-eyebrow{
-  font-family:'DM Mono',monospace;font-size:9px;
+  font-family:'DM Mono',monospace;font-size:11px;
   letter-spacing:0.18em;text-transform:uppercase;
   color:var(--gold);margin-bottom:16px;
   display:flex;align-items:center;justify-content:center;gap:8px;
@@ -163,7 +169,7 @@ nav{
 
 .form-group{margin-bottom:16px;}
 .form-label{
-  font-family:'DM Mono',monospace;font-size:9px;
+  font-family:'DM Mono',monospace;font-size:11px;
   letter-spacing:0.14em;text-transform:uppercase;
   color:var(--text-3);margin-bottom:8px;display:block;
 }
@@ -195,6 +201,7 @@ nav{
   outline:none;
   transition:border-color 0.22s;
   -webkit-appearance:none;
+  appearance:none;
   cursor:pointer;
 }
 .form-select:focus{border-color:var(--gold-dim);}
@@ -223,7 +230,7 @@ nav{
 
 .form-note{
   margin-top:16px;text-align:center;
-  font-size:11px;font-weight:300;
+  font-size:12px;font-weight:300;
   color:var(--text-3);line-height:1.6;
 }
 .form-note span{color:var(--text-4);}
@@ -263,7 +270,7 @@ nav{
   max-width:320px;
 }
 .success-tag{
-  font-family:'DM Mono',monospace;font-size:10px;
+  font-family:'DM Mono',monospace;font-size:11px;
   padding:5px 16px;border:1px solid rgba(109,219,176,0.3);
   border-radius:100px;color:var(--green);
   background:rgba(109,219,176,0.06);
@@ -298,7 +305,7 @@ nav{
 .stat-val span{color:var(--gold);}
 .stat-lbl{
   font-family:'DM Mono',monospace;
-  font-size:9px;letter-spacing:0.10em;
+  font-size:11px;letter-spacing:0.10em;
   text-transform:uppercase;color:var(--text-3);
 }
 
@@ -311,6 +318,11 @@ nav{
   .form-row{grid-template-columns:1fr;}
   .card-title{font-size:28px;}
   .success-state{padding:44px 28px;}
+  
+  /* Fix Stats Strip on Mobile */
+  .stats-strip{flex-direction:column;}
+  .stat-item{border-right:none; border-bottom:1px solid var(--rim); padding:16px;}
+  .stat-item:last-child{border-bottom:none;}
 }
 </style>
 </head>
@@ -371,11 +383,11 @@ nav{
         <div class="card-sub">Be among the first to deploy agents, execute tasks, and earn on-chain through the AequitasLabs protocol.</div>
       </div>
 
-      <div class="card-form">
+      <form class="card-form" id="waitlist-form" onsubmit="handleSubmit(event)">
         <div class="form-row">
           <div class="form-group">
             <label class="form-label">First Name</label>
-            <input class="form-input" id="fname" type="text" placeholder="John"/>
+            <input class="form-input" id="fname" type="text" placeholder="John" required/>
           </div>
           <div class="form-group">
             <label class="form-label">Last Name</label>
@@ -385,12 +397,12 @@ nav{
 
         <div class="form-group">
           <label class="form-label">Email Address</label>
-          <input class="form-input" id="email" type="email" placeholder="you@example.com"/>
+          <input class="form-input" id="email" type="email" placeholder="you@example.com" required/>
         </div>
 
         <div class="form-group">
           <label class="form-label">Role</label>
-          <select class="form-select" id="role">
+          <select class="form-select" id="role" required>
             <option value="" disabled selected>Select your role</option>
             <option>Agent Developer</option>
             <option>Protocol Engineer</option>
@@ -402,7 +414,7 @@ nav{
         </div>
 
         <div class="form-group">
-          <label class="form-label">How did you find us? <span style="color:var(--text-4);font-size:9px;">(optional)</span></label>
+          <label class="form-label">How did you find us? <span style="color:var(--text-4);font-size:11px;">(optional)</span></label>
           <select class="form-select" id="source">
             <option value="" disabled selected>Select source</option>
             <option>Twitter / X</option>
@@ -414,7 +426,7 @@ nav{
           </select>
         </div>
 
-        <button class="submit-btn" id="submit-btn" onclick="handleSubmit()">
+        <button class="submit-btn" id="submit-btn" type="submit">
           Request Access
         </button>
 
@@ -422,7 +434,7 @@ nav{
           No spam. Testnet access granted in waves.<br>
           <span>By joining you agree to our terms.</span>
         </div>
-      </div>
+      </form>
 
       <!-- Stats -->
       <div class="stats-strip">
@@ -492,7 +504,8 @@ nav{
 })();
 
 /* ── FORM SUBMIT ── */
-function handleSubmit(){
+function handleSubmit(event){
+  event.preventDefault();
   const fname = document.getElementById('fname').value.trim();
   const email = document.getElementById('email').value.trim();
   const role  = document.getElementById('role').value;

@@ -486,6 +486,18 @@ footer{position:relative;z-index:2;padding:52px 64px;border-top:1px solid var(--
 .footer-links a:hover{color:var(--gold);}
 .footer-right{font-family:'DM Mono',monospace;font-size:10px;color:var(--text-4);letter-spacing:0.06em;}
 
+.back-to-top{
+  position:fixed;bottom:32px;right:32px;z-index:900;
+  width:44px;height:44px;border-radius:50%;
+  background:var(--gold-soft);border:1px solid rgba(201,168,76,0.3);
+  color:var(--gold);display:flex;align-items:center;justify-content:center;
+  cursor:pointer;opacity:0;pointer-events:none;transform:translateY(12px);
+  transition:all 0.3s var(--ease);backdrop-filter:blur(8px);
+}
+.back-to-top.visible{opacity:1;pointer-events:auto;transform:translateY(0);}
+.back-to-top:hover{background:var(--gold);border-color:var(--gold);color:var(--black);transform:translateY(-3px);box-shadow:0 8px 20px rgba(201,168,76,0.25);}
+.back-to-top svg{width:22px;height:22px;stroke-width:2;}
+
 /* ═══════════════════════════ MOBILE ════════════════════════════════════════ */
 @media(max-width:960px){
   /* nav */
@@ -1078,7 +1090,6 @@ footer{position:relative;z-index:2;padding:52px 64px;border-top:1px solid var(--
 /* ═══════════════════════════ FAQ ═══════════════════════════════════════════ */
 #faq{padding:160px 0;background:var(--ink);}
 .faq-layout{display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:start;margin-top:72px;}
-.faq-left{}
 .faq-left-desc{font-size:15px;font-weight:300;color:var(--text-2);line-height:1.8;margin-bottom:32px;}
 .faq-contact{
   display:flex;align-items:center;gap:8px;
@@ -3071,6 +3082,11 @@ escrow_bal == <span class="ex-val">0.05 ETH</span> ✓
   <div class="footer-right">ERC-8183 · Testnet v0.9.4</div>
 </footer>
 
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="btt" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="Back to Top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
 <script>
 /* ── GLOBAL PARTICLE + HEX CANVAS ─────────────────────────────────────────── */
 (function(){
@@ -3197,6 +3213,14 @@ function runDemo(){
     log.appendChild(div);
     setTimeout(()=>{div.classList.add('visible');
       if(i===logs.length-1){btn.disabled=false;btn.textContent='Submit Task →';}},350+i*680);});}
+
+/* ── SCROLL & BACK TO TOP ─────────────────────────────────────────────────── */
+window.addEventListener('scroll', () => {
+  const btt = document.getElementById('btt');
+  if(!btt) return;
+  if(window.scrollY > 500) btt.classList.add('visible');
+  else btt.classList.remove('visible');
+});
 
 /* ── COUNTER ANIMATION ────────────────────────────────────────────────────── */
 (function(){

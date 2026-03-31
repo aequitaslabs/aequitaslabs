@@ -25,8 +25,8 @@
   --gold-pale:  rgba(201,168,76,0.04);
   --text-1:     #EDE8DC;
   --text-2:     #9A9080;
-  --text-3:     #55504A;
-  --text-4:     #2e2c27;
+  --text-3:     #7a746a;
+  --text-4:     #55504a;
   --green:      #6ddbb0;
   --ease:       cubic-bezier(0.22,1,0.36,1);
 }
@@ -55,7 +55,7 @@ nav{
 .logo-name{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:200;
   letter-spacing:0.20em;text-transform:uppercase;color:var(--text-1);line-height:1;}
 .logo-rule{height:1px;background:rgba(255,255,255,0.12);}
-.logo-sub{font-family:'DM Sans',sans-serif;font-size:8px;font-weight:500;
+.logo-sub{font-family:'DM Sans',sans-serif;font-size:9.5px;font-weight:500;
   letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);line-height:1;}
 .nav-right{display:flex;align-items:center;gap:16px;}
 .nav-back{
@@ -65,10 +65,15 @@ nav{
 .nav-back:hover{color:var(--text-1);}
 .nav-back svg{width:14px;height:14px;stroke-width:1.8;}
 .nav-version{
-  font-family:'DM Mono',monospace;font-size:9px;
+  font-family:'DM Mono',monospace;font-size:11px;
   padding:4px 12px;border:1px solid var(--rim);
   border-radius:100px;color:var(--text-3);letter-spacing:0.08em;
 }
+
+/* ── ANIMATIONS ── */
+.reveal{opacity:0;transform:translateY(28px);}
+.reveal.visible{opacity:1;transform:translateY(0);
+  transition:opacity 0.75s var(--ease),transform 0.75s var(--ease);}
 
 /* LAYOUT */
 .wp-layout{
@@ -89,7 +94,7 @@ nav{
 }
 .wp-sidebar::-webkit-scrollbar{display:none;}
 .sb-section-label{
-  font-family:'DM Mono',monospace;font-size:9px;
+  font-family:'DM Mono',monospace;font-size:11px;
   letter-spacing:0.16em;text-transform:uppercase;
   color:var(--text-4);padding:0 24px;margin-bottom:6px;
 }
@@ -104,7 +109,7 @@ nav{
 .sb-link:hover{color:var(--text-1);background:rgba(255,255,255,0.02);}
 .sb-link.active{color:var(--gold);border-left-color:var(--gold);background:var(--gold-pale);}
 .sb-link-num{
-  font-family:'DM Mono',monospace;font-size:9px;
+  font-family:'DM Mono',monospace;font-size:11px;
   color:var(--text-4);width:18px;flex-shrink:0;
 }
 .sb-divider{height:1px;background:var(--rim);margin:12px 24px;}
@@ -126,7 +131,7 @@ nav{
 /* COVER */
 .wp-cover{margin-bottom:64px;padding-bottom:48px;border-bottom:1px solid var(--rim);}
 .wp-eyebrow{
-  font-family:'DM Mono',monospace;font-size:9px;
+  font-family:'DM Mono',monospace;font-size:11px;
   letter-spacing:0.18em;text-transform:uppercase;
   color:var(--gold);margin-bottom:20px;
   display:flex;align-items:center;gap:10px;
@@ -144,7 +149,7 @@ nav{
   margin-top:20px;flex-wrap:wrap;
 }
 .wp-meta-pill{
-  font-family:'DM Mono',monospace;font-size:10px;
+  font-family:'DM Mono',monospace;font-size:11px;
   padding:4px 14px;border:1px solid var(--rim);
   border-radius:100px;color:var(--text-3);letter-spacing:0.07em;
 }
@@ -155,7 +160,7 @@ nav{
 /* SECTIONS */
 .wp-section{margin-bottom:56px;scroll-margin-top:80px;}
 .wp-section-num{
-  font-family:'DM Mono',monospace;font-size:9px;
+  font-family:'DM Mono',monospace;font-size:11px;
   letter-spacing:0.16em;text-transform:uppercase;
   color:var(--gold);margin-bottom:12px;
   display:flex;align-items:center;gap:10px;opacity:0.8;
@@ -192,6 +197,7 @@ nav{
 .wp-callout-icon svg{width:16px;height:16px;stroke-width:1.8;}
 .wp-callout-text{font-size:13.5px;font-weight:300;color:var(--text-2);line-height:1.72;}
 .wp-callout-text strong{color:var(--text-1);font-weight:400;}
+.wp-callout:hover{border-color:rgba(201,168,76,0.3);background:rgba(201,168,76,0.1);box-shadow:0 0 16px rgba(201,168,76,0.15);transition:all 0.22s;}
 
 /* code block */
 .wp-code{
@@ -208,7 +214,7 @@ nav{
 .wc-dot:nth-child(1){background:rgba(255,95,86,0.45);}
 .wc-dot:nth-child(2){background:rgba(255,189,46,0.45);}
 .wc-dot:nth-child(3){background:rgba(39,201,63,0.45);}
-.wc-title{font-family:'DM Mono',monospace;font-size:10px;color:var(--text-3);letter-spacing:0.09em;flex:1;text-align:center;}
+.wc-title{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-3);letter-spacing:0.09em;flex:1;text-align:center;}
 .wp-code pre{
   padding:20px 22px;font-family:'DM Mono',monospace;
   font-size:12px;line-height:1.9;overflow-x:auto;color:var(--text-2);
@@ -225,7 +231,7 @@ nav{
 .wp-table th{
   text-align:left;padding:10px 14px;
   border-bottom:1px solid var(--rim);
-  font-size:10px;font-weight:500;letter-spacing:0.10em;
+  font-size:11px;font-weight:500;letter-spacing:0.10em;
   text-transform:uppercase;color:var(--text-3);
 }
 .wp-table td{
@@ -251,7 +257,7 @@ nav{
   padding:24px 28px;margin:24px 0;
 }
 .wp-abstract-label{
-  font-family:'DM Mono',monospace;font-size:9px;
+  font-family:'DM Mono',monospace;font-size:11px;
   letter-spacing:0.14em;text-transform:uppercase;
   color:var(--gold);margin-bottom:10px;
 }
@@ -267,7 +273,7 @@ nav{
   padding:24px 28px;margin:24px 0;
 }
 .wp-toc-title{
-  font-family:'DM Mono',monospace;font-size:10px;
+  font-family:'DM Mono',monospace;font-size:11px;
   letter-spacing:0.14em;text-transform:uppercase;
   color:var(--text-3);margin-bottom:14px;
 }
@@ -279,9 +285,21 @@ nav{
 }
 .wp-toc-item:hover{color:var(--gold);}
 .wp-toc-num{
-  font-family:'DM Mono',monospace;font-size:10px;
+  font-family:'DM Mono',monospace;font-size:11px;
   color:var(--text-4);width:20px;flex-shrink:0;
 }
+
+.back-to-top{
+  position:fixed;bottom:32px;right:32px;z-index:900;
+  width:44px;height:44px;border-radius:50%;
+  background:var(--gold-soft);border:1px solid rgba(201,168,76,0.3);
+  color:var(--gold);display:flex;align-items:center;justify-content:center;
+  cursor:pointer;opacity:0;pointer-events:none;transform:translateY(12px);
+  transition:all 0.3s var(--ease);backdrop-filter:blur(8px);
+}
+.back-to-top.visible{opacity:1;pointer-events:auto;transform:translateY(0);}
+.back-to-top:hover{background:var(--gold);border-color:var(--gold);color:var(--black);transform:translateY(-3px);box-shadow:0 8px 20px rgba(201,168,76,0.25);}
+.back-to-top svg{width:22px;height:22px;stroke-width:2;}
 
 /* mobile */
 .docs-mobile-toggle{display:none;}
@@ -633,10 +651,20 @@ passed   = score >= threshold
       </div>
     </div>
 
+    <!-- BACK TO TOP -->
+    <button class="back-to-top" id="btt" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="Back to Top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
   </main>
 </div>
 
 <script>
+window.addEventListener('scroll', () => {
+  const btt = document.getElementById('btt');
+  if(window.scrollY > 500) btt.classList.add('visible');
+  else btt.classList.remove('visible');
+});
+
 function toggleSidebar(){
   const sb = document.querySelector('.wp-sidebar');
   if(sb) sb.classList.toggle('open');
@@ -644,6 +672,22 @@ function toggleSidebar(){
 
 // Sidebar active state on scroll
 const sections = document.querySelectorAll('.wp-section[id], .wp-cover[id]');
+
+// Initialize Reveal Classes
+document.querySelectorAll('.wp-section, .wp-cover, .wp-table, .wp-code, .wp-callout, .wp-abstract, .wp-toc').forEach(el => {
+  el.classList.add('reveal');
+});
+
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(!e.isIntersecting) return;
+    e.target.classList.add('visible');
+    io.unobserve(e.target);
+  });
+}, {threshold: 0.1});
+
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
 const links = document.querySelectorAll('.sb-link');
 
 links.forEach(l => {

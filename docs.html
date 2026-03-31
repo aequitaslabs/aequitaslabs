@@ -4,6 +4,12 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>AequitasLabs — Docs</title>
+<meta name="description" content="AequitasLabs Protocol Documentation. Technical specifications, execution primitives, and guides for building trustless AI agents on Base testnet."/>
+<meta property="og:title" content="AequitasLabs — Docs"/>
+<meta property="og:description" content="AequitasLabs Protocol Documentation. Technical specifications, execution primitives, and guides for building trustless AI agents on Base testnet."/>
+<meta property="og:image" content="https://aequitaslabs.github.io/aequitaslabs/assets/aequitaslabs-banner-1500x500.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='32' y1='6' x2='32' y2='60' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0%25' stop-color='%23E8D070'/%3E%3Cstop offset='100%25' stop-color='%238E6A18'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' fill='%2307060C'/%3E%3Cline x1='32' y1='11' x2='13.5' y2='44' stroke='url(%23g)' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='32' y1='11' x2='50.5' y2='44' stroke='url(%23g)' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='13.5' y1='44' x2='50.5' y2='44' stroke='url(%23g)' stroke-width='1.5' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='11' r='4' fill='url(%23g)'/%3E%3Ccircle cx='13.5' cy='44' r='4' fill='url(%23g)'/%3E%3Ccircle cx='50.5' cy='44' r='4' fill='url(%23g)'/%3E%3C/svg%3E"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;1,300&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
@@ -24,8 +30,8 @@
   --sand:       #e8d9b0;
   --text-1:     #EDE8DC;
   --text-2:     #9A9080;
-  --text-3:     #55504A;
-  --text-4:     #2e2c27;
+  --text-3:     #7a746a;
+  --text-4:     #55504a;
   --green:      #6ddbb0;
   --blue:       #7bb5f7;
   --violet:     #b8a0f8;
@@ -63,7 +69,7 @@ nav{
 .logo-name{font-family:'DM Sans',sans-serif;font-size:12px;font-weight:200;
   letter-spacing:0.20em;text-transform:uppercase;color:var(--text-1);line-height:1;}
 .logo-rule{height:1px;background:rgba(255,255,255,0.12);}
-.logo-sub{font-family:'DM Sans',sans-serif;font-size:8px;font-weight:500;
+.logo-sub{font-family:'DM Sans',sans-serif;font-size:9.5px;font-weight:500;
   letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);line-height:1;}
 .nav-right{display:flex;align-items:center;gap:24px;}
 .nav-back{
@@ -74,10 +80,15 @@ nav{
 .nav-back:hover{color:var(--text-1);}
 .nav-back svg{width:14px;height:14px;stroke-width:1.8;}
 .nav-badge{
-  font-family:'DM Mono',monospace;font-size:9px;
+  font-family:'DM Mono',monospace;font-size:11px;
   padding:4px 12px;border:1px solid var(--rim);
   border-radius:100px;color:var(--text-3);letter-spacing:0.08em;
 }
+
+/* ── ANIMATIONS ── */
+.reveal{opacity:0;transform:translateY(28px);}
+.reveal.visible{opacity:1;transform:translateY(0);
+  transition:opacity 0.75s var(--ease),transform 0.75s var(--ease);}
 
 /* ── LAYOUT ── */
 .docs-layout{
@@ -101,7 +112,7 @@ nav{
 
 .sb-section{margin-bottom:8px;}
 .sb-section-label{
-  font-family:'DM Mono',monospace;font-size:9px;
+  font-family:'DM Mono',monospace;font-size:11px;
   letter-spacing:0.16em;text-transform:uppercase;
   color:var(--text-4);padding:0 24px;margin-bottom:6px;
 }
@@ -125,9 +136,10 @@ nav{
   color:var(--gold);flex-shrink:0;transition:all 0.2s;
 }
 .sb-item-icon svg{width:13px;height:13px;stroke-width:1.5;}
+.sb-item:hover .sb-item-icon{background:var(--gold-glow);border-color:var(--gold-dim);box-shadow:0 0 16px rgba(201,168,76,0.15);}
 .sb-item.active .sb-item-icon{background:var(--gold-glow);border-color:var(--gold-dim);}
 .sb-item-name{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.04em;}
-.sb-item-layer{font-size:10px;color:var(--text-4);margin-top:1px;}
+.sb-item-layer{font-size:11px;color:var(--text-4);margin-top:1px;}
 .sb-divider{height:1px;background:var(--rim);margin:16px 24px;}
 
 /* ── CONTENT AREA ── */
@@ -139,7 +151,7 @@ nav{
 /* ── OVERVIEW PAGE ── */
 .overview-hero{margin-bottom:64px;}
 .overview-eyebrow{
-  font-family:'DM Mono',monospace;font-size:9px;
+  font-family:'DM Mono',monospace;font-size:11px;
   letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);
   margin-bottom:16px;display:flex;align-items:center;gap:10px;
 }
@@ -180,8 +192,8 @@ nav{
   color:var(--gold);transition:all 0.25s;
 }
 .ov-icon svg{width:15px;height:15px;stroke-width:1.5;}
-.overview-card:hover .ov-icon{background:var(--gold-glow);border-color:var(--gold-dim);}
-.ov-num{font-family:'DM Mono',monospace;font-size:9px;color:var(--text-4);letter-spacing:0.1em;}
+.overview-card:hover .ov-icon{background:var(--gold-glow);border-color:var(--gold-dim);box-shadow:0 0 16px rgba(201,168,76,0.15);}
+.ov-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-4);letter-spacing:0.1em;}
 .ov-name{font-family:'DM Mono',monospace;font-size:13px;color:var(--text-1);letter-spacing:0.04em;}
 .ov-desc{font-size:12.5px;font-weight:300;color:var(--text-2);line-height:1.65;}
 
@@ -195,7 +207,7 @@ nav{
   display:flex;flex-direction:column;gap:4px;
 }
 .info-item:last-child{border-right:none;}
-.info-label{font-family:'DM Mono',monospace;font-size:9px;
+.info-label{font-family:'DM Mono',monospace;font-size:11px;
   letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3);}
 .info-val{font-size:14px;font-weight:400;color:var(--text-1);}
 .info-val span{color:var(--gold);}
@@ -210,7 +222,7 @@ nav{
   margin-bottom:40px;
 }
 .prim-eyebrow{
-  font-family:'DM Mono',monospace;font-size:9px;
+  font-family:'DM Mono',monospace;font-size:11px;
   letter-spacing:0.16em;text-transform:uppercase;
   color:var(--gold);margin-bottom:14px;
   display:flex;align-items:center;gap:10px;
@@ -235,7 +247,7 @@ nav{
 /* ── DOC SECTIONS ── */
 .doc-section{margin-bottom:44px;}
 .doc-section-label{
-  font-family:'DM Mono',monospace;font-size:9px;
+  font-family:'DM Mono',monospace;font-size:11px;
   letter-spacing:0.16em;text-transform:uppercase;
   color:var(--gold);margin-bottom:16px;
   display:flex;align-items:center;gap:10px;opacity:0.8;
@@ -264,7 +276,7 @@ nav{
   display:flex;align-items:center;line-height:1.5;
 }
 .input-badge{
-  font-family:'DM Mono',monospace;font-size:9px;
+  font-family:'DM Mono',monospace;font-size:11px;
   padding:10px 12px;
   border:1px solid var(--rim);border-left:none;
   border-radius:0 var(--r-sm) var(--r-sm) 0;
@@ -289,14 +301,14 @@ nav{
 .cb-dot:nth-child(1){background:rgba(255,95,86,0.45);}
 .cb-dot:nth-child(2){background:rgba(255,189,46,0.45);}
 .cb-dot:nth-child(3){background:rgba(39,201,63,0.45);}
-.cb-title{font-family:'DM Mono',monospace;font-size:10px;
+.cb-title{font-family:'DM Mono',monospace;font-size:11px;
   color:var(--text-3);letter-spacing:0.09em;flex:1;text-align:center;}
 .copy-btn{
-  font-family:'DM Mono',monospace;font-size:9px;color:var(--text-3);
+  font-family:'DM Mono',monospace;font-size:11px;color:var(--text-3);
   background:none;border:1px solid var(--rim);border-radius:4px;
   padding:3px 10px;cursor:pointer;transition:all 0.2s;letter-spacing:0.06em;
 }
-.copy-btn:hover{color:var(--gold);border-color:var(--gold-dim);}
+.copy-btn:hover{color:var(--gold);border-color:var(--gold-dim);background:var(--gold-pale);}
 .copy-btn.copied{color:var(--green);border-color:rgba(109,219,176,0.4);}
 pre{
   padding:20px 22px;font-family:'DM Mono',monospace;
@@ -322,7 +334,7 @@ pre .err{color:#f08080;}
   gap:12px;align-items:baseline;
 }
 .output-key{font-family:'DM Mono',monospace;font-size:11px;color:var(--gold);}
-.output-type{font-family:'DM Mono',monospace;font-size:10px;color:var(--text-4);}
+.output-type{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-4);}
 .output-desc{font-size:12.5px;font-weight:300;color:var(--text-2);line-height:1.5;}
 
 /* failure table */
@@ -332,7 +344,7 @@ pre .err{color:#f08080;}
   background:rgba(255,255,255,0.015);border-radius:var(--r-sm);
   border-left:2px solid rgba(201,168,76,0.3);
 }
-.failure-code{font-family:'DM Mono',monospace;font-size:10px;
+.failure-code{font-family:'DM Mono',monospace;font-size:11px;
   color:var(--gold);letter-spacing:0.06em;min-width:160px;
   flex-shrink:0;padding-top:1px;}
 .failure-action{font-size:12.5px;font-weight:300;color:var(--text-2);line-height:1.6;}
@@ -347,10 +359,10 @@ pre .err{color:#f08080;}
 .verify-icon svg{width:16px;height:16px;stroke-width:1.8;}
 .verify-text{font-size:13px;font-weight:300;color:var(--text-2);line-height:1.72;}
 .verify-text strong{color:var(--text-1);font-weight:500;}
-.verify-text code{font-family:'DM Mono',monospace;font-size:11px;
+.verify-text code{font-family:'DM Mono',monospace;font-size:12px;
   color:var(--gold);background:rgba(201,168,76,0.08);
   padding:1px 6px;border-radius:3px;}
-
+.verify-box:hover{border-color:rgba(201,168,76,0.4);background:rgba(201,168,76,0.12);box-shadow:0 0 16px rgba(201,168,76,0.15);}
 /* nav between primitives */
 .prim-nav{
   display:flex;justify-content:space-between;
@@ -363,8 +375,20 @@ pre .err{color:#f08080;}
 }
 .prim-nav-btn:hover{color:var(--gold);}
 .prim-nav-btn svg{width:14px;height:14px;stroke-width:1.8;}
-.prim-nav-label{font-family:'DM Mono',monospace;font-size:10px;
+.prim-nav-label{font-family:'DM Mono',monospace;font-size:11px;
   color:var(--gold);letter-spacing:0.08em;display:block;margin-bottom:3px;}
+
+.back-to-top{
+  position:fixed;bottom:32px;right:32px;z-index:900;
+  width:44px;height:44px;border-radius:50%;
+  background:var(--gold-soft);border:1px solid rgba(201,168,76,0.3);
+  color:var(--gold);display:flex;align-items:center;justify-content:center;
+  cursor:pointer;opacity:0;pointer-events:none;transform:translateY(12px);
+  transition:all 0.3s var(--ease);backdrop-filter:blur(8px);
+}
+.back-to-top.visible{opacity:1;pointer-events:auto;transform:translateY(0);}
+.back-to-top:hover{background:var(--gold);border-color:var(--gold);color:var(--black);transform:translateY(-3px);box-shadow:0 8px 20px rgba(201,168,76,0.25);}
+.back-to-top svg{width:22px;height:22px;stroke-width:2;}
 
 /* mobile */
 .docs-mobile-toggle{display:none;}
@@ -1196,10 +1220,20 @@ log({task_id, amount: event.amount, new_rep, status: <span class="ok">"SETTLED"<
       </div>
     </div>
 
+    <!-- BACK TO TOP -->
+    <button class="back-to-top" id="btt" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="Back to Top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
   </main>
 </div>
 
 <script>
+window.addEventListener('scroll', () => {
+  const btt = document.getElementById('btt');
+  if(window.scrollY > 500) btt.classList.add('visible');
+  else btt.classList.remove('visible');
+});
+
 function toggleSidebar(){
   const sb = document.querySelector('.sidebar');
   if(sb) sb.classList.toggle('open');
@@ -1236,6 +1270,22 @@ function copyPre(btn) {
     setTimeout(() => { btn.textContent = 'copy'; btn.classList.remove('copied'); }, 2000);
   });
 }
+
+/* Initialize Scroll Animations */
+document.querySelectorAll('.doc-section, .overview-card, .info-strip, .verify-box, .inputs-table, .outputs-table').forEach(el => {
+  el.classList.add('reveal');
+});
+
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(!e.isIntersecting) return;
+    const el = e.target;
+    el.classList.add('visible');
+    io.unobserve(el);
+  });
+}, {threshold: 0.1});
+
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 </body>
 </html>
