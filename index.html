@@ -62,7 +62,19 @@
 
 /* ═══════════════════════════ RESET ════════════════════════════════════════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth;}/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--rim); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
+/* ── PRELOADER ── */
+#preloader{position:fixed;inset:0;background:var(--black);z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity 0.6s ease;pointer-events:none;}
+.prel-content{text-align:center;}
+.prel-logo{font-family:'DM Sans',sans-serif;font-size:16px;font-weight:200;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.prel-text{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-3);letter-spacing:0.1em;animation:pulse 1.5s infinite;}
+@keyframes pulse{0%,100%{opacity:0.4;}50%{opacity:1;}}
+
 body{background:var(--black);color:var(--text-1);font-family:'DM Sans',sans-serif;
   line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 a{color:inherit;text-decoration:none;}
@@ -1173,6 +1185,13 @@ footer{position:relative;z-index:2;padding:52px 64px;border-top:1px solid var(--
 
 </head>
 <body>
+<!-- PRELOADER -->
+<div id="preloader">
+  <div class="prel-content">
+    <div class="prel-logo">AequitasLabs</div>
+    <div class="prel-text">Establishing secure connection...</div>
+  </div>
+</div>
 
 <canvas id="canvas-bg"></canvas>
 
@@ -3323,6 +3342,11 @@ function toggleMobileMenu(){
   btn.classList.toggle('open');
 }
 
+/* ── PRELOADER DISMISS ── */
+window.addEventListener('load', () => {
+  const p = document.getElementById('preloader');
+  if(p) { p.style.opacity = 0; setTimeout(() => p.remove(), 600); }
+});
 
 </script>
 </body>

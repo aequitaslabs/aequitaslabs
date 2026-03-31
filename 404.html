@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>404 Not Found — AequitasLabs</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --black: #07060C;
+    --gold: #C9A84C;
+    --gold-dim: #9e853e;
+    --rim: rgba(255,255,255,0.08);
+    --text-1: #EDE8DC;
+    --text-3: #7a746a;
+  }
+  ::-webkit-scrollbar { display: none; }
+  body {
+    background: var(--black);
+    color: var(--text-1);
+    font-family: 'DM Sans', sans-serif;
+    margin: 0; padding: 0;
+    display: flex; align-items: center; justify-content: center;
+    height: 100vh; overflow: hidden;
+  }
+  .err-container {
+    text-align: center;
+    z-index: 10;
+  }
+  .err-code {
+    font-family: 'DM Mono', monospace;
+    font-size: 100px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+  .err-msg {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    color: var(--text-3);
+    margin-bottom: 40px;
+    letter-spacing: 0.05em;
+  }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 14px 28px; border: 1px solid var(--rim);
+    background: transparent; color: var(--gold);
+    border-radius: 4px; text-decoration: none;
+    font-family: 'DM Mono', monospace; font-size: 12px;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    transition: all 0.2s;
+  }
+  .btn:hover {
+    border-color: var(--gold-dim); background: rgba(201,168,76,0.05);
+    box-shadow: 0 0 16px rgba(201,168,76,0.15);
+  }
+  .btn svg { width: 14px; height: 14px; stroke-width: 1.8; }
+  
+  #canvas-bg { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+</style>
+</head>
+<body>
+<canvas id="canvas-bg"></canvas>
+
+<div class="err-container">
+  <div class="err-code">404</div>
+  <div class="err-msg">Protocol endpoint not found. Execution halted.</div>
+  <a href="index.html" class="btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    Return to Protocol
+  </a>
+</div>
+
+<script>
+  const cv=document.getElementById('canvas-bg'),ctx=cv.getContext('2d');
+  let W,H;const G='rgba(201,168,76,';
+  function resize(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight;}
+  resize();window.addEventListener('resize',resize);
+  const N=30;
+  const pts=Array.from({length:N},()=>({
+    x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,
+    vx:(Math.random()-0.5)*0.2,vy:(Math.random()-0.5)*0.2,
+    r:Math.random()*1+0.3,a:Math.random()*0.4+0.05
+  }));
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    pts.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=G+p.a+')';ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+</script>
+</body>
+</html>

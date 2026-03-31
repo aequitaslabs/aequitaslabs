@@ -30,8 +30,16 @@
   --green:      #6ddbb0;
   --ease:       cubic-bezier(0.22,1,0.36,1);
 }
+/* ═══════════════════════════ RESET ════════════════════════════════════════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--rim); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+
 body{
   background:var(--black);color:var(--text-1);
   font-family:'DM Sans',sans-serif;
