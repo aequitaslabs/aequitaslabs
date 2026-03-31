@@ -89,8 +89,16 @@ body::after{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;
 /* ═══════════════════════════ NAV ═══════════════════════════════════════════ */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;
   justify-content:space-between;padding:22px 64px;transition:all 0.45s var(--ease);}
-nav.scrolled{background:rgba(6,5,10,0.92);backdrop-filter:blur(28px) saturate(1.6);
-  border-bottom:1px solid var(--rim);padding:16px 64px;box-shadow:0 1px 0 rgba(201,168,76,0.08);}
+nav.scrolled{background:rgba(6,5,10,0.4);backdrop-filter:blur(24px) saturate(1.8);
+  border-bottom:1px solid rgba(255,255,255,0.05);padding:16px 64px;box-shadow:0 1px 0 rgba(201,168,76,0.08);}
+
+/* ── CUSTOM CURSOR ── */
+@media (pointer: fine) {
+  body { cursor: none; }
+  a, button, select, input, .pipe-node, .faq-question, .prim-card, .sb-item { cursor: none !important; }
+  #cursor { position: fixed; top: 0; left: 0; width: 14px; height: 14px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 10000; mix-blend-mode: difference; transition: width 0.3s cubic-bezier(0.22,1,0.36,1), height 0.3s cubic-bezier(0.22,1,0.36,1), background 0.3s; transform: translate(-50%, -50%); }
+  #cursor.hovered { width: 44px; height: 44px; background: #fff; mix-blend-mode: difference; }
+}
 .nav-status{
   display:flex;align-items:center;gap:6px;
   font-family:'DM Mono',monospace;font-size:9px;
@@ -1192,6 +1200,8 @@ footer{position:relative;z-index:2;padding:52px 64px;border-top:1px solid var(--
     <div class="prel-text">Establishing secure connection...</div>
   </div>
 </div>
+<!-- CUSTOM CURSOR -->
+<div id="cursor"></div>
 
 <canvas id="canvas-bg"></canvas>
 
@@ -3347,6 +3357,67 @@ window.addEventListener('load', () => {
   const p = document.getElementById('preloader');
   if(p) { p.style.opacity = 0; setTimeout(() => p.remove(), 600); }
 });
+
+/* ── ULTRA-PREMIUM INTERACTIONS ── */
+(function(){
+  // 1. Custom Cursor
+  if (window.matchMedia("(pointer: fine)").matches) {
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+    document.querySelectorAll('a, button, input, select, .pipe-node, .faq-question, .prim-card').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
+    });
+  }
+
+  // 2. Magnetic Buttons
+  document.querySelectorAll('.btn-hero-primary, .btn-hero-secondary, .submit-btn, .nav-btn, .btn-ghost').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      btn.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = 'translate(0px, 0px)';
+    });
+  });
+
+  // 3. 3D Tilt Hover
+  document.querySelectorAll('.overview-card, .module-card, .flow-card, .case-card, .why-card').forEach(card => {
+    card.addEventListener('mouseenter', () => card.style.transition = 'none');
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      card.style.transform = `perspective(1000px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateY(-2px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transition = 'transform 0.4s ease';
+      card.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0)';
+    });
+  });
+
+  // 4. Hacker Text Scramble
+  setTimeout(() => {
+    const chars = '!<>-_\\\\/[]{}—=+*^?#_';
+    document.querySelectorAll('.hero-title span, .hero-title em').forEach(el => {
+      const originalText = el.innerText;
+      let iteration = 0;
+      const interval = setInterval(() => {
+        el.innerText = originalText.split('').map((letter, index) => {
+          if(index < iteration) return originalText[index];
+          return chars[Math.floor(Math.random() * chars.length)];
+        }).join('');
+        if(iteration >= originalText.length) clearInterval(interval);
+        iteration += 1/3;
+      }, 30);
+    });
+  }, 450); // Delay menyeimbangkan fadeUp CSS
+})();
 
 </script>
 </body>
