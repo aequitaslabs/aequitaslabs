@@ -24,12 +24,12 @@ export default function Home() {
       </Head>
       
       <header className="w-full flex justify-between items-center px-6 sm:px-12 py-8 absolute top-0 left-0 right-0 z-50">
-        <div className="font-serif text-white text-xl sm:text-2xl tracking-[0.15em] flex items-center gap-3">
-          <div className="w-4 h-4 rounded-full bg-gold/20 border border-gold/40 flex items-center justify-center">
-            <div className="w-1.5 h-1.5 rounded-full bg-gold"></div>
+        <a href="https://aequitaslabs.xyz" className="flex items-center gap-3 text-white transition-opacity hover:opacity-80" style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '26px', letterSpacing: '-0.02em' }}>
+          <div style={{ width: '24px', height: '24px', border: '1px solid #C9A84C', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ width: '8px', height: '8px', background: '#C9A84C', borderRadius: '50%', boxShadow: '0 0 8px rgba(201,168,76,0.5)' }}></div>
           </div>
           AequitasLabs
-        </div>
+        </a>
         <Wallet />
       </header>
 
