@@ -787,9 +787,19 @@ window.addEventListener('DOMContentLoaded', () => {
   // 1. Custom Cursor
   if (finePointer && !prefersReducedMotion) {
     const cursor = document.getElementById('cursor');
+    document.addEventListener('mouseenter', () => cursor.classList.add('visible'));
     document.addEventListener('mousemove', e => {
+      cursor.classList.add('visible');
       cursor.style.left = e.clientX + 'px';
       cursor.style.top = e.clientY + 'px';
+    });
+    document.addEventListener('mouseleave', () => {
+      cursor.classList.remove('visible');
+      cursor.classList.remove('hovered');
+    });
+    window.addEventListener('blur', () => {
+      cursor.classList.remove('visible');
+      cursor.classList.remove('hovered');
     });
     document.querySelectorAll('a, button, input, select, .pipe-node, .faq-question, .prim-card').forEach(el => {
       el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
