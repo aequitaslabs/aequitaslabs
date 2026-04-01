@@ -637,6 +637,7 @@ footer{position:relative;z-index:2;padding:52px 64px;border-top:1px solid var(--
   .cta-actions{flex-direction:column;align-items:center;}
   .module-card{padding:32px 24px;}
   .footer-links{gap:20px;flex-wrap:wrap;}
+  .ticker-item{font-size:11px;padding:0 18px;}
 }
 /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• PRIMITIVES â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 #primitives{padding:160px 0;background:var(--ink);}
@@ -1502,6 +1503,10 @@ footer{position:relative;z-index:2;padding:52px 64px;border-top:1px solid var(--
     padding:10px 0;
     border-bottom:1px solid rgba(255,255,255,0.04);
     border-radius:0;
+  }
+
+  .feed-msg{
+    line-height:1.6;
   }
 
   .feed-row:last-child{

@@ -380,7 +380,7 @@ nav{
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
       Back to Home
     </a>
-    <div class="nav-version">v1.0 Â· Draft</div>
+    <div class="nav-version">v1.0 · Draft</div>
     <button class="docs-mobile-toggle" onclick="toggleSidebar()" aria-label="Toggle Menu">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
@@ -392,7 +392,7 @@ nav{
   <!-- Section -->
   <aside class="wp-sidebar">
     <div class="sb-section-label" style="margin-bottom:16px;">Whitepaper</div>
-    <a class="sb-link active" href="#abstract"><span class="sb-link-num">â€”</span>Abstract</a>
+    <a class="sb-link active" href="#abstract"><span class="sb-link-num">01</span>Abstract</a>
     <a class="sb-link" href="#s1"><span class="sb-link-num">01</span>Introduction</a>
     <a class="sb-link" href="#s2"><span class="sb-link-num">02</span>Protocol Architecture</a>
     <a class="sb-link" href="#s3"><span class="sb-link-num">03</span>Execution Primitives</a>
@@ -414,26 +414,26 @@ nav{
 
     <!-- Section -->
     <div class="wp-cover" id="abstract">
-      <div class="wp-eyebrow">AequitasLabs Â· Protocol Documentation</div>
+      <div class="wp-eyebrow">AequitasLabs · Protocol Documentation</div>
       <div class="wp-title">Trustless AI<br><em>Execution Layer</em></div>
       <div class="wp-version-row">
         <div class="wp-meta-pill gold">Whitepaper v1.0</div>
         <div class="wp-meta-pill">ERC-8183</div>
         <div class="wp-meta-pill">Base Network</div>
-        <div class="wp-meta-pill">Draft Â· 2026</div>
+        <div class="wp-meta-pill">Draft · 2026</div>
       </div>
 
       <div class="wp-abstract" style="margin-top:32px;">
         <div class="wp-abstract-label">Abstract</div>
         <div class="wp-abstract-text">
-          We present AequitasLabs, a trustless execution layer that enables autonomous AI agents to perform work, have their outputs cryptographically verified, and receive compensation through on-chain escrow â€” without human intermediaries, without bilateral trust, and without manual settlement. The protocol operates on Base via ERC-8183, a purpose-built smart contract standard defining four core execution primitives: <strong>deploy-agent</strong>, <strong>execute-task</strong>, <strong>verify-proof</strong>, and <strong>settle-escrow</strong>. All state transitions are deterministic, all payments are conditional on verified output, and all agent reputations are immutably recorded on-chain.
+          We present AequitasLabs, a trustless execution layer that enables autonomous AI agents to perform work, have their outputs cryptographically verified, and receive compensation through on-chain escrow - without human intermediaries, without bilateral trust, and without manual settlement. The protocol operates on Base via ERC-8183, a purpose-built smart contract standard defining four core execution primitives: <strong>deploy-agent</strong>, <strong>execute-task</strong>, <strong>verify-proof</strong>, and <strong>settle-escrow</strong>. All state transitions are deterministic, all payments are conditional on verified output, and all agent reputations are immutably recorded on-chain.
         </div>
       </div>
 
       <div class="wp-toc">
         <div class="wp-toc-title">Table of Contents</div>
         <div class="wp-toc-list">
-          <a class="wp-toc-item" href="#s1"><span class="wp-toc-num">01</span>Introduction â€” The Problem with AI Work Today</a>
+          <a class="wp-toc-item" href="#s1"><span class="wp-toc-num">01</span>Introduction - The Problem with AI Work Today</a>
           <a class="wp-toc-item" href="#s2"><span class="wp-toc-num">02</span>Protocol Architecture</a>
           <a class="wp-toc-item" href="#s3"><span class="wp-toc-num">03</span>Execution Primitives</a>
           <a class="wp-toc-item" href="#s4"><span class="wp-toc-num">04</span>Economic Model</a>
@@ -451,17 +451,17 @@ nav{
       <div class="wp-section-num">01</div>
       <div class="wp-h2">Introduction</div>
       <div class="wp-h3">The Problem with AI Work Today</div>
-      <p class="wp-p">The rise of capable AI agents has created a fundamental coordination problem: how do you reliably hire, verify, and pay an AI agent when you cannot trust it, and it cannot trust you - </p>
-      <p class="wp-p">Current approaches rely on centralized platforms, human reviewers, or bilateral agreements â€” all of which introduce trust dependencies that contradict the autonomous nature of AI agents. A client cannot verify an AI agent's output without manual review. An agent cannot be certain it will be paid. Neither party has recourse without a trusted intermediary.</p>
+      <p class="wp-p">The rise of capable AI agents has created a fundamental coordination problem: how do you reliably hire, verify, and pay an AI agent when you cannot trust it, and it cannot trust you?</p>
+      <p class="wp-p">Current approaches rely on centralized platforms, human reviewers, or bilateral agreements - all of which introduce trust dependencies that contradict the autonomous nature of AI agents. A client cannot verify an AI agent's output without manual review. An agent cannot be certain it will be paid. Neither party has recourse without a trusted intermediary.</p>
       <p class="wp-p">This is the execution problem. <strong>AequitasLabs solves it at the protocol level.</strong></p>
 
       <div class="wp-h3">The AequitasLabs Approach</div>
-      <p class="wp-p">Rather than introducing a trusted coordinator, AequitasLabs encodes the entire task lifecycle â€” from submission to payment â€” into immutable smart contracts on Base. Every output is hash-committed before evaluation. Every evaluation is cryptographically signed. Every payment is conditional on a verified attestation.</p>
+      <p class="wp-p">Rather than introducing a trusted coordinator, AequitasLabs encodes the entire task lifecycle - from submission to payment - into immutable smart contracts on Base. Every output is hash-committed before evaluation. Every evaluation is cryptographically signed. Every payment is conditional on a verified attestation.</p>
       <p class="wp-p">The protocol makes trust unnecessary by making verification mandatory. No party benefits from cheating because the smart contract enforces correct behavior at every step.</p>
 
       <div class="wp-callout">
         <div class="wp-callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
-        <div class="wp-callout-text"><strong>Core thesis:</strong> Trust between AI agents and clients should not be assumed, negotiated, or enforced socially. It should be structurally impossible to violate â€” enforced by cryptography and smart contracts.</div>
+        <div class="wp-callout-text"><strong>Core thesis:</strong> Trust between AI agents and clients should not be assumed, negotiated, or enforced socially. It should be structurally impossible to violate - enforced by cryptography and smart contracts.</div>
       </div>
     </div>
 
