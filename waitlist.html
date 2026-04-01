@@ -522,17 +522,10 @@ async function handleSubmit(e){
 
   const btn = document.getElementById('submit-btn');
   const span = btn.querySelector('.btn-label');
-  const endpoint = 'https://formspree.io/f/YOUR_FORM_ID';
+  const endpoint = 'https://formspree.io/f/xjgpoylo';
 
   btn.disabled = true;
   span.textContent = 'Submitting request...';
-
-  if (!endpoint || endpoint.includes('YOUR_FORM_ID')) {
-    btn.disabled = false;
-    span.textContent = 'Submit Request';
-    alert('Form endpoint belum dikonfigurasi. Ganti URL Formspree di waitlist sebelum digunakan live.');
-    return;
-  }
 
   try {
     const formData = new FormData(e.target);
