@@ -1,97 +1,102 @@
-![Status](https://img.shields.io/badge/status-testnet-yellow?style=for-the-badge)
-![License](https://img.shields.io/badge/license-MIT-yellow?style=for-the-badge)
-![Version](https://img.shields.io/badge/version-v0.9.4-yellow?style=for-the-badge)
-![UI](https://img.shields.io/badge/UI-Ultra_Premium-blue?style=for-the-badge)
-
 # AequitasLabs
+
 **Trustless AI Execution Layer**
 
-AequitasLabs is a decentralized infrastructure layer that enables autonomous AI agents to execute tasks, verify outputs, and settle payments on-chain — without human intermediaries. Built on ERC-8183 protocol.
+AequitasLabs is a premium multi-page protocol website for a trustless AI execution layer centered on escrow, verification, and on-chain settlement.
 
----
+This repository currently focuses on the presentation layer:
 
-## 🌟 Overview
+- landing page storytelling
+- protocol architecture pages
+- ecosystem and roadmap pages
+- FAQ and developer-facing documentation
+- waitlist onboarding flow
 
-Clients post tasks with escrowed funds. AI agents claim and execute them. Independent evaluator agents verify outputs. Smart contracts release payment only on verified completion.
+## What The Site Communicates
 
-**No trust assumptions. No manual oversight. Deterministic settlement.**
+The product thesis is straightforward:
 
----
+1. A client defines a task and escrows funds.
+2. An autonomous agent claims and executes the work.
+3. Verifier agents evaluate the result against explicit criteria.
+4. Settlement happens only after successful verification.
 
-## ⚡ How It Works
+The frontend is designed to communicate that system clearly across desktop and mobile.
 
-```text
-Client → Task Submission (ERC-8183 escrow)
-       → Agent Execution  (LangChain / AutoGPT / CrewAI)
-       → Evaluator Verification (cryptographic attestation)
-       → Automatic Settlement  (on-chain payment release)
-```
+## Project Status
 
----
+- Developer preview
+- Static frontend
+- Multi-page architecture
+- Not presented as production-ready mainnet software
+- Waitlist requires a real Formspree endpoint before public use
 
-## 💎 Key Features
-- **Ultra-Premium UI/UX:** Built with dark glassmorphism, 3D tilt effects, magnetic buttons, and a dynamic hardware-accelerated canvas background.
-- **Mobile-First Responsive Design:** Fully scalable `1fr` Grid layout ensuring seamless execution tracking on any device.
-- **Trustless Escrow:** Funds are locked in audited smart contracts, released only after verified completion.
-- **Verifiable Outputs:** Every result is hash-committed and cryptographically attested before settlement.
-- **On-chain Reputation:** Immutable agent performance history, soulbound to each agent identity.
-- **Framework Agnostic:** Native support for LangChain, AutoGPT, CrewAI, and custom agent stacks.
-
----
-
-## 🏛️ Multi-Page Architecture
-
-In the latest `v0.9.4` update, the project has transitioned to a scalable multi-page frontend architecture to accommodate extensive protocol documentation and improve load times:
+## Repository Structure
 
 ```text
 aequitaslabs-new/
-├── index.html              # Hero Landing, Web3 Live Execution Demo & Ticker
-├── architecture.html       # Protocol Architecture, Flow Process, & Modules
-├── ecosystem.html          # Use Cases & Protocol Roadmap
-├── faq.html                # Frequently Asked Questions & Why AequitasLabs
-├── whitepaper.html         # Technical Whitepaper 
-├── docs.html               # Developer Documentation
-├── waitlist.html           # Onboarding & Waitlist Form (Formspree Ready)
-├── style.css               # Core Stylesheet (Glassmorphism + Mobile Layout)
-└── README.md
+|-- index.html
+|-- architecture.html
+|-- ecosystem.html
+|-- docs.html
+|-- whitepaper.html
+|-- faq.html
+|-- waitlist.html
+|-- 404.html
+|-- style.css
+|-- unmoji.ps1
+|-- LICENSE
+`-- README.md
 ```
 
----
+## Design Direction
 
-## ⚙️ Execution Primitives
+The site intentionally leans into a premium protocol aesthetic:
 
-The protocol exposes four core primitives for agent interactions:
+- dark editorial UI
+- gold-accented system styling
+- expressive typography
+- atmospheric backgrounds and motion
+- mobile-specific layout adjustments instead of simple desktop scaling
 
-| Primitive | Role | Description |
-|---|---|---|
-| `deploy-agent` | Worker / Evaluator | Register on-chain with staked collateral |
-| `execute-task` | Worker | Run task and produce hash-committed output |
-| `verify-proof` | Evaluator | Attest output against criteria, emit on-chain proof |
-| `settle-escrow` | Worker | Trigger payment release after passing evaluation |
+## Content Principles
 
----
+To keep the site credible, the copy should follow a few rules:
 
-## 🛠️ Tech Stack
+- prefer precise claims over hype
+- avoid implying completed audits unless they are actually published
+- treat animated demos and feeds as previews unless backed by real network data
+- keep roadmap, FAQ, docs, and homepage language aligned
 
-| Component | Technology |
-|---|---|
-| **Smart Contracts** | Solidity, ERC-8183 |
-| **Agent Frameworks** | LangChain, AutoGPT, CrewAI |
-| **Frontend UI** | HTML5, Vanilla CSS3 (Custom Vectors, Animations), ES6 JS |
-| **Storage & Network**| IPFS (Commitments), Base Ethereum (Testnet v0.9.4) |
+## Local Preview
 
----
+You can preview the site with any static server.
 
-## 🚀 Getting Started (Waitlist)
+Example:
 
-We are currently onboarding developers to the testnet waitlist. 
-To join, navigate to the `waitlist.html` page running locally on your environment, or visit the live deployment link, and submit your agent framework preference.
+```powershell
+python -m http.server 8080
+```
 
-> **Recommendation for Developers**: Be sure to replace `[YOUR_FORM_ID]` inside the `waitlist.html` script with your actual Formspree ID before going to production to receive applications directly!
+Then open the local URL in a browser instead of double-clicking HTML files directly.
 
----
+## Waitlist Setup
 
-## 📄 License & Status
+Before using the waitlist publicly:
 
-`Testnet v0.9.4` — active development. Not production-ready. 
+1. Open [`waitlist.html`](./waitlist.html)
+2. Replace `https://formspree.io/f/YOUR_FORM_ID` with your real Formspree endpoint
+3. Test both success and failure flows
+
+Without that configuration, the waitlist should be treated as UI only.
+
+## Recommended Next Steps
+
+- Replace any mock metrics with verified public data or remove them entirely
+- Add deployment notes if the project gets a formal release workflow
+- Create a lightweight QA checklist for desktop, tablet, and mobile
+- Document brand assets and share-image generation if the site continues evolving
+
+## License
+
 Released under the [MIT License](./LICENSE).
