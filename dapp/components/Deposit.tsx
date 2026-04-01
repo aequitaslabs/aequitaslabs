@@ -44,8 +44,12 @@ export default function Deposit() {
   };
 
   const pad = (n: number) => n.toString().padStart(2, '0');
-  const now = new Date();
-  const timeStr = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+  const [timeStr, setTimeStr] = useState<string>('');
+
+  useEffect(() => {
+    const now = new Date();
+    setTimeStr(`${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`);
+  }, []);
 
   if (isDeployed) {
     return (
