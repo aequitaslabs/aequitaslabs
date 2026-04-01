@@ -740,7 +740,7 @@ function toggleMobileMenu(){
   if(!menu || !btn) return;
   const isOpen = menu.classList.toggle('open');
   btn.classList.toggle('open', isOpen);
-  btn.setAttribute('aria-expanded', isOpen - 'true' : 'false');
+  btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   document.body.classList.toggle('menu-open', isOpen);
 }
 
