@@ -787,20 +787,30 @@ window.addEventListener('DOMContentLoaded', () => {
   // 1. Custom Cursor
   if (finePointer && !prefersReducedMotion) {
     const cursor = document.getElementById('cursor');
-    document.addEventListener('mouseenter', () => cursor.classList.add('visible'));
+    const hideCursor = () => {
+      cursor.classList.remove('visible');
+      cursor.classList.remove('hovered');
+    };
+    const showCursor = () => cursor.classList.add('visible');
+
+    document.addEventListener('mouseenter', showCursor);
     document.addEventListener('mousemove', e => {
-      cursor.classList.add('visible');
+      if (e.clientY <= 0 || e.clientX <= 0 || e.clientX >= window.innerWidth || e.clientY >= window.innerHeight) {
+        hideCursor();
+        return;
+      }
+      showCursor();
       cursor.style.left = e.clientX + 'px';
       cursor.style.top = e.clientY + 'px';
     });
-    document.addEventListener('mouseleave', () => {
-      cursor.classList.remove('visible');
-      cursor.classList.remove('hovered');
+    document.addEventListener('mouseleave', hideCursor);
+    document.addEventListener('mouseout', e => {
+      if (!e.relatedTarget) hideCursor();
     });
-    window.addEventListener('blur', () => {
-      cursor.classList.remove('visible');
-      cursor.classList.remove('hovered');
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) hideCursor();
     });
+    window.addEventListener('blur', hideCursor);
     document.querySelectorAll('a, button, input, select, .pipe-node, .faq-question, .prim-card').forEach(el => {
       el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
       el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
