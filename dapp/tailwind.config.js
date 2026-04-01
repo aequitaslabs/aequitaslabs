@@ -7,15 +7,19 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: "#07060A",
-        surface: "#111016",
+        black: "#06050a",
+        ink: "#0b0a10",
+        surface: "#100f15",
+        "surface-2": "#141319",
         border: "rgba(255, 255, 255, 0.08)",
-        gold: "#d4b560",
-        goldDim: "#9a7e35"
+        gold: "#C9A84C",
+        "gold-bright": "#d4b560",
+        "gold-dim": "#9a7e35"
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        sans: ['"DM Sans"', 'sans-serif'],
+        mono: ['"DM Mono"', 'monospace'],
+        serif: ['"Cormorant Garamond"', 'serif'],
       }
     },
   },

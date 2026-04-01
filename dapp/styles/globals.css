@@ -4,15 +4,59 @@
 
 @layer base {
   body {
-    @apply bg-background text-gray-200 antialiased;
+    @apply bg-black text-white font-sans font-light;
+    cursor: auto;
   }
 }
 
-@layer utilities {
-  .btn-primary {
-    @apply px-4 py-2 bg-gold text-background font-semibold tracking-wider text-sm rounded transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-50 disabled:pointer-events-none;
+/* ───── CUSTOM CURSOR ───── */
+#cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 168, 76, 0.45);
+  background: rgba(201, 168, 76, 0.12);
+  box-shadow: 0 0 0 1px rgba(201, 168, 76, 0.06), 0 0 24px rgba(201, 168, 76, 0.18);
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.8);
+  transition: opacity 0.18s ease, transform 0.18s ease, width 0.18s ease, height 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+  backdrop-filter: blur(2px);
+}
+#cursor.visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+#cursor.hovered {
+  width: 34px;
+  height: 34px;
+  background: rgba(201, 168, 76, 0.08);
+  border-color: rgba(201, 168, 76, 0.75);
+}
+@media (pointer: fine) {
+  body, a, button, input, select, textarea {
+    cursor: none !important;
   }
-  .btn-secondary {
-    @apply px-4 py-2 bg-surface text-gray-300 border border-border tracking-wider text-sm rounded transition-all hover:border-gold hover:text-gold;
-  }
+}
+
+/* ───── CANVAS + NOISE BACKGROUND ───── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.028;
+  mix-blend-mode: overlay;
+}
+
+/* Animations from static site */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }

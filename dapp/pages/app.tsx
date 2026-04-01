@@ -4,7 +4,7 @@ import Deposit from '../components/Deposit';
 
 export default function AppDashboard() {
   return (
-    <div className="flex-1 flex flex-col pt-12 text-center bg-[radial-gradient(ellipse_at_top_right,rgba(212,181,96,0.06),transparent_50%)] relative">
+    <div className="flex-1 flex flex-col pt-12 text-center bg-[radial-gradient(ellipse_at_top_right,rgba(201,168,76,0.06),transparent_50%)] relative">
       <Head>
         <title>Aequitas | Deploy Capital</title>
       </Head>
@@ -15,10 +15,10 @@ export default function AppDashboard() {
 
       <div className="flex-1 flex flex-col items-center justify-start p-8 w-full mt-4">
         <div className="w-full max-w-3xl mx-auto space-y-4 mb-10 animate-[fadeIn_0.5s_ease-out]">
-          <h1 className="text-3xl md:text-5xl font-light tracking-tight text-white mb-2">
+          <h1 className="text-3xl md:text-5xl font-light tracking-tight text-white mb-2 font-serif">
             Base Agent Terminal
           </h1>
-          <p className="text-gray-400 font-light text-base md:text-lg max-w-xl mx-auto leading-relaxed">
+          <p className="text-[#9c9480] font-light text-base md:text-lg max-w-xl mx-auto leading-relaxed font-sans">
             Deploy USDC via smart contact payload. The master agent continuously autonomously routes capital into curated real-world yields.
           </p>
         </div>
