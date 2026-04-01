@@ -80,7 +80,38 @@ nav.scrolled{background:rgba(6,5,10,0.4);backdrop-filter:blur(24px) saturate(1.8
   border-bottom:1px solid rgba(255,255,255,0.05);padding:16px 64px;box-shadow:0 1px 0 rgba(201,168,76,0.08);}
 
 /* â”€â”€ CUSTOM CURSOR â”€â”€ */
-#cursor{display:none !important;}
+#cursor{
+  position:fixed;
+  left:0;
+  top:0;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  border:1px solid rgba(201,168,76,0.45);
+  background:rgba(201,168,76,0.12);
+  box-shadow:0 0 0 1px rgba(201,168,76,0.06),0 0 24px rgba(201,168,76,0.18);
+  pointer-events:none;
+  z-index:9999;
+  opacity:0;
+  transform:translate(-50%,-50%) scale(0.8);
+  transition:opacity 0.18s ease,transform 0.18s ease,width 0.18s ease,height 0.18s ease,background 0.18s ease,border-color 0.18s ease;
+  backdrop-filter:blur(2px);
+}
+#cursor.visible{
+  opacity:1;
+  transform:translate(-50%,-50%) scale(1);
+}
+#cursor.hovered{
+  width:34px;
+  height:34px;
+  background:rgba(201,168,76,0.08);
+  border-color:rgba(201,168,76,0.75);
+}
+@media (pointer:fine){
+  body,a,button,input,select,textarea{
+    cursor:none !important;
+  }
+}
 .nav-status{
   display:flex;align-items:center;gap:6px;
   font-family:'DM Mono',monospace;font-size:9px;
