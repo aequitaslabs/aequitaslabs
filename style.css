@@ -24,6 +24,27 @@
   --ease: cubic-bezier(0.22,1,0.36,1);
 }
 
+/* Launch safety overrides: keep core content visible even if page scripts fail */
+.flow-card,
+.module-card,
+.case-card,
+.why-card,
+.rmap-phase,
+.prim-card {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.flow-card.visible,
+.module-card.visible,
+.case-card.visible,
+.why-card.visible,
+.rmap-phase.visible,
+.prim-card.visible {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• RESET â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}/* â”€â”€ SCROLLBAR â”€â”€ */
