@@ -16,6 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider 
+          locale="en-US"
           theme={darkTheme({
             accentColor: '#C9A84C',      /* Brand Gold */
             accentColorForeground: '#06050a', /* Brand Black */
