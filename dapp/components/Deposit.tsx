@@ -21,7 +21,7 @@ export default function Deposit() {
     // Simulate Terminal output
     const mockLogs = [
       {t: '00:00', b: 'INIT', c: 'bg-gold/10 text-gold', m: `Compiling strategy: "${strategy}"`},
-      {t: '00:01', b: 'TX', c: 'bg-blue-500/10 text-blue-400', m: `Broadcasting payload to Base L2...`},
+      {t: '00:01', b: 'TX', c: 'bg-blue-500/10 text-blue-400', m: `Broadcasting payload to Base Sepolia Testnet...`},
       {t: '00:03', b: 'AGENT', c: 'bg-purple-500/10 text-purple-400', m: `Master Agent [AGT-17] verified signature`},
       {t: '00:05', b: 'ESCROW', c: 'bg-green-500/10 text-green-400', m: `${amount} USDC locked in vault`},
       {t: '00:08', b: 'HIRE', c: 'bg-purple-500/10 text-purple-400', m: `ERC-8183 sub-agent hired for real-world validation`},
@@ -59,7 +59,7 @@ export default function Deposit() {
              <svg className="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
              </svg>
-             <span className="font-medium tracking-wide">Capital Deployed successfully. Autonomous Agent is executing on Base.</span>
+             <span className="font-medium tracking-wide">Capital Deployed successfully. Autonomous Agent is executing on Base Sepolia.</span>
           </div>
         </div>
 
@@ -115,7 +115,7 @@ export default function Deposit() {
                   </div>
                   <div>
                     <div className="text-sm text-gray-500 uppercase font-mono mb-2">Settlement Network</div>
-                    <div className="text-xl text-white font-medium">Base (L2)</div>
+                    <div className="text-xl text-white font-medium">Base Sepolia (Testnet)</div>
                   </div>
                 </div>
                 <button
@@ -186,7 +186,7 @@ export default function Deposit() {
             <div className="p-6 bg-black/30 rounded-xl border border-white/5 space-y-4">
               <div className="flex justify-between text-base">
                 <span className="text-gray-400">Network Routing</span>
-                <span className="text-white text-right font-medium">Base L2</span>
+                <span className="text-white text-right font-medium">Base Sepolia</span>
               </div>
               <div className="flex justify-between text-base">
                 <span className="text-gray-400">Expected Yield</span>
@@ -249,7 +249,7 @@ export default function Deposit() {
                {isDeploying && logs.length > 0 && logs.length < 6 && (
                  <div className="flex gap-4 items-center text-gray-500 mt-4 animate-pulse">
                    <span>...</span>
-                   <span>Processing on Base network</span>
+                   <span>Processing on Base Sepolia network</span>
                  </div>
                )}
              </div>
