@@ -8,7 +8,7 @@ const LOG_MESSAGES = [
   "ERC-8183 job created for yield routing.",
   "Pricing agent hired. 1.5 USDC fee escrowed.",
   "Yield parameters optimized and locked.",
-  "+12.42 USDC earned. Settlement confirmed ✅"
+  "+12.42 USDC earned. Settlement confirmed."
 ];
 
 export default function AgentStatus({ amount }: { amount: string }) {
@@ -39,7 +39,7 @@ export default function AgentStatus({ amount }: { amount: string }) {
             <div className="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50"></div>
             <div className="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50"></div>
          </div>
-         <span className="text-xs text-gray-500 tracking-wider">aequitas-terminal</span>
+         <span className="text-xs text-gray-500 tracking-wider font-mono">aequitas-terminal</span>
        </div>
        
        <div className="flex-1 space-y-4">
@@ -48,10 +48,17 @@ export default function AgentStatus({ amount }: { amount: string }) {
            return (
              <div 
                key={index} 
-               className={`animate-[fadeIn_0.3s_ease-out] flex gap-3 ${isDone ? 'text-green-400 font-bold' : 'text-gray-300'}`}
+               className={`animate-[fadeIn_0.3s_ease-out] flex gap-3 items-center ${isDone ? 'text-[#6ddbb0]' : 'text-[#9c9480]'}`}
              >
                <span className="text-gold shrink-0 opacity-80">{`>`}</span>
-               <span className="leading-relaxed">{log}</span>
+               <span className="leading-relaxed whitespace-pre-wrap">{log}</span>
+               {isDone && (
+                 <span className="ml-1 inline-flex items-center justify-center w-[18px] h-[18px] rounded-full bg-[#6ddbb0]/10 border border-[#6ddbb0]/40 shadow-[0_0_12px_rgba(109,219,176,0.25)]">
+                   <svg className="w-2.5 h-2.5 text-[#6ddbb0]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                   </svg>
+                 </span>
+               )}
              </div>
            );
          })}
