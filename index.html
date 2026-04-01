@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
@@ -33,7 +33,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2 - family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="style.css"/>
 
 
@@ -532,11 +532,11 @@
   let W,H,frame=0;const G='rgba(201,168,76,';
   function resize(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight;}
   resize();window.addEventListener('resize',resize);
-  const N=Math.min(55,Math.floor(window.innerWidth/22));
+  const N=Math.min(85,Math.floor(window.innerWidth/18));
   const pts=Array.from({length:N},()=>({
     x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,
     vx:(Math.random()-0.5)*0.22,vy:(Math.random()-0.5)*0.22,
-    r:Math.random()*1.1+0.3,a:Math.random()*0.4+0.06
+    r:Math.random()*1.2+0.4,a:Math.random()*0.5+0.1
   }));
   function draw(){
     ctx.clearRect(0,0,W,H);
@@ -547,7 +547,7 @@
         const a=(Math.PI/3)*k-Math.PI/6;
         const px=cx+(hex*0.5)*Math.cos(a),py=cy+(hex*0.5)*Math.sin(a);
         k===0 ? ctx.moveTo(px,py) : ctx.lineTo(px,py);}ctx.closePath();ctx.stroke();}}
-    const L=130;
+    const L=160;
     pts.forEach(p=>{
       p.x+=p.vx;p.y+=p.vy;
       if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
@@ -556,7 +556,7 @@
     for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){
       const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);
       if(d<L){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);
-        ctx.strokeStyle=G+((1-d/L)*0.06)+')';ctx.lineWidth=0.5;ctx.stroke();}}
+        ctx.strokeStyle=G+((1-d/L)*0.09)+')';ctx.lineWidth=0.5;ctx.stroke();}}
     frame++;requestAnimationFrame(draw);}draw();
 })();
 
@@ -567,9 +567,9 @@
   function resize(){cv.width=cv.offsetWidth;cv.height=cv.offsetHeight;}
   resize();window.addEventListener('resize',resize);
   const rings=[
-    {r:0.30,sp:0.00045,n:5,nr:2.4,la:0.045,na:0.14},
-    {r:0.42,sp:-0.00032,n:7,nr:1.7,la:0.032,na:0.09},
-    {r:0.55,sp:0.00022,n:9,nr:1.2,la:0.022,na:0.06},
+    {r:0.30,sp:0.00045,n:5,nr:2.6,la:0.055,na:0.18},
+    {r:0.42,sp:-0.00032,n:7,nr:1.9,la:0.042,na:0.12},
+    {r:0.55,sp:0.00022,n:9,nr:1.5,la:0.032,na:0.08},
   ];
   function draw(){
     ctx.clearRect(0,0,cv.width,cv.height);
