@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-gray-200 antialiased;
+  }
+}
+
+@layer utilities {
+  .btn-primary {
+    @apply px-4 py-2 bg-gold text-background font-semibold tracking-wider text-sm rounded transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-secondary {
+    @apply px-4 py-2 bg-surface text-gray-300 border border-border tracking-wider text-sm rounded transition-all hover:border-gold hover:text-gold;
+  }
+}
