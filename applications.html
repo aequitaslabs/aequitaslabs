@@ -569,7 +569,7 @@ window.addEventListener('DOMContentLoaded', () => { setTimeout(() => { const p=d
 /* Section */
 (function(){
   // 1. Custom Cursor
-  if (window.matchMedia("(pointer: fine)").matches) {
+  if (document.getElementById('cursor')) {
     const cursor = document.getElementById('cursor');
     const hideCursor = () => {
       cursor.classList.remove('visible');

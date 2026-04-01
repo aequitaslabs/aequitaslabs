@@ -727,7 +727,7 @@ window.addEventListener('scroll', () => {
   });
 });
 
-if (window.matchMedia('(pointer: fine)').matches) {
+if (document.getElementById('cursor')) {
   const cursor = document.getElementById('cursor');
   const hideCursor = () => {
     cursor.classList.remove('visible');
