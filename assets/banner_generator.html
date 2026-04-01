@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Twitter Banner Generator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=DM+Sans:wght@400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin: 0; padding: 0; background: #1a1a1a;
+    display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;
+    font-family: sans-serif;
+  }
+  .info {
+    color: white; margin-bottom: 20px; text-align: center;
+  }
+  .info h2 { margin: 0 0 8px 0; }
+  .banner-container {
+    width: 1500px;
+    height: 500px;
+    background: radial-gradient(circle at 40% 50%, #0d0b14 0%, #050408 100%);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 40px rgba(0,0,0,0.8);
+    transform: scale(0.65); /* Scale down slightly so it fits on laptop screens for screenshotting */
+    transform-origin: center top;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transform: translateX(4%); /* Sedikit digeser ke kanan agar tidak tertutup foto profil bulat di kiri */
+    z-index: 2;
+  }
+  .title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 96px;
+    font-weight: 300;
+    letter-spacing: 0.16em;
+    color: #ede8dc;
+    line-height: 1;
+    margin: 0;
+    margin-bottom: 6px;
+  }
+  .rule {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, rgba(201, 168, 76, 0.4), transparent);
+    margin-bottom: 12px;
+  }
+  .subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    color: #c9a84c;
+    margin-top: 10px;
+    margin-bottom: 16px;
+  }
+  .desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 19px;
+    font-weight: 400;
+    color: #7a746a;
+    margin-bottom: 24px;
+    letter-spacing: 0.02em;
+  }
+  .badges {
+    display: flex;
+    gap: 12px;
+  }
+  .badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: #55504a;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.015);
+    padding: 8px 14px;
+    border-radius: 6px;
+    letter-spacing: 0.05em;
+  }
+  .glow {
+    position: absolute;
+    width: 1000px;
+    height: 1000px;
+    background: radial-gradient(circle, rgba(201,168,76,0.025) 0%, transparent 60%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 1;
+  }
+</style>
+</head>
+<body>
+  <div class="info">
+    <h2>Banner Twitter AequitasLabs</h2>
+    <p>Silakan gunakan <b>Snipping Tool (Windows + Shift + S)</b> lalu blok pas <b>pinggiran kotak abu-abu gelap/hitam </b> di bawah ini untuk menyimpannya.</p>
+  </div>
+
+  <div class="banner-container">
+    <div class="glow"></div>
+    <div class="content">
+      <h1 class="title">AEQUITAS</h1>
+      <div class="rule"></div>
+      <div class="subtitle">LABS</div>
+      <div class="desc">Trustless AI. Verified Execution.</div>
+      <div class="badges">
+        <div class="badge">ERC-8183</div>
+        <div class="badge">Base Network</div>
+        <div class="badge">Testnet v0.9.4</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
