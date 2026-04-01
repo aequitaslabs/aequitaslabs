@@ -48,6 +48,19 @@ body{
 }
 a{color:inherit;text-decoration:none;}
 
+@media (pointer: fine) {
+  body { cursor: none; }
+  a, button, input, select, .sb-link, .back-to-top { cursor: none !important; }
+  #cursor{
+    position:fixed;top:0;left:0;width:14px;height:14px;background:var(--gold);border-radius:50%;
+    pointer-events:none;z-index:10000;mix-blend-mode:difference;
+    transition:width 0.3s cubic-bezier(0.22,1,0.36,1),height 0.3s cubic-bezier(0.22,1,0.36,1),background 0.3s,opacity 0.2s ease;
+    transform:translate(-50%, -50%);opacity:0;
+  }
+  #cursor.hovered{width:44px;height:44px;background:#fff;mix-blend-mode:difference;}
+  #cursor.visible{opacity:1;}
+}
+
 /* NAV */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:200;
@@ -333,6 +346,7 @@ nav{
 </style>
 </head>
 <body>
+<div id="cursor"></div>
 
 <nav>
   <a class="nav-logo" href="index.html">
@@ -714,6 +728,39 @@ window.addEventListener('scroll', () => {
     l.classList.toggle('active', l.getAttribute('href') === '#' + current);
   });
 });
+
+if (window.matchMedia('(pointer: fine)').matches) {
+  const cursor = document.getElementById('cursor');
+  const hideCursor = () => {
+    cursor.classList.remove('visible');
+    cursor.classList.remove('hovered');
+  };
+  const showCursor = () => cursor.classList.add('visible');
+
+  document.addEventListener('mouseenter', showCursor);
+  document.addEventListener('mousemove', e => {
+    if (e.clientY <= 0 || e.clientX <= 0 || e.clientX >= window.innerWidth || e.clientY >= window.innerHeight) {
+      hideCursor();
+      return;
+    }
+    showCursor();
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  });
+  document.addEventListener('mouseleave', hideCursor);
+  document.addEventListener('mouseout', e => {
+    if (!e.relatedTarget) hideCursor();
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) hideCursor();
+  });
+  window.addEventListener('blur', hideCursor);
+
+  document.querySelectorAll('a, button, input, select, .sb-link, .back-to-top').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
+  });
+}
 </script>
 </body>
 </html>
