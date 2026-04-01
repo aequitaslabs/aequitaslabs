@@ -542,11 +542,11 @@
     ctx.clearRect(0,0,W,H);
     const hex=88;ctx.strokeStyle='rgba(201,168,76,0.018)';ctx.lineWidth=0.4;
     for(let r=-1;r<H/hex+2;r++){for(let c=-1;c<W/(hex*0.866)+2;c++){
-      const cx=c*hex*0.866+(r%2===0 - 0:hex*0.433),cy=r*hex*0.75;
+      const cx=c*hex*0.866+(r%2===0 ? 0 : hex*0.433),cy=r*hex*0.75;
       ctx.beginPath();for(let k=0;k<6;k++){
         const a=(Math.PI/3)*k-Math.PI/6;
         const px=cx+(hex*0.5)*Math.cos(a),py=cy+(hex*0.5)*Math.sin(a);
-        k===0 - ctx.moveTo(px,py):ctx.lineTo(px,py);}ctx.closePath();ctx.stroke();}}
+        k===0 ? ctx.moveTo(px,py) : ctx.lineTo(px,py);}ctx.closePath();ctx.stroke();}}
     const L=130;
     pts.forEach(p=>{
       p.x+=p.vx;p.y+=p.vy;
