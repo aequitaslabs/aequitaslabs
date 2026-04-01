@@ -100,11 +100,11 @@
   </div>
   <div class="nav-links">
     <a href="/">Home</a>
-    <a href="protocol-design">Protocol Design</a>
-    <a href="applications">Applications</a>
-    <a href="docs" onclick="toggleMobileMenu()">Docs</a>
-    <a href="whitepaper" onclick="toggleMobileMenu()">Whitepaper</a>
-    <a href="faq">FAQ</a>
+    <a href="protocol-design.html">Protocol Design</a>
+    <a href="applications.html">Applications</a>
+    <a href="docs.html" onclick="toggleMobileMenu()">Docs</a>
+    <a href="whitepaper.html" onclick="toggleMobileMenu()">Whitepaper</a>
+    <a href="faq.html">FAQ</a>
   </div>
   <div style="display:flex;align-items:center;gap:12px;">
     <div class="nav-status">
@@ -112,7 +112,7 @@
       System Operational
     </div>
     <div class="nav-cta">
-      <a href="waitlist" class="btn-ghost">Join Waitlist</a>
+      <a href="waitlist.html" class="btn-ghost">Join Waitlist</a>
       <a href="https://app.aequitaslabs.xyz" class="btn-primary" target="_blank" rel="noopener noreferrer">Launch App</a>
       <button class="mobile-toggle" aria-label="Toggle Mobile Menu" onclick="toggleMobileMenu()">
         <span></span><span></span><span></span>
@@ -125,11 +125,11 @@
 <div class="mobile-overlay" id="mobile-menu">
   <div class="mobile-overlay-links">
     <a href="/" onclick="toggleMobileMenu()">Home</a>
-    <a href="protocol-design" onclick="toggleMobileMenu()">Protocol Design</a>
-    <a href="applications" onclick="toggleMobileMenu()">Applications</a>
-    <a href="docs" onclick="toggleMobileMenu()">Docs</a>
-    <a href="whitepaper" onclick="toggleMobileMenu()">Whitepaper</a>
-    <a href="faq" onclick="toggleMobileMenu()">FAQ</a>
+    <a href="protocol-design.html" onclick="toggleMobileMenu()">Protocol Design</a>
+    <a href="applications.html" onclick="toggleMobileMenu()">Applications</a>
+    <a href="docs.html" onclick="toggleMobileMenu()">Docs</a>
+    <a href="whitepaper.html" onclick="toggleMobileMenu()">Whitepaper</a>
+    <a href="faq.html" onclick="toggleMobileMenu()">FAQ</a>
   </div>
 </div>
 
@@ -157,7 +157,7 @@
         <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         Launch App
       </a>
-      <a href="waitlist" class="btn-hero-secondary">
+      <a href="waitlist.html" class="btn-hero-secondary">
         <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
         Join Waitlist
       </a>
@@ -373,19 +373,17 @@
           <h3>Deploy Autonomous Capital</h3>
           <p>Instruct the master agent to execute an asset strategy and observe how it hires sub-agents to optimize your yield.</p>
           <div class="demo-form">
-            <input class="demo-input" id="task-input" type="text" placeholder="e.g. Acquire 0.5% share of Bali Villa #402"/>
-            <select class="demo-select" id="agent-select">
-              <option value="" disabled selected>Select Sub-Agent Strategy</option>
-              <option>Hire Pricing & Rate Optimizer Agent</option>
-              <option>Hire Tenant Sourcing AI Bot</option>
-              <option>Hire Smart Contract Auditor Agent</option>
-            </select>
-            <input class="demo-input" type="text" placeholder="Escrowed Payment: 150 USDC (ERC-8183 Vault)" readonly style="color:var(--text-3);cursor:default;"/>
-          <button class="demo-btn" id="run-btn" onclick="runDemo()">Execute Onchain</button>
+            <input class="demo-input" type="text" placeholder="e.g. Acquire 0.5% share of Bali Villa #402" readonly style="opacity:0.5; cursor:default;"/>
+            <input class="demo-input" type="text" placeholder="Select Sub-Agent Strategy..." readonly style="color:var(--text-3);cursor:default; opacity:0.5;"/>
+            <input class="demo-input" type="text" placeholder="Escrowed Payment: 150 USDC (ERC-8183 Vault)" readonly style="color:var(--text-3);cursor:default; opacity:0.5;"/>
+          <a href="https://app.aequitaslabs.xyz" target="_blank" rel="noopener noreferrer" class="demo-btn" style="text-decoration:none; display:flex; justify-content:center; align-items:center;">Launch Terminal</a>
           </div>
         </div>
-        <div class="demo-right" id="demo-log">
-          <span style="color:var(--text-3);">// Awaiting strategy input...</span>
+        <div class="demo-right" style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;">
+          <span style="color:var(--gold); font-size: 48px; margin-bottom: 20px;">
+            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </span>
+          <span style="color:var(--text-3); font-size: 16px; font-family:'DM Mono',monospace;">// Interactive Terminal Migrated<br><br>Launch the DApp to access live<br>ERC-8183 agent execution.</span>
         </div>
       </div>
     </div>
@@ -482,7 +480,7 @@
           <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
           Deploy USDC
         </a>
-        <a href="docs" class="btn-hero-secondary">
+        <a href="docs.html" class="btn-hero-secondary">
           <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
           Read the Docs
         </a>
@@ -512,8 +510,8 @@
     <div class="footer-tagline">Your USDC. Managed Onchain by Autonomous Agents.</div>
   </div>
   <div class="footer-links">
-    <a href="docs" onclick="toggleMobileMenu()">Docs</a>
-    <a href="whitepaper" onclick="toggleMobileMenu()">Whitepaper</a>
+    <a href="docs.html" onclick="toggleMobileMenu()">Docs</a>
+    <a href="whitepaper.html" onclick="toggleMobileMenu()">Whitepaper</a>
     <a href="#roadmap">Roadmap</a>
     <a href="https://twitter.com/aequitaslabs" target="_blank">Twitter</a>
     <a href="https://github.com/aequitaslabs/aequitaslabs" target="_blank">GitHub</a>
@@ -629,29 +627,7 @@ function togglePrim(btn){
   }
 }
 
-/* Section */
-function runDemo(){
-  const task=document.getElementById('task-input').value.trim()||'Acquire 0.5% share of Bali Villa #402';
-  const agent=document.getElementById('agent-select').value||'Hire Pricing & Rate Optimizer Agent';
-  const log=document.getElementById('demo-log'),btn=document.getElementById('run-btn');
-  btn.disabled=true;btn.textContent='Executing via Smart Contract...';log.innerHTML='';
-  const logs=[
-    {t:'00:00',b:'ACQUIRE', c:'badge-task', m:`Strategy input: <strong>"${task}"</strong>`},
-    {t:'00:01',b:'AGENT', c:'badge-task', m:'Master Agent deployed · Base Network'},
-    {t:'00:02',b:'HIRED',c:'badge-agent',m:`<strong>${agent}</strong> contracted via ERC-8183`},
-    {t:'00:03',b:'ESCROW',c:'badge-agent',m:'150 USDC locked in Sub-Agent vault'},
-    {t:'00:08',b:'EXECUTE',c:'badge-agent',m:'Strategy optimized · Rent parameters adjusted'},
-    {t:'00:09',b:'YIELD', c:'badge-eval', m:'Monthly yield generated · USDC settled onchain'},
-    {t:'00:12',b:'PAYOUT', c:'badge-eval', m:'Yield routed to depositor wallet automatically'},
-    {t:'00:13',b:'CLOSE',  c:'badge-pay',  m:'Smart contract escrow released to sub-agent'},
-    {t:'00:13',b:'RATING',  c:'badge-pay',  m:'Reputation updated · Sub-agent promoted on network'},
-  ];
-  logs.forEach((l,i)=>{
-    const div=document.createElement('div');div.className='log-line';
-    div.innerHTML=`<span class="log-time">${l.t}</span><span class="log-badge ${l.c}">${l.b}</span><span class="log-msg">${l.m}</span>`;
-    log.appendChild(div);
-    setTimeout(()=>{div.classList.add('visible');
-      if(i===logs.length-1){btn.disabled=false;btn.textContent='Run Preview';}},350+i*680);});}
+/* Demo script replaced with direct DApp routing CTA */
 
 /* Section */
 window.addEventListener('scroll', () => {
