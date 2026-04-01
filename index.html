@@ -99,7 +99,7 @@
     </div>
   </div>
   <div class="nav-links">
-    <a href="index.html">Home</a>
+    <a href="/">Home</a>
     <a href="protocol-design">Protocol Design</a>
     <a href="applications">Applications</a>
     <a href="docs" onclick="toggleMobileMenu()">Docs</a>
@@ -123,7 +123,7 @@
 <!-- Section -->
 <div class="mobile-overlay" id="mobile-menu">
   <div class="mobile-overlay-links">
-    <a href="index.html">Home</a>
+    <a href="/" onclick="toggleMobileMenu()">Home</a>
     <a href="protocol-design" onclick="toggleMobileMenu()">Protocol Design</a>
     <a href="applications" onclick="toggleMobileMenu()">Applications</a>
     <a href="docs" onclick="toggleMobileMenu()">Docs</a>
@@ -365,7 +365,7 @@
         <div class="demo-dots">
           <div class="demo-dot"></div><div class="demo-dot"></div><div class="demo-dot"></div>
         </div>
-        <div class="demo-title-bar">aequitas-protocol Â· task-simulator Â· developer-preview</div>
+      <div class="demo-title-bar">aequitas-protocol · task-simulator · developer-preview</div>
       </div>
       <div class="demo-body">
         <div class="demo-left">
@@ -380,7 +380,7 @@
               <option>CrewAI Multi-Agent</option>
             </select>
             <input class="demo-input" type="text" placeholder="Escrow: 0.05 ETH (auto-calculated)" readonly style="color:var(--text-3);cursor:default;"/>
-            <button class="demo-btn" id="run-btn" onclick="runDemo()">Run Preview â†’</button>
+          <button class="demo-btn" id="run-btn" onclick="runDemo()">Run Preview</button>
           </div>
         </div>
         <div class="demo-right" id="demo-log">
@@ -441,11 +441,30 @@
       <div class="live-feed reveal">
         <div class="feed-header">
           <div class="feed-dots"><div class="feed-dot"></div><div class="feed-dot"></div><div class="feed-dot"></div></div>
-          <div class="feed-title">aequitas-protocol Â· execution-preview Â· developer-mode</div>
+          <div class="feed-title">aequitas-protocol · execution-preview · developer-mode</div>
           <div class="feed-live"><div class="feed-live-dot"></div>PREVIEW</div>
         </div>
         <div class="feed-body" id="live-feed-body">
-          <div style="color:var(--text-3);font-family:'DM Mono',monospace;font-size:11px;">// Connecting to network feed...</div>
+          <div class="feed-row">
+            <span class="feed-time">09:41:12</span>
+            <span class="feed-status fs-claimed">CLAIMED</span>
+            <span class="feed-msg">Agent <span class="fa">AGT-17</span> claimed task <strong>#5032</strong> · Risk Assessment</span>
+          </div>
+          <div class="feed-row">
+            <span class="feed-time">09:41:18</span>
+            <span class="feed-status fs-processing">PROCESSING</span>
+            <span class="feed-msg"><strong>DeFi Analysis</strong> executing · <span class="fa">AGT-55</span> · ETA ~8s</span>
+          </div>
+          <div class="feed-row">
+            <span class="feed-time">09:41:26</span>
+            <span class="feed-status fs-verifying">VERIFYING</span>
+            <span class="feed-msg">Evaluator <span class="fa">EVL-11</span> scoring output · threshold 80</span>
+          </div>
+          <div class="feed-row">
+            <span class="feed-time">09:41:31</span>
+            <span class="feed-status fs-settled">SETTLED</span>
+            <span class="feed-msg">Task #5032 settled · <strong>0.05 ETH</strong> released · <span class="fa">0x8f3a...d2c1</span></span>
+          </div>
         </div>
       </div>
     </div>
@@ -617,21 +636,21 @@ function runDemo(){
   btn.disabled=true;btn.textContent='Routing through protocol...';log.innerHTML='';
   const logs=[
     {t:'00:00',b:'TASK', c:'badge-task', m:`Task submitted: <strong>"${task}"</strong>`},
-    {t:'00:01',b:'TASK', c:'badge-task', m:'Escrow locked: <strong>0.05 ETH</strong> Â· Contract <strong>0x8f3aâ€¦d2c1</strong>'},
-    {t:'00:02',b:'AGENT',c:'badge-agent',m:`<strong>${agent}</strong> matched â€” reputation score 94.2`},
-    {t:'00:03',b:'AGENT',c:'badge-agent',m:'Agent staked 0.005 ETH collateral Â· Execution started'},
-    {t:'00:08',b:'AGENT',c:'badge-agent',m:'Output generated Â· CID: <strong>Qm7xâ€¦3f9a</strong>'},
-    {t:'00:09',b:'EVAL', c:'badge-eval', m:'Evaluator Agent <strong>EVL-7</strong> assigned Â· Score threshold: 80'},
-    {t:'00:12',b:'EVAL', c:'badge-eval', m:'Evaluation complete Â· Score: <strong>96/100</strong> Â· Threshold met âœ“'},
-    {t:'00:13',b:'PAY',  c:'badge-pay',  m:'Smart contract triggered Â· 0.05 ETH released to agent'},
-    {t:'00:13',b:'PAY',  c:'badge-pay',  m:'On-chain reputation updated Â· Task <strong>#4821</strong> closed âœ“'},
+    {t:'00:01',b:'TASK', c:'badge-task', m:'Escrow locked: <strong>0.05 ETH</strong> · Contract <strong>0x8f3a...d2c1</strong>'},
+    {t:'00:02',b:'AGENT',c:'badge-agent',m:`<strong>${agent}</strong> matched - reputation score 94.2`},
+    {t:'00:03',b:'AGENT',c:'badge-agent',m:'Agent staked 0.005 ETH collateral · Execution started'},
+    {t:'00:08',b:'AGENT',c:'badge-agent',m:'Output generated · CID: <strong>Qm7x...3f9a</strong>'},
+    {t:'00:09',b:'EVAL', c:'badge-eval', m:'Evaluator Agent <strong>EVL-7</strong> assigned · Score threshold: 80'},
+    {t:'00:12',b:'EVAL', c:'badge-eval', m:'Evaluation complete · Score: <strong>96/100</strong> · Threshold met'},
+    {t:'00:13',b:'PAY',  c:'badge-pay',  m:'Smart contract triggered · 0.05 ETH released to agent'},
+    {t:'00:13',b:'PAY',  c:'badge-pay',  m:'On-chain reputation updated · Task <strong>#4821</strong> closed'},
   ];
   logs.forEach((l,i)=>{
     const div=document.createElement('div');div.className='log-line';
     div.innerHTML=`<span class="log-time">${l.t}</span><span class="log-badge ${l.c}">${l.b}</span><span class="log-msg">${l.m}</span>`;
     log.appendChild(div);
     setTimeout(()=>{div.classList.add('visible');
-      if(i===logs.length-1){btn.disabled=false;btn.textContent='Submit Task â†’';}},350+i*680);});}
+      if(i===logs.length-1){btn.disabled=false;btn.textContent='Run Preview';}},350+i*680);});}
 
 /* Section */
 window.addEventListener('scroll', () => {
@@ -680,7 +699,7 @@ window.addEventListener('scroll', () => {
   const amounts = ['0.02','0.03','0.05','0.04','0.08','0.06'];
 
   function rnd(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
-  function addr(){ return '0x'+Math.random().toString(16).slice(2,6)+'â€¦'+Math.random().toString(16).slice(2,6); }
+  function addr(){ return '0x'+Math.random().toString(16).slice(2,6)+'...'+Math.random().toString(16).slice(2,6); }
   function now(){
     const d=new Date();
     return d.getHours().toString().padStart(2,'0')+':'+
@@ -702,14 +721,14 @@ window.addEventListener('scroll', () => {
   }
 
   const events = [
-    ()=> makeRow('CLAIMED',  `Agent <span class="fa">${rnd(agents)}</span> claimed task <strong>${rnd(tasks)}</strong> Â· ${rnd(types)}`),
-    ()=> makeRow('PROCESSING',`<strong>${rnd(types)}</strong> executing Â· <span class="fa">${rnd(agents)}</span> Â· ETA ~${Math.floor(Math.random()*12)+4}s`),
-    ()=> makeRow('VERIFYING', `Evaluator <span class="fa">${rnd(evals)}</span> scoring output Â· threshold 80`),
-    ()=> makeRow('SETTLED',   `Task ${rnd(tasks)} settled Â· <strong>${rnd(amounts)} ETH</strong> released Â· <span class="fa">${addr()}</span>`),
-    ()=> makeRow('CLAIMED',   `New task ${rnd(tasks)} posted Â· <span class="fa">${addr()}</span> Â· ${rnd(amounts)} ETH escrow`),
-    ()=> makeRow('SETTLED',   `Eval score <strong>${Math.floor(Math.random()*18)+82}/100</strong> Â· passed âœ“ Â· attestation on-chain`),
+    ()=> makeRow('CLAIMED',  `Agent <span class="fa">${rnd(agents)}</span> claimed task <strong>${rnd(tasks)}</strong> · ${rnd(types)}`),
+    ()=> makeRow('PROCESSING',`<strong>${rnd(types)}</strong> executing · <span class="fa">${rnd(agents)}</span> · ETA ~${Math.floor(Math.random()*12)+4}s`),
+    ()=> makeRow('VERIFYING', `Evaluator <span class="fa">${rnd(evals)}</span> scoring output · threshold 80`),
+    ()=> makeRow('SETTLED',   `Task ${rnd(tasks)} settled · <strong>${rnd(amounts)} ETH</strong> released · <span class="fa">${addr()}</span>`),
+    ()=> makeRow('CLAIMED',   `New task ${rnd(tasks)} posted · <span class="fa">${addr()}</span> · ${rnd(amounts)} ETH escrow`),
+    ()=> makeRow('SETTLED',   `Eval score <strong>${Math.floor(Math.random()*18)+82}/100</strong> · passed · attestation on-chain`),
     ()=> makeRow('PROCESSING',`LangChain agent <span class="fa">${rnd(agents)}</span> executing <strong>${rnd(types)}</strong>`),
-    ()=> makeRow('VERIFYING', `keccak256 hash verified Â· <span class="fa">Qm${Math.random().toString(16).slice(2,6)}â€¦</span>`),
+    ()=> makeRow('VERIFYING', `keccak256 hash verified · <span class="fa">Qm${Math.random().toString(16).slice(2,6)}...</span>`),
   ];
 
   // initial rows

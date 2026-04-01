@@ -2,6 +2,7 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": true },
     { "source": "/architecture", "destination": "/protocol-design", "permanent": true },
     { "source": "/architecture.html", "destination": "/protocol-design", "permanent": true },
     { "source": "/ecosystem", "destination": "/applications", "permanent": true },
