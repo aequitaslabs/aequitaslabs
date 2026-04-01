@@ -1,4 +1,4 @@
-# AequitasLabs
+﻿# AequitasLabs
 
 **Trustless AI Execution Layer**
 
@@ -36,13 +36,13 @@ The frontend is designed to communicate that system clearly across desktop and m
 ```text
 aequitaslabs-new/
 |-- index.html
-|-- architecture.html
-|-- ecosystem.html
-|-- docs.html
-|-- whitepaper.html
-|-- faq.html
-|-- waitlist.html
-|-- 404.html
+|-- protocol-design
+|-- applications
+|-- docs
+|-- whitepaper
+|-- faq
+|-- waitlist
+|-- 404
 |-- style.css
 |-- unmoji.ps1
 |-- LICENSE
@@ -84,7 +84,7 @@ Then open the local URL in a browser instead of double-clicking HTML files direc
 
 Before using the waitlist publicly:
 
-1. Open [`waitlist.html`](./waitlist.html)
+1. Open [`waitlist`](./waitlist)
 2. Replace `https://formspree.io/f/YOUR_FORM_ID` with your real Formspree endpoint
 3. Test both success and failure flows
 
