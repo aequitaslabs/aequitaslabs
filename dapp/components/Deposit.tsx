@@ -1,262 +1,218 @@
 import { useState, useEffect } from 'react';
-import AgentStatus from './AgentStatus';
+import AgentStatus, { AgentState } from './AgentStatus';
+
+type DepositState = 'CONNECT' | 'INPUT' | 'CONFIRMING' | 'PENDING' | 'SUCCESS';
 
 export default function Deposit() {
+  const [state, setState] = useState<DepositState>('CONNECT');
   const [amount, setAmount] = useState<string>('');
-  const [isDeploying, setIsDeploying] = useState(false);
-  const [isDeployed, setIsDeployed] = useState(false);
-  const [logs, setLogs] = useState<Array<{t: string, b: string, c: string, m: string}>>([]);
-  const [strategy, setStrategy] = useState<string>('Yield Maximization via Real Estate Fraction');
-
+  const [error, setError] = useState<string>('');
+  
+  // Fake blocks/time
+  const [blocks, setBlocks] = useState(0);
+  const [txHash, setTxHash] = useState('');
+  
   const MOCK_BALANCE = 1250.00;
+  const APY = "10.4";
 
   const handleMax = () => {
     setAmount(MOCK_BALANCE.toString());
+    setError('');
   };
 
-  const handleDeploy = () => {
-    if (!amount || parseFloat(amount) <= 0 || parseFloat(amount) > MOCK_BALANCE) return;
-    setIsDeploying(true);
+  const handleConnect = () => {
+    setState('INPUT');
+  };
+
+  const handleDeposit = () => {
+    setError('');
+    const amt = parseFloat(amount);
+    if (!amount || isNaN(amt) || amt <= 0) {
+      setError('Invalid amount entered');
+      return;
+    }
+    if (amt > MOCK_BALANCE) {
+      setError('INSUFFICIENT_BALANCE: Cannot exceed available USDC');
+      return;
+    }
+
+    setState('CONFIRMING');
     
-    // Simulate Terminal output
-    const mockLogs = [
-      {t: '00:00', b: 'INIT', c: 'bg-gold/10 text-gold', m: `Compiling strategy: "${strategy}"`},
-      {t: '00:01', b: 'TX', c: 'bg-blue-500/10 text-blue-400', m: `Broadcasting payload to Base Sepolia Testnet...`},
-      {t: '00:03', b: 'AGENT', c: 'bg-purple-500/10 text-purple-400', m: `Master Agent [AGT-17] verified signature`},
-      {t: '00:05', b: 'ESCROW', c: 'bg-green-500/10 text-green-400', m: `${amount} USDC locked in vault`},
-      {t: '00:08', b: 'HIRE', c: 'bg-purple-500/10 text-purple-400', m: `ERC-8183 sub-agent hired for real-world validation`},
-      {t: '00:10', b: 'EXEC', c: 'bg-gold/10 text-gold', m: `Yield parameters optimized. Settlement complete.`},
-    ];
-
-    let i = 0;
-    setLogs([]);
-    const interval = setInterval(() => {
-      setLogs(prev => [...prev, mockLogs[i]]);
-      i++;
-      if (i >= mockLogs.length) {
-        clearInterval(interval);
-        setTimeout(() => {
-          setIsDeploying(false);
-          setIsDeployed(true);
-        }, 1200);
-      }
-    }, 1200);
+    // Simulate wallet approve/sign
+    setTimeout(() => {
+      setState('PENDING');
+      setTxHash('0x' + Math.random().toString(16).slice(2, 6) + '...' + Math.random().toString(16).slice(-4));
+      setBlocks(1);
+    }, 1500);
   };
-
-  const pad = (n: number) => n.toString().padStart(2, '0');
-  const [timeStr, setTimeStr] = useState<string>('');
 
   useEffect(() => {
-    const now = new Date();
-    setTimeStr(`${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`);
-  }, []);
+    if (state === 'PENDING') {
+      const interval = setInterval(() => {
+        setBlocks(b => {
+          if (b >= 3) {
+            clearInterval(interval);
+            setState('SUCCESS');
+            return b;
+          }
+          return b + 1;
+        });
+      }, 2000);
+      return () => clearInterval(interval);
+    }
+  }, [state]);
 
-  if (isDeployed) {
-    return (
-      <div className="w-full max-w-7xl mx-auto space-y-8 animate-[fadeIn_0.5s_ease-out]">
-        <div className="bg-green-500/10 border border-green-500/20 text-green-400 px-8 py-5 rounded-xl flex items-center justify-between shadow-sm">
-          <div className="flex items-center gap-4 text-lg">
-             <svg className="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-             </svg>
-             <span className="font-medium tracking-wide">Capital Deployed successfully. Autonomous Agent is executing on Base Sepolia.</span>
-          </div>
-        </div>
+  // Post-deposit Success Animation
+  const [postDeployMsg, setPostDeployMsg] = useState('');
+  const [agentStatus, setAgentStatus] = useState<AgentState>('REGISTERED');
+  const [lastUpdated, setLastUpdated] = useState<Date>(new Date());
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 text-left">
-          <div className="lg:col-span-2 space-y-8">
-            <div className="bg-white/[0.02] border border-white/5 rounded-3xl p-8 lg:p-10 shadow-2xl relative overflow-hidden backdrop-blur-2xl">
-               <div className="flex justify-between items-center mb-10">
-                 <h2 className="text-3xl font-serif font-medium text-white">Active Deployment</h2>
-                 <span className="text-green-400 text-sm px-4 py-1.5 bg-green-400/10 border border-green-400/20 rounded-full font-mono font-medium tracking-wide flex items-center gap-2">
-                   <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-                   Agent Live
-                 </span>
-               </div>
-               
-               <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
-                 <div className="space-y-3">
-                   <div className="text-sm text-gray-400 tracking-wider uppercase font-mono">Deposited</div>
-                   <div className="text-5xl font-mono text-white tracking-tight">{parseFloat(amount).toLocaleString()}</div>
-                 </div>
-                 <div className="space-y-3">
-                   <div className="text-sm text-gray-400 tracking-wider uppercase font-mono">Est. APY</div>
-                   <div className="text-5xl font-mono text-white tracking-tight">
-                      8-12<span className="text-2xl text-gray-500">%</span>
-                   </div>
-                 </div>
-                 <div className="space-y-3">
-                   <div className="text-sm text-gray-400 tracking-wider uppercase font-mono">Est. Earnings</div>
-                   <div className="text-5xl font-mono text-gold tracking-tight">+12.42</div>
-                 </div>
-               </div>
+  useEffect(() => {
+    if (state === 'SUCCESS') {
+      let i = 0;
+      const msg1 = "Master agent deploying capital...";
+      // TYPEWRITER effect
+      const typew = setInterval(() => {
+        setPostDeployMsg(msg1.slice(0, i));
+        i++;
+        if (i > msg1.length) {
+          clearInterval(typew);
+          setTimeout(() => {
+            setPostDeployMsg("ERC-8183 agent hired for optimization");
+            setAgentStatus('CLAIMED');
+            setLastUpdated(new Date());
+            setTimeout(() => {
+              setAgentStatus('EXECUTING');
+              setLastUpdated(new Date());
+              setTimeout(() => {
+                setAgentStatus('SETTLED');
+                setLastUpdated(new Date());
+              }, 4000);
+            }, 2000);
+          }, 1500);
+        }
+      }, 50);
+      return () => clearInterval(typew);
+    }
+  }, [state]);
 
-               <div className="pt-8 border-t border-white/5">
-                  <div className="flex items-center gap-2 group relative inline-flex cursor-default">
-                    <span className="text-base text-gray-400 font-medium">✨ Powered by ERC-8183 Agent Commerce</span>
-                  </div>
-               </div>
-            </div>
-
-            <AgentStatus amount={amount} />
-          </div>
-          
-           <div className="space-y-8">
-              <div className="bg-white/[0.02] border border-white/5 rounded-3xl p-8 shadow-2xl backdrop-blur-2xl">
-                <h3 className="text-sm font-semibold text-gray-400 mb-8 uppercase tracking-widest font-mono">Strategy Parameters</h3>
-                <div className="space-y-8">
-                  <div>
-                    <div className="text-sm text-gray-500 uppercase font-mono mb-2">Asset Class</div>
-                    <div className="text-xl text-white font-medium">Real-World Assets (RWA)</div>
-                  </div>
-                  <div>
-                    <div className="text-sm text-gray-500 uppercase font-mono mb-2">Target</div>
-                    <div className="text-xl text-white font-medium">Fractional Real Estate</div>
-                  </div>
-                  <div>
-                    <div className="text-sm text-gray-500 uppercase font-mono mb-2">Settlement Network</div>
-                    <div className="text-xl text-white font-medium">Base Sepolia (Testnet)</div>
-                  </div>
-                </div>
-                <button
-                  onClick={() => setIsDeployed(false)}
-                  className="w-full mt-12 py-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white text-base rounded-xl transition-all uppercase tracking-widest font-bold font-mono"
-                >
-                  Withdraw / Reset
-                </button>
-              </div>
-           </div>
+  const renderInputState = () => (
+    <div className="flex flex-col items-center w-full animate-[fadeIn_0.5s_ease-out]">
+      <div className="w-full flex justify-between items-center mb-2">
+        <label className="font-serif italic text-gray-400 text-sm">Deposit Amount</label>
+        <span className="text-gray-500 font-mono text-xs">
+          Available: {MOCK_BALANCE.toFixed(2)} USDC
+        </span>
+      </div>
+      
+      <div className="relative w-full mb-3">
+        <input
+          type="number"
+          value={amount}
+          onChange={(e) => { setAmount(e.target.value); setError(''); }}
+          placeholder="0.00"
+          className="w-full bg-[#0F0E13] border border-white/[0.08] rounded-xl py-6 px-6 text-center text-4xl font-mono text-white placeholder-gray-800 focus:outline-none focus:border-gold/50 transition-colors"
+        />
+        <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-2">
+          <span className="text-gray-500 font-mono text-sm tracking-widest font-bold">USDC</span>
+          <button 
+            onClick={handleMax}
+            className="text-[10px] font-bold tracking-widest text-gold uppercase bg-gold/10 border border-gold/20 px-2 py-1 rounded hover:bg-gold/20 transition-colors"
+          >
+            MAX
+          </button>
         </div>
       </div>
-    );
-  }
+
+      {error && <div className="text-red-500 text-xs font-mono w-full text-left mb-3">{error}</div>}
+
+      <div className="w-full flex justify-between tracking-wide text-xs font-mono text-gray-500 mb-6">
+        <span className="text-green-400/80">~{APY}% APY · USDC settled monthly</span>
+        <span className="text-[10px]">Gas: ~0.0001 ETH</span>
+      </div>
+
+      <button
+        onClick={handleDeposit}
+        disabled={!amount}
+        className="w-full py-4 bg-white hover:bg-gray-200 text-black rounded-xl text-sm font-bold tracking-widest uppercase transition-all disabled:opacity-50 disabled:pointer-events-none"
+      >
+        Deposit USDC
+      </button>
+    </div>
+  );
 
   return (
-    <div className="w-full max-w-7xl mx-auto animate-[fadeIn_0.5s_ease-out]">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-        {/* Left Column: Deposit Form */}
-        <div className="bg-white/[0.02] border border-white/5 rounded-3xl p-8 lg:p-12 shadow-2xl relative overflow-hidden backdrop-blur-2xl">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-[100px] -z-10 pointer-events-none translate-x-1/2 -translate-y-1/2"></div>
-          
-          <div className="flex items-center justify-between mb-10 pb-6 border-b border-white/5">
-            <h2 className="text-[28px] font-serif font-medium tracking-tight text-white">Deploy Autonomous Capital</h2>
-            <span className="text-gold tracking-[0.15em] text-xs uppercase px-3 py-1.5 bg-gold/10 border border-gold/20 rounded-md font-mono">ERC-8183 Vault</span>
-          </div>
+    <div className="bg-[#0F0E13] border border-white/[0.08] p-8 rounded-2xl w-full max-w-md mx-auto relative overflow-hidden flex flex-col items-center shadow-2xl backdrop-blur-3xl min-h-[400px] justify-center">
+      {/* Background Glow */}
+      <div className="absolute top-0 right-0 w-64 h-64 bg-gold/5 rounded-full blur-[80px] -z-10 pointer-events-none translate-x-1/2 -translate-y-1/2"></div>
+      
+      {state === 'CONNECT' && (
+        <div className="flex flex-col items-center py-6 animate-[fadeIn_0.5s_ease-out]">
+          <h2 className="text-2xl font-serif text-white mb-2">Initialize Terminal</h2>
+          <p className="text-gray-500 text-sm font-mono text-center mb-8">Establish secure connection to Base Sepolia <br/>to deploy autonomous capital.</p>
+          <button
+            onClick={handleConnect}
+            className="px-8 py-3 bg-white text-black font-mono text-sm font-bold tracking-widest uppercase rounded-xl hover:bg-gray-200 transition-colors"
+          >
+            Connect Wallet
+          </button>
+        </div>
+      )}
 
-          <div className="space-y-8">
-            <div className="space-y-3 text-left">
-              <label className="text-sm text-gray-400 font-mono uppercase tracking-widest">Select Strategy</label>
-              <select 
-                value={strategy}
-                onChange={(e) => setStrategy(e.target.value)}
-                className="w-full bg-black/50 border border-white/10 rounded-xl py-4 px-5 text-lg text-white appearance-none focus:outline-none focus:border-gold/50 transition-colors cursor-pointer"
-              >
-                <option value="Yield Maximization via Real Estate Fraction">Yield Maximization via Real Estate Fraction</option>
-                <option value="Agent Commerce Arbitrage">Agent Commerce Arbitrage</option>
-                <option value="Stablecoin Liquidity Farming">Stablecoin Liquidity Farming</option>
-              </select>
-            </div>
+      {state === 'INPUT' && renderInputState()}
 
-            <div className="space-y-3 text-left">
-              <div className="flex justify-between text-sm text-gray-400 font-mono uppercase tracking-widest">
-                <label>Amount (USDC)</label>
-                <span className="cursor-pointer hover:text-white transition-colors" onClick={handleMax}>
-                   Balance: <span className="text-white">{MOCK_BALANCE.toFixed(2)}</span>
-                </span>
-              </div>
-              <div className="relative group">
-                <input
-                  type="number"
-                  value={amount}
-                  onChange={(e) => setAmount(e.target.value)}
-                  placeholder="0.00"
-                  className="w-full bg-black/50 border border-white/10 rounded-xl py-6 px-6 pr-24 text-5xl font-mono text-white placeholder-gray-700 focus:outline-none focus:border-gold/50 transition-colors shadow-inner"
-                />
-                <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-2">
-                   <button 
-                     onClick={handleMax}
-                     className="text-sm font-bold tracking-widest text-gold hover:text-white transition-colors uppercase bg-gold/10 border border-gold/20 px-4 py-2 rounded-lg"
-                   >
-                     Max
-                   </button>
-                </div>
-              </div>
-            </div>
+      {state === 'CONFIRMING' && (
+        <div className="flex flex-col items-center py-10 w-full animate-[fadeIn_0.5s_ease-out]">
+          <div className="w-12 h-12 border-2 border-white/10 border-t-gold rounded-full animate-spin mb-6"></div>
+          <h2 className="text-xl font-serif text-white mb-2">Confirm in Wallet</h2>
+          <p className="text-gray-500 font-mono text-xs tracking-wider">Waiting for signature...</p>
+        </div>
+      )}
 
-            <div className="p-6 bg-black/30 rounded-xl border border-white/5 space-y-4">
-              <div className="flex justify-between text-base">
-                <span className="text-gray-400">Network Routing</span>
-                <span className="text-white text-right font-medium">Base Sepolia</span>
-              </div>
-              <div className="flex justify-between text-base">
-                <span className="text-gray-400">Expected Yield</span>
-                <span className="text-green-400 font-mono">8% - 12% APY</span>
-              </div>
-              <div className="flex justify-between text-base">
-                <span className="text-gray-400">Master Agent Fee</span>
-                <span className="text-white font-mono">0.05%</span>
-              </div>
-            </div>
-
-            <button
-              onClick={handleDeploy}
-              disabled={!amount || parseFloat(amount) <= 0 || parseFloat(amount) > MOCK_BALANCE || isDeploying}
-              className="w-full py-5 mt-4 bg-gold text-ink rounded-xl text-lg font-bold tracking-[0.1em] uppercase hover:bg-gold-bright hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(212,181,96,0.3)] transition-all disabled:opacity-50 disabled:pointer-events-none disabled:transform-none relative"
-            >
-              {isDeploying ? (
-                 <div className="flex items-center justify-center gap-3">
-                    <svg className="animate-spin h-6 w-6 text-ink" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Executing Onchain...
-                 </div>
-              ) : (
-                 "Execute Strategy"
-              )}
-            </button>
+      {state === 'PENDING' && (
+        <div className="flex flex-col items-center py-10 w-full animate-[fadeIn_0.5s_ease-out]">
+          <div className="w-12 h-12 border-2 border-white/10 border-t-blue-500 rounded-full animate-spin mb-6"></div>
+          <h2 className="text-xl font-serif text-white mb-2">Transaction Pending</h2>
+          <p className="text-gray-500 font-mono text-xs mb-4 uppercase tracking-widest text-[#6ddbb0]">Transaction pending on Base...</p>
+          <div className="flex items-center gap-4 text-xs font-mono text-gray-500">
+             <span>Block {blocks}/3</span>
+             <a href="#" className="text-blue-400 hover:text-blue-300 underline decoration-blue-500/30 underline-offset-4 pointer-events-none">
+               {txHash}
+             </a>
           </div>
         </div>
+      )}
 
-        {/* Right Column: Terminal Feed */}
-        <div className="bg-black/60 border border-white/5 rounded-3xl p-8 lg:p-10 shadow-2xl flex flex-col h-full min-h-[600px] backdrop-blur-2xl relative">
-          <div className="flex items-center gap-4 mb-8">
-            <div className="flex gap-2">
-              <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
-              <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-              <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+      {state === 'SUCCESS' && (
+        <div className="flex flex-col w-full animate-[fadeIn_0.5s_ease-out] text-left">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-8 h-8 rounded-full bg-green-500/20 border border-green-500/50 flex items-center justify-center text-green-400 text-lg">✓</div>
+            <div>
+              <h2 className="text-lg font-serif text-white leading-tight">Deposited {parseFloat(amount).toLocaleString()} USDC</h2>
+              <a href="#" className="text-gray-500 hover:text-gray-400 font-mono text-[10px] underline decoration-gray-500/30 underline-offset-4 hover:-translate-y-px transition-transform pointer-events-none">
+                Tx: {txHash}
+              </a>
             </div>
-            <div className="text-xs text-gray-500 font-mono tracking-widest uppercase">aequitas-agent / terminal</div>
           </div>
           
-          <div className="flex-1 bg-black/60 border border-white/5 rounded-xl p-6 font-mono text-sm overflow-hidden flex flex-col justify-end relative shadow-inner">
-             {logs.length === 0 && !isDeploying && (
-                <div className="text-gray-500 mb-4 animate-pulse">
-                   {timeStr} root@aequitas ~ % awaiting payload...<br/>
-                   <span className="text-xs text-gray-600 mt-2 block">System stands ready to allocate capital via ERC-8183.</span>
-                </div>
-             )}
-             
-             <div className="space-y-4">
-               {logs.map((log, idx) => (
-                 <div key={idx} className="flex gap-4 items-start animate-[fadeUp_0.4s_ease-out]">
-                   <span className="text-gray-500 flex-shrink-0">{log.t}</span>
-                   <span className={`px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider ${log.c} flex-shrink-0`}>{log.b}</span>
-                   <span className="text-gray-300 leading-relaxed">{log.m}</span>
-                 </div>
-               ))}
-               
-               {isDeploying && logs.length > 0 && logs.length < 6 && (
-                 <div className="flex gap-4 items-center text-gray-500 mt-4 animate-pulse">
-                   <span>...</span>
-                   <span>Processing on Base Sepolia network</span>
-                 </div>
-               )}
-             </div>
+          <div className="bg-black/30 border border-white/5 rounded-xl p-4 mb-6 font-mono text-xs flex flex-col gap-2 relative">
+            <div className="text-gold h-4 tracking-wide">{postDeployMsg} {agentStatus !== 'SETTLED' && <span className="animate-[pulse_0.8s_ease-in-out_infinite]">_</span>}</div>
+            <p className="text-gray-500 italic font-serif text-sm">Your USDC is now managed on-chain. No further action required.</p>
+          </div>
+
+          <div className="border-t border-white/[0.08] pt-6 flex justify-center">
+            <AgentStatus
+              agentId="agt-8f3a39b2-11e4"
+              walletAddress="0x7aB412d2A99c390a"
+              reputationScore={94.2}
+              status={agentStatus}
+              currentTaskId={agentStatus !== 'REGISTERED' && agentStatus !== 'SETTLED' ? "job_49112" : undefined}
+              lastUpdated={lastUpdated}
+              framework="langchain"
+            />
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
-
