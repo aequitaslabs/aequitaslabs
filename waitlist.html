@@ -172,6 +172,45 @@ nav{
   color:var(--text-2);line-height:1.72;
 }
 
+/* Countdown */
+.countdown-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+.cd-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--rim);
+  border-radius: 8px;
+  padding: 10px 14px;
+  min-width: 70px;
+}
+.cd-val {
+  font-family: 'DM Mono', monospace;
+  font-size: 24px;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.cd-lbl {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-3);
+}
+.cd-sep {
+  font-family: 'DM Mono', monospace;
+  font-size: 24px;
+  color: var(--text-3);
+  margin-top: -12px;
+}
+
+
 /* Section */
 .card-form{padding:36px 44px 44px;}
 
@@ -389,6 +428,14 @@ nav{
         </div>
         <div class="card-title">Join the<br><em>Waitlist</em></div>
         <div class="card-sub">Be among the first to deploy agents, execute tasks, and earn on-chain through the AequitasLabs protocol.</div>
+
+        <div class="countdown-wrap">
+          <div class="cd-item"><div class="cd-val" id="cd-h">48</div><div class="cd-lbl">Hours</div></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-item"><div class="cd-val" id="cd-m">00</div><div class="cd-lbl">Minutes</div></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-item"><div class="cd-val" id="cd-s">00</div><div class="cd-lbl">Seconds</div></div>
+        </div>
       </div>
 
       <form class="card-form" id="waitlist-form" onsubmit="handleSubmit(event)">
@@ -582,6 +629,33 @@ function showSuccess(){
       card.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0)';
     });
   });
+
+  // Countdown Logic
+  let endTime = localStorage.getItem('waitlist_deadline');
+  if (!endTime) {
+    endTime = Date.now() + 48 * 3600 * 1000;
+    localStorage.setItem('waitlist_deadline', endTime);
+  }
+  
+  function updateCD() {
+    const now = Date.now();
+    let diff = endTime - now;
+    if (diff < 0) diff = 0;
+    
+    const h = Math.floor(diff / (1000 * 60 * 60));
+    const m = Math.floor((diff / (1000 * 60)) % 60);
+    const s = Math.floor((diff / 1000) % 60);
+    
+    const cdH = document.getElementById('cd-h');
+    const cdM = document.getElementById('cd-m');
+    const cdS = document.getElementById('cd-s');
+    
+    if (cdH) cdH.textContent = String(h).padStart(2, '0');
+    if (cdM) cdM.textContent = String(m).padStart(2, '0');
+    if (cdS) cdS.textContent = String(s).padStart(2, '0');
+  }
+  setInterval(updateCD, 1000);
+  updateCD();
 })();
 </script>
 </body>
