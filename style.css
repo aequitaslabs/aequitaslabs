@@ -702,7 +702,48 @@ footer{position:relative;z-index:2;padding:52px 64px;border-top:1px solid var(--
 .prim-card.open .prim-expand-icon svg{transform:rotate(45deg);}
 .prim-card.open .prim-expand-btn{color:var(--gold);}
 
-/* â”€â”€ Expandable content drawer â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Expandable content drawer ────────────────────────────────────── */
+.callout-subtle {
+  background: rgba(255, 255, 255, 0.012);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-left: 2px solid var(--gold);
+  border-radius: var(--r-sm);
+  padding: 16px 20px;
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+.badge-critical {
+  background: rgba(255, 50, 50, 0.15);
+  color: #ff4444;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 50, 50, 0.3);
+  margin-left: 8px;
+  vertical-align: middle;
+}
+.copy-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--text-3);
+  border-radius: var(--r-xs);
+  padding: 4px 10px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.copy-btn:hover { background: rgba(255, 255, 255, 0.08); color: var(--gold); }
+.copy-btn.copied { background: rgba(39, 201, 63, 0.15); color: #27c93f; border-color: rgba(39, 201, 63, 0.3); }
+
 .prim-drawer{
   max-height:0;overflow:hidden;
   transition:max-height 0.65s var(--ease),opacity 0.45s;
@@ -725,11 +766,29 @@ footer{position:relative;z-index:2;padding:52px 64px;border-top:1px solid var(--
 
 /* Inputs table */
 .prim-inputs{display:flex;flex-direction:column;gap:8px;}
+.prim-input-header {
+  display: grid;
+  grid-template-columns: 140px 100px 120px 1fr;
+  gap: 12px;
+  padding: 0 12px 6px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--text-4);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--rim);
+  margin-bottom: 4px;
+}
 .prim-input-row{
-  display:grid;grid-template-columns:160px 1fr auto;gap:12px;
+  display:grid;grid-template-columns:140px 100px 120px 1fr;gap:12px;
   align-items:baseline;padding:8px 12px;
   background:rgba(255,255,255,0.018);border-radius:var(--r-sm);
   border:1px solid rgba(255,255,255,0.04);
+}
+.prim-input-type {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--text-3);
 }
 .prim-input-name{
   font-family:'DM Mono',monospace;font-size:11px;color:var(--text-1);
@@ -762,7 +821,7 @@ footer{position:relative;z-index:2;padding:52px 64px;border-top:1px solid var(--
   font-family:'DM Mono',monospace;font-size:10px;color:var(--text-3);
   letter-spacing:0.09em;flex:1;text-align:center;
 }
-.prim-steps-body{padding:20px 22px;font-family:'DM Mono',monospace;font-size:12px;line-height:1.9;}
+.prim-steps-body{padding:20px 22px;font-family:'DM Mono',monospace;font-size:12px;line-height:1.9;background:#0A0908;}
 .prim-step{display:flex;gap:14px;align-items:flex-start;margin-bottom:4px;}
 .prim-step-num{color:var(--text-4);flex-shrink:0;width:22px;}
 .prim-step-cmd{color:var(--text-2);}
@@ -788,10 +847,30 @@ footer{position:relative;z-index:2;padding:52px 64px;border-top:1px solid var(--
 
 /* Failure strategy */
 .prim-failures{display:flex;flex-direction:column;gap:8px;}
+.prim-failure-header {
+  display: grid;
+  grid-template-columns: 180px 180px 1fr;
+  gap: 12px;
+  padding: 0 14px 6px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--text-4);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--rim);
+  margin-bottom: 4px;
+}
 .prim-failure-row{
-  display:flex;gap:12px;padding:10px 14px;
+  display:grid;grid-template-columns:180px 180px 1fr;gap:12px;padding:10px 14px;
   background:rgba(255,255,255,0.015);border-radius:var(--r-sm);
   border-left:2px solid rgba(201,168,76,0.25);
+}
+.prim-failure-notes {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-3);
+  line-height: 1.55;
+  font-style: italic;
 }
 .prim-failure-code{
   font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);

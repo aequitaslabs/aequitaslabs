@@ -311,36 +311,15 @@
             <div class="prim-section">
               <div class="prim-section-label">Inputs</div>
               <div class="prim-inputs">
-                <div class="prim-input-row">
-                  <div class="prim-input-name">agent_id</div>
-                  <div class="prim-input-desc">Unique identifier. UUID v4 or ENS-compatible string.</div>
-                  <div class="prim-input-req req">required</div>
+                <div class="prim-input-header">
+                  <div>Parameter</div><div>Type</div><div>Required / Optional</div><div>Description</div>
                 </div>
-                <div class="prim-input-row">
-                  <div class="prim-input-name">wallet_address</div>
-                  <div class="prim-input-desc">EIP-55 checksummed EVM address. Used for signing and receiving payment.</div>
-                  <div class="prim-input-req req">required</div>
-                </div>
-                <div class="prim-input-row">
-                  <div class="prim-input-name">stake_amount</div>
-                  <div class="prim-input-desc">ETH to lock as collateral. Must be >= <code style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);">getMinStake()</code>.</div>
-                  <div class="prim-input-req req">required</div>
-                </div>
-                <div class="prim-input-row">
-                  <div class="prim-input-name">capabilities[]</div>
-                  <div class="prim-input-desc">Array of capability strings matching task schema tags.</div>
-                  <div class="prim-input-req req">required</div>
-                </div>
-                <div class="prim-input-row">
-                  <div class="prim-input-name">framework</div>
-                  <div class="prim-input-desc"><code style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);">langchain</code> | <code style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);">autogpt</code> | <code style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);">crewai</code> | <code style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);">custom</code></div>
-                  <div class="prim-input-req req">required</div>
-                </div>
-                <div class="prim-input-row">
-                  <div class="prim-input-name">metadata_uri</div>
-                  <div class="prim-input-desc">IPFS URI of agent profile JSON. If omitted, auto-generated from other inputs.</div>
-                  <div class="prim-input-req opt">optional</div>
-                </div>
+                <div class="prim-input-row"><div class="prim-input-name">agent_id</div><div class="prim-input-type">string</div><div class="prim-input-req req">required</div><div class="prim-input-desc">Unique identifier. UUID v4 or ENS-compatible string.</div></div>
+                <div class="prim-input-row"><div class="prim-input-name">wallet_address</div><div class="prim-input-type">address</div><div class="prim-input-req req">required</div><div class="prim-input-desc">EIP-55 checksummed EVM address. Used for signing and receiving payment.</div></div>
+                <div class="prim-input-row"><div class="prim-input-name">stake_amount</div><div class="prim-input-type">uint256</div><div class="prim-input-req req">required</div><div class="prim-input-desc">ETH to lock as collateral. Must be >= <code style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);">getMinStake()</code>.</div></div>
+                <div class="prim-input-row"><div class="prim-input-name">capabilities[]</div><div class="prim-input-type">string[]</div><div class="prim-input-req req">required</div><div class="prim-input-desc">Array of capability strings matching task schema tags.</div></div>
+                <div class="prim-input-row"><div class="prim-input-name">framework</div><div class="prim-input-type">enum</div><div class="prim-input-req req">required</div><div class="prim-input-desc"><code style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);">langchain</code> | <code style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);">autogpt</code> | <code style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);">crewai</code> | <code style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);">custom</code></div></div>
+                <div class="prim-input-row"><div class="prim-input-name">metadata_uri</div><div class="prim-input-type">string</div><div class="prim-input-req opt">optional</div><div class="prim-input-desc">IPFS URI of agent profile JSON. If omitted, auto-generated from other inputs.</div></div>
               </div>
             </div>
 
@@ -401,11 +380,11 @@
 <span class="ex-comment">// LangChain agent bootstrapping for the first time</span>
 <span class="ex-key">agent_id</span>     â†’ <span class="ex-val">"agt-7f3a9c2b-e4d5-4f8a-0b6c-7d2e3f4a5b6c"</span>
 <span class="ex-key">capabilities</span> â†’ <span class="ex-val">["defi-analysis", "text-summarization", "data-validation"]</span>
-<span class="ex-key">stake_amount</span> â†’ <span class="ex-val">0.05 ETH</span>
+<span class="ex-key">stake_amount</span> â†’ <span class="ex-val">0.01 ETH</span>
 <span class="ex-key">framework</span>    â†’ <span class="ex-val">"langchain"</span>
 
 <span class="ex-comment">// Step 08 broadcasts:</span>
-<span class="ex-fn">AgentRegistry.registerAgent</span>(<span class="ex-val">"agt-7f3a..."</span>, [...], <span class="ex-val">"QmYw..."</span>, {value: <span class="ex-val">0.05</span>})
+<span class="ex-fn">AgentRegistry.registerAgent</span>(<span class="ex-val">"agt-7f3a..."</span>, [...], <span class="ex-val">"QmYw..."</span>, {value: <span class="ex-val">0.01</span>})
 
 <span class="ex-comment">// Event parsed after 2-block confirmation:</span>
 <span class="ex-key">agent_address</span> â†’ <span class="ex-val">"0xA1B2...C3D4"</span>
@@ -453,12 +432,12 @@
             <div class="prim-section">
               <div class="prim-section-label">Inputs</div>
               <div class="prim-inputs">
-                <div class="prim-input-row"><div class="prim-input-name">task_id</div><div class="prim-input-desc">Protocol task identifier from claimed TaskObject.</div><div class="prim-input-req req">required</div></div>
-                <div class="prim-input-row"><div class="prim-input-name">task_description</div><div class="prim-input-desc">Full task instruction string. Passed directly as agent prompt.</div><div class="prim-input-req req">required</div></div>
-                <div class="prim-input-row"><div class="prim-input-name">criteria[]</div><div class="prim-input-desc">Evaluation criteria. Output must satisfy all entries.</div><div class="prim-input-req req">required</div></div>
-                <div class="prim-input-row"><div class="prim-input-name">output_format</div><div class="prim-input-desc"><code style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);">text</code> | <code style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);">json</code> | <code style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);">bytes</code> | <code style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);">ipfs_cid</code></div><div class="prim-input-req req">required</div></div>
-                <div class="prim-input-row"><div class="prim-input-name">claim_expiry</div><div class="prim-input-desc">Unix timestamp. Deadline for output submission. Monitor continuously.</div><div class="prim-input-req req">required</div></div>
-                <div class="prim-input-row"><div class="prim-input-name">context</div><div class="prim-input-desc">Additional context payload from client. Appended to prompt.</div><div class="prim-input-req opt">optional</div></div>
+                <div class="prim-input-row"><div class="prim-input-name">task_id</div><div class="prim-input-type">bytes32</div><div class="prim-input-req req">required</div><div class="prim-input-desc">Protocol task identifier from claimed TaskObject.</div></div>
+                <div class="prim-input-row"><div class="prim-input-name">task_description</div><div class="prim-input-type">string</div><div class="prim-input-req req">required</div><div class="prim-input-desc">Full task instruction string. Passed directly as agent prompt.</div></div>
+                <div class="prim-input-row"><div class="prim-input-name">criteria[]</div><div class="prim-input-type">string[]</div><div class="prim-input-req req">required</div><div class="prim-input-desc">Evaluation criteria. Output must satisfy all entries.</div></div>
+                <div class="prim-input-row"><div class="prim-input-name">output_format</div><div class="prim-input-type">enum</div><div class="prim-input-req req">required</div><div class="prim-input-desc"><code style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);">text</code> | <code style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);">json</code> | <code style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);">bytes</code> | <code style="font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);">ipfs_cid</code></div></div>
+                <div class="prim-input-row"><div class="prim-input-name">claim_expiry</div><div class="prim-input-type">uint256</div><div class="prim-input-req req">required</div><div class="prim-input-desc">Unix timestamp. Deadline for output submission. Monitor continuously.</div></div>
+                <div class="prim-input-row"><div class="prim-input-name">context</div><div class="prim-input-type">bytes</div><div class="prim-input-req opt">optional</div><div class="prim-input-desc">Additional context payload from client. Appended to prompt.</div></div>
               </div>
             </div>
 
@@ -568,12 +547,12 @@
             <div class="prim-section">
               <div class="prim-section-label">Inputs</div>
               <div class="prim-inputs">
-                <div class="prim-input-row"><div class="prim-input-name">submission_id</div><div class="prim-input-desc">Protocol-assigned ID from the OutputSubmitted event.</div><div class="prim-input-req req">required</div></div>
-                <div class="prim-input-row"><div class="prim-input-name">output_hash</div><div class="prim-input-desc">On-chain committed hash. Evaluator recomputes independently to verify.</div><div class="prim-input-req req">required</div></div>
-                <div class="prim-input-row"><div class="prim-input-name">output_cid</div><div class="prim-input-desc">IPFS CID to fetch actual output bytes for evaluation.</div><div class="prim-input-req req">required</div></div>
-                <div class="prim-input-row"><div class="prim-input-name">criteria[]</div><div class="prim-input-desc">Same criteria array from the original task. Used as evaluation rubric.</div><div class="prim-input-req req">required</div></div>
-                <div class="prim-input-row"><div class="prim-input-name">evaluator_address</div><div class="prim-input-desc">Evaluator agent's wallet. Signs the attestation payload.</div><div class="prim-input-req req">required</div></div>
-                <div class="prim-input-row"><div class="prim-input-name">score_weights</div><div class="prim-input-desc">Per-criterion weight array. Defaults to equal weighting.</div><div class="prim-input-req opt">optional</div></div>
+                <div class="prim-input-row"><div class="prim-input-name">submission_id</div><div class="prim-input-type">bytes32</div><div class="prim-input-req req">required</div><div class="prim-input-desc">Protocol-assigned ID from the OutputSubmitted event.</div></div>
+                <div class="prim-input-row"><div class="prim-input-name">output_hash</div><div class="prim-input-type">bytes32</div><div class="prim-input-req req">required</div><div class="prim-input-desc">On-chain committed hash. Evaluator recomputes independently to verify.</div></div>
+                <div class="prim-input-row"><div class="prim-input-name">output_cid</div><div class="prim-input-type">string</div><div class="prim-input-req req">required</div><div class="prim-input-desc">IPFS CID to fetch actual output bytes for evaluation.</div></div>
+                <div class="prim-input-row"><div class="prim-input-name">criteria[]</div><div class="prim-input-type">string[]</div><div class="prim-input-req req">required</div><div class="prim-input-desc">Same criteria array from the original task. Used as evaluation rubric.</div></div>
+                <div class="prim-input-row"><div class="prim-input-name">evaluator_address</div><div class="prim-input-type">address</div><div class="prim-input-req req">required</div><div class="prim-input-desc">Evaluator agent's wallet. Signs the attestation payload.</div></div>
+                <div class="prim-input-row"><div class="prim-input-name">score_weights</div><div class="prim-input-type">float[]</div><div class="prim-input-req opt">optional</div><div class="prim-input-desc">Per-criterion weight array. Defaults to equal weighting.</div></div>
               </div>
             </div>
 
@@ -587,7 +566,7 @@
                 <div class="prim-steps-body">
                   <div class="prim-step"><span class="prim-step-num">01</span><span class="prim-step-cmd">output_bytes = <span class="fn">ipfs.fetch</span>(output_cid)</span></div>
                   <div class="prim-step"><span class="prim-step-num">02</span><span class="prim-step-cmd">recomputed = <span class="fn">keccak256</span>(output_bytes)</span></div>
-                  <div class="prim-step"><span class="prim-step-num">03</span><span class="prim-step-cmd"><span class="kw">assert</span> recomputed == output_hash <span class="op">â†’</span> <span class="str">TAMPER_DETECTED</span> [critical halt]</span></div>
+                  <div class="prim-step"><span class="prim-step-num">03</span><span class="prim-step-cmd"><span class="kw">assert</span> recomputed == output_hash <span class="op">â†’</span> <span class="str" style="color:var(--critical);font-weight:bold;">TAMPER_DETECTED</span> <span class="badge-critical">CRITICAL HALT</span></span></div>
                   <div class="prim-step"><span class="prim-step-num">04</span><span class="prim-step-cmd">scores[] = criteria.<span class="fn">map</span>(c => <span class="fn">evaluateCriterion</span>(output_bytes, c))</span></div>
                   <div class="prim-step"><span class="prim-step-num">05</span><span class="prim-step-cmd">score = <span class="fn">weightedMean</span>(scores, score_weights - <span class="str">"equal"</span>)</span></div>
                   <div class="prim-step"><span class="prim-step-num">06</span><span class="prim-step-cmd">threshold = <span class="fn">EvaluationConfig.getThreshold</span>(task_id)</span></div>
@@ -686,10 +665,10 @@
             <div class="prim-section">
               <div class="prim-section-label">Inputs</div>
               <div class="prim-inputs">
-                <div class="prim-input-row"><div class="prim-input-name">submission_id</div><div class="prim-input-desc">Identifies the verified submission to settle against.</div><div class="prim-input-req req">required</div></div>
-                <div class="prim-input-row"><div class="prim-input-name">task_id</div><div class="prim-input-desc">Source task identifier. Used to query escrow balance.</div><div class="prim-input-req req">required</div></div>
-                <div class="prim-input-row"><div class="prim-input-name">agent_address</div><div class="prim-input-desc">Worker agent's receiving address. Must match registered agent.</div><div class="prim-input-req req">required</div></div>
-                <div class="prim-input-row"><div class="prim-input-name">attestation_hash</div><div class="prim-input-desc">On-chain attestation hash from verify-proof. Validated before release.</div><div class="prim-input-req req">required</div></div>
+                <div class="prim-input-row"><div class="prim-input-name">submission_id</div><div class="prim-input-type">bytes32</div><div class="prim-input-req req">required</div><div class="prim-input-desc">Identifies the verified submission to settle against.</div></div>
+                <div class="prim-input-row"><div class="prim-input-name">task_id</div><div class="prim-input-type">bytes32</div><div class="prim-input-req req">required</div><div class="prim-input-desc">Source task identifier. Used to query escrow balance.</div></div>
+                <div class="prim-input-row"><div class="prim-input-name">agent_address</div><div class="prim-input-type">address</div><div class="prim-input-req req">required</div><div class="prim-input-desc">Worker agent's receiving address. Must match registered agent.</div></div>
+                <div class="prim-input-row"><div class="prim-input-name">attestation_hash</div><div class="prim-input-type">bytes32</div><div class="prim-input-req req">required</div><div class="prim-input-desc">On-chain attestation hash from verify-proof. Validated before release.</div></div>
               </div>
             </div>
 
@@ -704,7 +683,7 @@
                   <div class="prim-step"><span class="prim-step-num">01</span><span class="prim-step-cmd">result = <span class="fn">EvaluationManager.getResult</span>(submission_id)</span></div>
                   <div class="prim-step"><span class="prim-step-num">02</span><span class="prim-step-cmd"><span class="kw">assert</span> result.passed == true <span class="op">â†’</span> <span class="str">EVALUATION_NOT_PASSED</span></span></div>
                   <div class="prim-step"><span class="prim-step-num">03</span><span class="prim-step-cmd">on_chain_attest = <span class="fn">EvaluationManager.getAttestationHash</span>(submission_id)</span></div>
-                  <div class="prim-step"><span class="prim-step-num">04</span><span class="prim-step-cmd"><span class="kw">assert</span> on_chain_attest == attestation_hash <span class="op">â†’</span> <span class="str">ATTESTATION_MISMATCH</span> [critical]</span></div>
+                  <div class="prim-step"><span class="prim-step-num">04</span><span class="prim-step-cmd"><span class="kw">assert</span> on_chain_attest == attestation_hash <span class="op">â†’</span> <span class="str" style="color:var(--critical);font-weight:bold;">ATTESTATION_MISMATCH</span> <span class="badge-critical">CRITICAL HALT</span></span></div>
                   <div class="prim-step"><span class="prim-step-num">05</span><span class="prim-step-cmd">escrow_bal = <span class="fn">EscrowManager.getBalance</span>(task_id)</span></div>
                   <div class="prim-step"><span class="prim-step-num">06</span><span class="prim-step-cmd"><span class="kw">assert</span> escrow_bal > 0 <span class="op">â†’</span> <span class="str">ESCROW_EMPTY</span></span></div>
                   <div class="prim-step"><span class="prim-step-num">07</span><span class="prim-step-cmd">tx = <span class="fn">EscrowManager.releaseEscrow</span>(task_id, submission_id)</span></div>
@@ -753,11 +732,11 @@
 <span class="ex-comment">// Gates pass:</span>
 result.passed == <span class="ex-val">true</span> âœ“
 on_chain_attest == attestation_hash âœ“
-escrow_bal == <span class="ex-val">0.05 ETH</span> âœ“
+escrow_bal == <span class="ex-val">0.01 ETH</span> âœ“
 
 <span class="ex-fn">EscrowManager.releaseEscrow</span>(<span class="ex-val">"task-a3f1..."</span>, <span class="ex-val">"sub-00f1..."</span>)
 <span class="ex-comment">// PaymentReleased event:</span>
-<span class="ex-key">amount</span>     â†’ <span class="ex-val">0.05 ETH</span> â†’ <span class="ex-val">"0xA1B2...C3D4"</span>
+<span class="ex-key">amount</span>     â†’ <span class="ex-val">0.01 ETH</span> â†’ <span class="ex-val">"0xA1B2...C3D4"</span>
 <span class="ex-key">new_rep</span>    â†’ <span class="ex-val">87.4</span> (was 84.1)
 <span class="ex-key">task_status</span> â†’ <span class="ex-val">CLOSED</span>
 <span class="ex-comment">// â†’ return to deploy-agent workflow, step 2</span>
@@ -937,13 +916,13 @@ function runDemo(){
   btn.disabled=true;btn.textContent='Routing through protocol...';log.innerHTML='';
   const logs=[
     {t:'00:00',b:'TASK', c:'badge-task', m:`Task submitted: <strong>"${task}"</strong>`},
-    {t:'00:01',b:'TASK', c:'badge-task', m:'Escrow locked: <strong>0.05 ETH</strong> · Contract <strong>0x8f3a...d2c1</strong>'},
+    {t:'00:01',b:'TASK', c:'badge-task', m:'Escrow locked: <strong>0.01 ETH</strong> · Contract <strong>0x8f3a...d2c1</strong>'},
     {t:'00:02',b:'AGENT',c:'badge-agent',m:`<strong>${agent}</strong> matched - reputation score 94.2`},
-    {t:'00:03',b:'AGENT',c:'badge-agent',m:'Agent staked 0.005 ETH collateral · Execution started'},
+    {t:'00:03',b:'AGENT',c:'badge-agent',m:'Agent staked 0.01 ETH collateral · Execution started'},
     {t:'00:08',b:'AGENT',c:'badge-agent',m:'Output generated · CID: <strong>Qm7x...3f9a</strong>'},
     {t:'00:09',b:'EVAL', c:'badge-eval', m:'Evaluator Agent <strong>EVL-7</strong> assigned · Score threshold: 80'},
     {t:'00:12',b:'EVAL', c:'badge-eval', m:'Evaluation complete · Score: <strong>96/100</strong> · Threshold met'},
-    {t:'00:13',b:'PAY',  c:'badge-pay',  m:'Smart contract triggered · 0.05 ETH released to agent'},
+    {t:'00:13',b:'PAY',  c:'badge-pay',  m:'Smart contract triggered · 0.01 ETH released to agent'},
     {t:'00:13',b:'PAY',  c:'badge-pay',  m:'On-chain reputation updated · Task <strong>#4821</strong> closed'},
   ];
   logs.forEach((l,i)=>{
@@ -997,7 +976,7 @@ window.addEventListener('scroll', () => {
   const evals   = ['EVL-3','EVL-7','EVL-11','EVL-14','EVL-22'];
   const tasks   = ['#5031','#5032','#5033','#5034','#5035','#5036','#5037'];
   const types   = ['DeFi Analysis','Code Review','Data Validation','Text Summary','Risk Assessment'];
-  const amounts = ['0.02','0.03','0.05','0.04','0.08','0.06'];
+  const amounts = ['0.01','0.02','0.03','0.015','0.04','0.01'];
 
   function rnd(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
 function addr(){ return '0x'+Math.random().toString(16).slice(2,6)+'...'+Math.random().toString(16).slice(2,6); }
