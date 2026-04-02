@@ -113,7 +113,7 @@
     </div>
     <div class="nav-cta">
       <a href="waitlist.html" class="btn-ghost">Join Waitlist</a>
-      <a href="https://app.aequitaslabs.xyz" class="btn-primary" target="_blank" rel="noopener noreferrer">Launch App</a>
+      <a href="#" class="btn-primary" onclick="event.preventDefault(); alert('DApp Testnet launches very soon!');">Launch App (Soon)</a>
       <button class="mobile-toggle" aria-label="Toggle Mobile Menu" onclick="toggleMobileMenu()">
         <span></span><span></span><span></span>
       </button>
@@ -153,9 +153,9 @@
     <p class="hero-sub">Deposit USDC. Your AI agent allocates into tokenized real estate on Base, hires specialized agents via ERC-8183, and distributes real yield straight to your wallet.</p>
 
     <div class="hero-actions">
-      <a href="https://app.aequitaslabs.xyz" class="btn-hero-primary" target="_blank" rel="noopener noreferrer">
+      <a href="#" class="btn-hero-primary" onclick="event.preventDefault(); alert('DApp Testnet launches very soon!');">
         <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        Launch App
+        Launch App (Soon)
       </a>
       <a href="waitlist.html" class="btn-hero-secondary">
         <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
@@ -368,16 +368,17 @@
         </div>
       <div class="demo-title-bar">aequitas-agent · capital-allocator · execution-terminal</div>
       </div>
-      <div class="demo-body" style="display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; padding: 80px 20px !important; text-align: center !important; gap: 32px !important; background: linear-gradient(180deg, rgba(6,5,10,0.2) 0%, rgba(6,5,10,0.6) 100%) !important; height: auto !important; min-height: 460px !important;">
-        <span style="color:var(--gold); display:flex; justify-content:center; position: relative;">
-           <div style="position: absolute; top:50%; left:50%; transform:translate(-50%, -50%); width: 80px; height: 80px; background: var(--gold); opacity: 0.1; filter: blur(25px); border-radius: 50%;"></div>
-           <svg viewBox="0 0 24 24" fill="none" class="opacity-90" stroke="currentColor" stroke-width="1.2" width="60" height="60" style="position: relative; z-index: 2;"><path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /></svg>
-        </span>
-        <div style="max-width: 540px;">
-          <h3 style="font-family:'Cormorant Garamond',serif; font-size: 38px; font-weight: 400; color: var(--text-1); margin-bottom: 16px; letter-spacing: -0.02em;">Next-Gen Agent Interface</h3>
-          <p style="font-family:'DM Mono',monospace; font-size: 14px; line-height: 1.8; color: var(--text-3); font-weight: 300; letter-spacing: 0.05em; margin: 0;">The interactive execution terminal has been migrated to a dedicated Web3 application. Execute real-world agent payloads directly on-chain.</p>
+      <div class="demo-body" style="height: 380px; display: flex; flex-direction: column;">
+        <div class="demo-logs" id="demo-logs" style="flex:1; overflow-y:auto; font-family:'DM Mono',monospace; font-size:12px; color:#A0A0A0; margin-bottom:16px;">
+          <div class="demo-log" style="opacity: 0.5;">> Initializing Aequitas protocol agent...</div>
+          <div class="demo-log">> Connection to Base network established.</div>
+          <div class="demo-log">> Ready for payload.</div>
         </div>
-        <a href="https://app.aequitaslabs.xyz" class="demo-btn" style="text-decoration:none; display:inline-flex; width:auto; padding:0 48px; border-radius: 8px; height: 56px; align-items:center; justify-content:center; letter-spacing:0.15em; flex-shrink: 0; box-shadow: 0 0 20px rgba(201,168,76,0.15); margin-top: 8px;">LAUNCH TERMINAL</a>
+        <div class="demo-input-bar" style="display:flex; gap:12px; border-top:1px solid rgba(255,255,255,0.06); padding-top:16px;">
+          <span style="color:var(--gold); display:flex; align-items:center;">~</span>
+          <input type="text" id="demo-cmd" placeholder="Type 'deploy' or 'bridge'" style="flex:1; background:transparent; border:none; outline:none; color:white; font-family:'DM Mono',monospace; width:100%;" />
+          <button class="demo-btn" onclick="runDemo()" style="background:rgba(201,168,76,0.1); color:var(--gold); border:1px solid rgba(201,168,76,0.3); padding:8px 16px; border-radius:4px; font-family:'DM Mono',monospace; font-size:11px; cursor:pointer;" onmouseover="this.style.background='rgba(201,168,76,0.2)'" onmouseout="this.style.background='rgba(201,168,76,0.1)'">EXECUTE</button>
+        </div>
       </div>
     </div>
   </div>
@@ -620,7 +621,42 @@ function togglePrim(btn){
   }
 }
 
-/* Demo script replaced with direct DApp routing CTA */
+/* Interactive Demo Script */
+let demoRunning = false;
+window.runDemo = function(){
+  if(demoRunning) return;
+  const input = document.getElementById('demo-cmd');
+  const logs = document.getElementById('demo-logs');
+  const val = input.value.trim();
+  if(!val) return;
+  
+  demoRunning = true;
+  input.value = '';
+  
+  const addLog = (msg, color, delay) => {
+    return new Promise(res => {
+      setTimeout(() => {
+        const div = document.createElement('div');
+        div.className = 'demo-log';
+        if(color) div.style.color = color;
+        div.innerHTML = msg;
+        logs.appendChild(div);
+        logs.scrollTop = logs.scrollHeight;
+        res();
+      }, delay);
+    });
+  };
+
+  addLog(`> Execution trigger: <span style="color:var(--text-1);">${val}</span>`, '#A0A0A0', 0)
+    .then(()=> addLog(`> Sending instruction to ERC-8183 Manager Agent...`, '#A0A0A0', 800))
+    .then(()=> addLog(`→ <span style="color:var(--gold);">[PROCESSING]</span> Validating semantic intent`, '#A0A0A0', 600))
+    .then(()=> addLog(`→ <span style="color:#6ddbb0);">[SUCCESS]</span> Escrow conditions mathematically verified`, '#A0A0A0', 1200))
+    .then(()=> addLog(`> Target sub-agent deployed. Transaction hashed.`, '#A0A0A0', 800))
+    .then(()=> { demoRunning = false; });
+}
+document.getElementById('demo-cmd')?.addEventListener('keydown', e => {
+  if (e.key === 'Enter') runDemo();
+});
 
 /* Section */
 window.addEventListener('scroll', () => {
