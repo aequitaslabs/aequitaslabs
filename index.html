@@ -102,8 +102,8 @@
     <a href="/">Home</a>
     <a href="protocol-design.html">Protocol Design</a>
     <a href="applications.html">Applications</a>
-    <a href="docs.html" onclick="toggleMobileMenu()">Docs</a>
-    <a href="whitepaper.html" onclick="toggleMobileMenu()">Whitepaper</a>
+    <a href="docs.html">Docs</a>
+    <a href="whitepaper.html">Whitepaper</a>
     <a href="faq.html">FAQ</a>
   </div>
   <div style="display:flex;align-items:center;gap:12px;">
@@ -113,7 +113,7 @@
     </div>
     <div class="nav-cta">
       <a href="waitlist.html" class="btn-ghost">Join Waitlist</a>
-      <a href="#" class="btn-primary" onclick="event.preventDefault(); if(document.getElementById('c-toast'))return; let t=document.createElement('div'); t.id='c-toast'; t.className='custom-toast'; t.innerText='DApp Testnet launches very soon!'; document.body.appendChild(t); setTimeout(()=>t.remove(), 2900);">Launch App</a>
+      <a href="https://app.aequitaslabs.xyz" class="btn-primary" target="_blank" rel="noopener noreferrer">Launch App</a>
       <button class="mobile-toggle" aria-label="Toggle Mobile Menu" onclick="toggleMobileMenu()">
         <span></span><span></span><span></span>
       </button>
@@ -153,7 +153,7 @@
     <p class="hero-sub">Deposit USDC. Your AI agent allocates into tokenized real estate on Base, hires specialized agents via ERC-8183, and distributes real yield straight to your wallet.</p>
 
     <div class="hero-actions">
-      <a href="#" class="btn-hero-primary" onclick="event.preventDefault(); if(document.getElementById('c-toast'))return; let t=document.createElement('div'); t.id='c-toast'; t.className='custom-toast'; t.innerText='DApp Testnet launches very soon!'; document.body.appendChild(t); setTimeout(()=>t.remove(), 2900);">
+      <a href="https://app.aequitaslabs.xyz" class="btn-hero-primary" target="_blank" rel="noopener noreferrer">
         <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         Launch App
       </a>
@@ -274,7 +274,6 @@
     <div class="ticker-item"><div class="tick-dot gold"></div> Escrow Payment <span class="tick-val">0.05 ETH</span>&nbsp;· sub-agent fulfilled request</div>
       <div class="ticker-item"><div class="tick-dot green"></div> Strategy Rebalanced&nbsp;· real world assets optimized</div>
   </div>
-</div>
 </div>
 
 <!-- Section -->
@@ -516,14 +515,17 @@
     <div class="footer-tagline">Your USDC. Managed Onchain by Autonomous Agents.</div>
   </div>
   <div class="footer-links">
-    <a href="docs.html" onclick="toggleMobileMenu()">Docs</a>
-    <a href="whitepaper.html" onclick="toggleMobileMenu()">Whitepaper</a>
+    <a href="docs.html">Docs</a>
+    <a href="whitepaper.html">Whitepaper</a>
     <a href="#roadmap">Roadmap</a>
-    <a href="https://twitter.com/aequitaslabs" target="_blank">Twitter</a>
-    <a href="https://github.com/aequitaslabs/aequitaslabs" target="_blank">GitHub</a>
+    <a href="https://twitter.com/aequitaslabs" target="_blank" rel="noopener noreferrer">Twitter</a>
+    <a href="https://github.com/aequitaslabs/aequitaslabs" target="_blank" rel="noopener noreferrer">GitHub</a>
   </div>
-  <div class="footer-right">ERC-8183 ? Developer Preview</div>
+  <div class="footer-right">ERC-8183 · Developer Preview</div>
 </footer>
+
+<!-- Roadmap anchor placeholder -->
+<section id="roadmap" style="display:none;"></section>
 
 <!-- Section -->
 <button class="back-to-top" id="btt" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="Back to Top">
