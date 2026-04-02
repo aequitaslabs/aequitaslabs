@@ -113,7 +113,7 @@
     </div>
     <div class="nav-cta">
       <a href="waitlist.html" class="btn-ghost">Join Waitlist</a>
-      <a href="https://app.aequitaslabs.xyz" class="btn-primary" target="_blank" rel="noopener noreferrer">Launch App</a>
+      <a href="#" class="btn-primary" onclick="event.preventDefault(); openComingSoonModal();">Launch App</a>
       <button class="mobile-toggle" aria-label="Toggle Mobile Menu" onclick="toggleMobileMenu()">
         <span></span><span></span><span></span>
       </button>
@@ -153,7 +153,7 @@
     <p class="hero-sub">Deposit USDC. Your AI agent allocates into tokenized real estate on Base, hires specialized agents via ERC-8183, and distributes real yield straight to your wallet.</p>
 
     <div class="hero-actions">
-      <a href="https://app.aequitaslabs.xyz" class="btn-hero-primary" target="_blank" rel="noopener noreferrer">
+      <a href="#" class="btn-hero-primary" onclick="event.preventDefault(); openComingSoonModal();">
         <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         Launch App
       </a>
@@ -537,6 +537,20 @@
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 
+<!-- Coming Soon Modal -->
+<div class="coming-soon-overlay" id="comingSoonModal" onclick="closeComingSoonModal(event)">
+  <div class="coming-soon-modal" id="comingSoonCard" onclick="event.stopPropagation()">
+    <div class="cs-close" onclick="closeComingSoonModal()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+    <div class="cs-badge">TESTNET &middot; Q2 2026</div>
+    <h3 class="cs-title">Coming Soon</h3>
+    <p class="cs-sub">The DApp is currently in final preparation. Join the waitlist to get early access.</p>
+    <div class="cs-actions">
+      <a href="waitlist.html" class="cs-btn">Join the Waitlist</a>
+      <button class="cs-btn-ghost" onclick="closeComingSoonModal()">Close</button>
+    </div>
+  </div>
+</div>
+
 <script>
 /* Section */
 (function(){
@@ -639,6 +653,23 @@ function togglePrim(btn){
     setTimeout(() => card.scrollIntoView({ behavior:'smooth', block:'start' }), 80);
   }
 }
+
+/* Coming Soon Modal Logic */
+function openComingSoonModal() {
+  const m = document.getElementById('comingSoonModal');
+  if (m) m.classList.add('open');
+}
+function closeComingSoonModal(e) {
+  if (e && e.target !== document.getElementById('comingSoonModal')) return;
+  const m = document.getElementById('comingSoonModal');
+  if (m) m.classList.remove('open');
+}
+window.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    const m = document.getElementById('comingSoonModal');
+    if (m && m.classList.contains('open')) m.classList.remove('open');
+  }
+});
 
 /* Interactive Demo Script */
 let demoRunning = false;

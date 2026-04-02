@@ -1651,3 +1651,116 @@ footer{position:relative;z-index:2;padding:52px 64px;border-top:1px solid var(--
 @keyframes toastFadeOut {
   to { opacity: 0; transform: translateX(-50%) translateY(-10px); }
 }
+
+/* Coming Soon Modal */
+.coming-soon-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+.coming-soon-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.coming-soon-modal {
+  background: #0F0E13;
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 20px;
+  padding: 40px 32px 32px;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  position: relative;
+  transform: scale(0.95);
+  transition: transform 0.2s ease;
+  box-shadow: 0 24px 48px rgba(0,0,0,0.4);
+}
+.coming-soon-overlay.open .coming-soon-modal {
+  transform: scale(1);
+}
+.cs-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  color: var(--text-3);
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.2s;
+}
+.cs-close:hover { color: var(--gold); }
+.cs-close svg { width: 20px; height: 20px; stroke-width: 1.5; }
+.cs-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  background: rgba(201,168,76,0.08);
+  padding: 4px 12px;
+  border-radius: 100px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.cs-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--text-1);
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+.cs-sub {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+.cs-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.cs-btn {
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  width: 100%;
+  padding: 15px;
+  background: var(--gold);
+  border: none;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--black);
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+}
+.cs-btn:hover { background: var(--gold-bright); transform: translateY(-2px); box-shadow: 0 12px 36px rgba(201,168,76,0.32); }
+.cs-btn-ghost {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  transition: color 0.2s;
+}
+.cs-btn-ghost:hover { color: var(--text-1); }
