@@ -37,15 +37,15 @@
 <link rel="stylesheet" href="style.css"/>
 <style>
 /* Snippet Styling */
-.case-card { display: flex; flex-direction: column; }
+.case-card { display: flex; flex-direction: column; height: 100%; }
 .case-snippet {
-  margin-top: 20px; padding: 12px 14px;
+  padding: 14px 16px;
   background: #0A0908; border: 1px solid rgba(255,255,255,0.06);
   border-radius: 8px; font-family: 'DM Mono', monospace; font-size: 11px;
   color: var(--text-2); line-height: 1.6;
-  margin-top: auto;
+  margin-top: 24px; flex-shrink: 0;
 }
-.cs-line { display: flex; gap: 6px; margin-bottom: 2px; }
+.cs-line { display: flex; gap: 8px; margin-bottom: 2px; flex-wrap: wrap; }
 .cs-line::before { content: '>'; color: var(--gold-dim); }
 .cs-kw { color: #b8a0f8; } 
 .cs-fn { color: #6ddbb0; } 
@@ -712,6 +712,7 @@ window.addEventListener('DOMContentLoaded', () => { setTimeout(() => { const p=d
 </script>
 </body>
 </html>
+
 
 
 

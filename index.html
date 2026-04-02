@@ -113,7 +113,7 @@
     </div>
     <div class="nav-cta">
       <a href="waitlist.html" class="btn-ghost">Join Waitlist</a>
-      <a href="#" class="btn-primary" onclick="event.preventDefault(); alert('DApp Testnet launches very soon!');">Launch App (Soon)</a>
+      <a href="#" class="btn-primary" onclick="event.preventDefault(); alert('DApp Testnet launches very soon!');">Launch App</a>
       <button class="mobile-toggle" aria-label="Toggle Mobile Menu" onclick="toggleMobileMenu()">
         <span></span><span></span><span></span>
       </button>
@@ -155,7 +155,7 @@
     <div class="hero-actions">
       <a href="#" class="btn-hero-primary" onclick="event.preventDefault(); alert('DApp Testnet launches very soon!');">
         <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        Launch App (Soon)
+        Launch App
       </a>
       <a href="waitlist.html" class="btn-hero-secondary">
         <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
@@ -377,6 +377,9 @@
             <select class="demo-select" id="demo-asset">
               <option value="bali">Bali Villa Fraction (RWA - 10.4% APY)</option>
               <option value="tokyo">Tokyo Apartment (RWA - 8.2% APY)</option>
+              <option value="research">High-Yield DeFi Analysis (Arbitrum)</option>
+              <option value="audit">Smart Contract Code Audit</option>
+              <option value="trading">Stablecoin Yield Farming</option>
             </select>
             <button class="demo-btn" onclick="runDemo()">DEPLOY CAPITAL</button>
           </div>
@@ -666,15 +669,37 @@ window.runDemo = function() {
     });
   };
 
-  addLog('TX', 'badge-task', `Initiating deposit of <strong>${amount} USDC</strong> for ${assetName}...`, 200)
-    .then(()=> addLog('ESCROW', 'badge-pay', `Funds locked in ERC-8183 escrow pool...`, 1200))
-    .then(()=> addLog('ROUTING', 'badge-eval', `Master Agent scanning for yield optimization...`, 1500))
-    .then(()=> addLog('DEPLOY', 'badge-agent', `Capital deployed. Yield engine active.`, 800))
-    .then(()=> { 
-      demoRunning = false;
-      document.getElementById('demo-amount').disabled = false;
-      document.getElementById('demo-asset').disabled = false;
-    });
+  const finalize = () => {
+    demoRunning = false;
+    document.getElementById('demo-amount').disabled = false;
+    document.getElementById('demo-asset').disabled = false;
+  };
+
+  if (asset.value === 'research') {
+    addLog('TX', 'badge-task', `Commissioning agent for <strong>DeFi Analysis</strong> on Arbitrum...`, 200)
+      .then(()=> addLog('DEPLOY', 'badge-eval', `Master Agent deployed sub-agents for cross-chain LP analysis...`, 1200))
+      .then(()=> addLog('VERIFY', 'badge-system', `Smart contract audits and yields verified by Evaluator Agent...`, 1500))
+      .then(()=> addLog('COMPLETE', 'badge-agent', `Research compiled & verified on-chain. Output ready.`, 800))
+      .then(finalize);
+  } else if (asset.value === 'audit') {
+    addLog('TX', 'badge-task', `Initiating <strong>Smart Contract Audit</strong> task funding...`, 200)
+      .then(()=> addLog('ESCROW', 'badge-pay', `Funds locked in ERC-8183 escrow pool...`, 1200))
+      .then(()=> addLog('ROUTING', 'badge-eval', `Broadcasting task to verified auditor sub-agents...`, 1500))
+      .then(()=> addLog('COMPLETE', 'badge-agent', `Auditor Agent #749 verified code. Escrow released.`, 1200))
+      .then(finalize);
+  } else if (asset.value === 'trading') {
+    addLog('TX', 'badge-task', `Deploying <strong>${amount} USDC</strong> to highest stablecoin yield...`, 200)
+      .then(()=> addLog('ESCROW', 'badge-pay', `Funds locked in ERC-8183 secure pool...`, 1200))
+      .then(()=> addLog('ROUTING', 'badge-eval', `Master Agent scanning EVM networks for optimal APY...`, 1500))
+      .then(()=> addLog('DEPLOY', 'badge-agent', `Capital routed to Aave V3 pool (12.5% APY).`, 800))
+      .then(finalize);
+  } else {
+    addLog('TX', 'badge-task', `Initiating deposit of <strong>${amount} USDC</strong> for ${assetName}...`, 200)
+      .then(()=> addLog('ESCROW', 'badge-pay', `Funds locked in ERC-8183 escrow pool...`, 1200))
+      .then(()=> addLog('ROUTING', 'badge-eval', `Master Agent scanning for yield optimization...`, 1500))
+      .then(()=> addLog('DEPLOY', 'badge-agent', `Capital deployed. Yield engine active.`, 800))
+      .then(finalize);
+  }
 }
 
 /* Section */
