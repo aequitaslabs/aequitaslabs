@@ -3,104 +3,368 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>404 Not Found — AequitasLabs</title>
+<title>AequitasLabs - 404 Route Not Found</title>
+<meta name="description" content="Autonomous AI agents execute tasks, verify outputs, and earn on-chain through trustless escrow. Built on Base. ERC-8183 protocol."/>
+<meta name="keywords" content="AI agents, trustless execution, on-chain AI, Base network, ERC-8183, autonomous agents, smart contract escrow, AI infrastructure, Web3 AI"/>
+<meta name="author" content="AequitasLabs"/>
+<meta name="theme-color" content="#07060C"/>
+<meta name="robots" content="noindex, follow"/>
+
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 64 64' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='32' y1='6' x2='32' y2='60' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0%25' stop-color='%23E8D070'/%3E%3Cstop offset='100%25' stop-color='%238E6A18'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='32' fill='%2307060C'/%3E%3Cline x1='32' y1='11' x2='13.5' y2='44' stroke='url(%23g)' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='32' y1='11' x2='50.5' y2='44' stroke='url(%23g)' stroke-width='1.5' stroke-linecap='round'/%3E%3Cline x1='13.5' y1='44' x2='50.5' y2='44' stroke='url(%23g)' stroke-width='1.5' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='11' r='4' fill='url(%23g)'/%3E%3Ccircle cx='13.5' cy='44' r='4' fill='url(%23g)'/%3E%3Ccircle cx='50.5' cy='44' r='4' fill='url(%23g)'/%3E%3C/svg%3E"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+
 <style>
-  :root {
-    --black: #07060C;
-    --gold: #C9A84C;
-    --gold-dim: #9e853e;
-    --rim: rgba(255,255,255,0.08);
-    --text-1: #EDE8DC;
-    --text-3: #7a746a;
-  }
-  ::-webkit-scrollbar { display: none; }
-  body {
-    background: var(--black);
-    color: var(--text-1);
-    font-family: 'DM Sans', sans-serif;
-    margin: 0; padding: 0;
-    display: flex; align-items: center; justify-content: center;
-    height: 100vh; overflow: hidden;
-  }
-  .err-container {
-    text-align: center;
-    z-index: 10;
-  }
-  .err-code {
-    font-family: 'DM Mono', monospace;
-    font-size: 100px;
-    font-weight: 300;
-    color: var(--gold);
-    line-height: 1;
-    margin-bottom: 20px;
-  }
-  .err-msg {
-    font-family: 'DM Mono', monospace;
-    font-size: 14px;
-    color: var(--text-3);
-    margin-bottom: 40px;
-    letter-spacing: 0.05em;
-  }
-  .btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-    padding: 14px 28px; border: 1px solid var(--rim);
-    background: transparent; color: var(--gold);
-    border-radius: 4px; text-decoration: none;
-    font-family: 'DM Mono', monospace; font-size: 12px;
-    text-transform: uppercase; letter-spacing: 0.1em;
-    transition: all 0.2s;
-  }
-  .btn:hover {
-    border-color: var(--gold-dim); background: rgba(201,168,76,0.05);
-    box-shadow: 0 0 16px rgba(201,168,76,0.15);
-  }
-  .btn svg { width: 14px; height: 14px; stroke-width: 1.8; }
-  
-  #canvas-bg { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+/* Specific 404 styles */
+.error-layout {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 5%;
+}
+.error-terminal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px;
+  max-width: 600px;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 40px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  position: relative;
+  overflow: hidden;
+}
+.error-terminal::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.3;
+}
+.terminal-header {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.terminal-dot {
+  width: 12px; height: 12px; border-radius: 50%;
+}
+.error-title {
+  color: #ff4a4a;
+  font-family: 'DM Mono', monospace;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+.error-code {
+  font-family: 'DM Mono', monospace;
+  color: var(--text-2);
+  font-size: 15px;
+  line-height: 1.8;
+}
+.error-code span.cmd { color: var(--gold); }
+.error-code span.val { color: #ff4a4a; font-weight: normal; }
+.error-desc {
+  font-size: 18px;
+  color: var(--text-1);
+  margin-bottom: 32px;
+}
+.network-status {
+  position: fixed;
+  bottom: 24px;
+  left: 0; right: 0;
+  text-align: center;
+  color: var(--gold);
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+}
 </style>
 </head>
 <body>
+<!-- Section -->
+<div id="preloader">
+  <div class="prel-content">
+    <div class="prel-logo">AequitasLabs</div>
+    <div class="prel-text">Establishing secure connection...</div>
+  </div>
+</div>
+<!-- Section -->
+<div id="cursor"></div>
+
 <canvas id="canvas-bg"></canvas>
 
-<div class="err-container">
-  <div class="err-code">404</div>
-  <div class="err-msg">Protocol endpoint not found. Execution halted.</div>
-        <a href="/" class="btn">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-    Return to Protocol
-  </a>
+<!-- Section -->
+<nav id="navbar">
+  <div class="nav-logo">
+    <div class="logo-mark">
+      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="navGold" x1="32" y1="6" x2="32" y2="60" gradientUnits="userSpaceOnUse">
+            <stop offset="0%"   stop-color="#E8D070"/>
+            <stop offset="50%"  stop-color="#C9A84C"/>
+            <stop offset="100%" stop-color="#8E6A18"/>
+          </linearGradient>
+          <filter id="navNodeGlow" x="-80%" y="-80%" width="260%" height="260%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="1.4" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <!-- Section -->
+        <circle cx="32" cy="32" r="26.5" stroke="#C9A84C" stroke-width="0.55" opacity="0.30"/>
+        <!-- Section -->
+        <circle cx="32" cy="32" r="28.5" stroke="#C9A84C" stroke-width="0.4" stroke-dasharray="1.5 3.5" opacity="0.16"/>
+        <!-- Section -->
+        <line x1="32"   y1="3.5"  x2="32"   y2="8.5"  stroke="#C9A84C" stroke-width="0.9" stroke-linecap="round" opacity="0.45"/>
+        <line x1="56.2" y1="45.5" x2="51.8" y2="43.0" stroke="#C9A84C" stroke-width="0.9" stroke-linecap="round" opacity="0.45"/>
+        <line x1="7.8"  y1="45.5" x2="12.2" y2="43.0" stroke="#C9A84C" stroke-width="0.9" stroke-linecap="round" opacity="0.45"/>
+        <!-- Section -->
+        <line x1="32"   y1="11" x2="13.5" y2="44" stroke="url(#navGold)" stroke-width="1.15" stroke-linecap="round" filter="url(#navNodeGlow)"/>
+        <line x1="32"   y1="11" x2="50.5" y2="44" stroke="url(#navGold)" stroke-width="1.15" stroke-linecap="round" filter="url(#navNodeGlow)"/>
+        <line x1="13.5" y1="44" x2="50.5" y2="44" stroke="url(#navGold)" stroke-width="1.15" stroke-linecap="round" filter="url(#navNodeGlow)"/>
+        <!-- Section -->
+        <line x1="23.5" y1="27" x2="40.5" y2="27" stroke="url(#navGold)" stroke-width="0.90" stroke-linecap="round"/>
+        <!-- Section -->
+        <circle cx="32"   cy="11" r="3.8" fill="url(#navGold)" filter="url(#navNodeGlow)"/>
+        <circle cx="13.5" cy="44" r="3.8" fill="url(#navGold)" filter="url(#navNodeGlow)"/>
+        <circle cx="50.5" cy="44" r="3.8" fill="url(#navGold)" filter="url(#navNodeGlow)"/>
+        <!-- Section -->
+        <circle cx="23.5" cy="27" r="2.2" fill="url(#navGold)"/>
+        <circle cx="40.5" cy="27" r="2.2" fill="url(#navGold)"/>
+      </svg>
+    </div>
+    <div class="logo-wordmark">
+      <div class="logo-name">Aequitas</div>
+      <div class="logo-rule"></div>
+      <div class="logo-sub">Labs</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="protocol-design.html">Protocol Design</a>
+    <a href="applications.html">Applications</a>
+    <a href="docs.html" onclick="toggleMobileMenu()">Docs</a>
+    <a href="whitepaper.html" onclick="toggleMobileMenu()">Whitepaper</a>
+    <a href="faq.html">FAQ</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <div class="nav-status">
+      <div class="nav-status-dot hidden"></div>
+    </div>
+    <div class="nav-cta">
+      <a href="waitlist.html" class="btn-primary">Join Waitlist</a>
+      <button class="mobile-toggle" aria-label="Toggle Mobile Menu" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Section -->
+<div class="mobile-overlay" id="mobile-menu">
+  <div class="mobile-overlay-links">
+    <a href="/" onclick="toggleMobileMenu()">Home</a>
+    <a href="protocol-design.html" onclick="toggleMobileMenu()">Protocol Design</a>
+    <a href="applications.html" onclick="toggleMobileMenu()">Applications</a>
+    <a href="docs.html" onclick="toggleMobileMenu()">Docs</a>
+    <a href="whitepaper.html" onclick="toggleMobileMenu()">Whitepaper</a>
+    <a href="faq.html" onclick="toggleMobileMenu()">FAQ</a>
+  </div>
 </div>
 
+<!-- Section -->
+<section style="position:relative; z-index:2;">
+  <div class="container">
+    <div class="error-layout">
+      
+      <div class="error-terminal reveal">
+        <div class="terminal-header">
+          <div class="terminal-dot bg-red-500 opacity-80"></div>
+          <div class="terminal-dot" style="background: rgba(255,255,255,0.2)"></div>
+          <div class="terminal-dot" style="background: rgba(255,255,255,0.2)"></div>
+        </div>
+        <div class="error-title">ERROR 404 · ROUTE NOT FOUND</div>
+        <div class="error-code">
+          <div>&gt; <span class="cmd">resolve_route</span>("/<span id="requested-path">unknown</span>")</div>
+          <div>→ STATUS: <span class="val">NOT_FOUND</span></div>
+          <div>→ FALLBACK: null</div>
+          <div>→ ACTION: return to known state<span class="animate-pulse">_</span></div>
+        </div>
+      </div>
+
+      <div class="error-desc reveal" data-delay="100">This page doesn't exist on-chain.</div>
+      
+      <div class="cta-actions reveal" data-delay="200" style="justify-content: center;">
+        <a href="/" class="btn-hero-primary">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"/></svg>
+          Return Home
+        </a>
+        <a href="docs.html" class="btn-hero-secondary">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          View Docs
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="network-status" style="z-index: 1;">
+  BASE NETWORK: OPERATIONAL
+</div>
+
+<!-- Section -->
+<button class="back-to-top" id="btt" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="Back to Top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
 <script>
+/* Requested Path Script */
+document.addEventListener("DOMContentLoaded", () => {
+    const path = window.location.pathname;
+    const dp = document.getElementById("requested-path");
+    if(dp && path && path !== "/") {
+        dp.textContent = path.substring(1);
+    }
+});
+
+/* Canvas Background */
+(function(){
   const cv=document.getElementById('canvas-bg');if(!cv)return;const ctx=cv.getContext('2d');
-  let W,H;const G='rgba(201,168,76,';
+  let W,H,frame=0;const G='rgba(201,168,76,';
   function resize(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight;}
   resize();window.addEventListener('resize',resize);
-  const N=30;
+  const N=Math.min(55,Math.floor(window.innerWidth/22));
   const pts=Array.from({length:N},()=>({
     x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,
-    vx:(Math.random()-0.5)*0.2,vy:(Math.random()-0.5)*0.2,
-    r:Math.random()*1+0.3,a:Math.random()*0.4+0.05
+    vx:(Math.random()-0.5)*0.22,vy:(Math.random()-0.5)*0.22,
+    r:Math.random()*1.1+0.3,a:Math.random()*0.4+0.06
   }));
   function draw(){
     ctx.clearRect(0,0,W,H);
+    const hex=88;ctx.strokeStyle='rgba(201,168,76,0.018)';ctx.lineWidth=0.4;
+    for(let r=-1;r<H/hex+2;r++){for(let c=-1;c<W/(hex*0.866)+2;c++){
+      const cx=c*hex*0.866+(r%2===0 ? 0 : hex*0.433),cy=r*hex*0.75;
+      ctx.beginPath();for(let k=0;k<6;k++){
+        const a=(Math.PI/3)*k-Math.PI/6;
+        const px=cx+(hex*0.5)*Math.cos(a),py=cy+(hex*0.5)*Math.sin(a);
+        k===0 ? ctx.moveTo(px,py) : ctx.lineTo(px,py);}ctx.closePath();ctx.stroke();}}
+    const L=130;
     pts.forEach(p=>{
       p.x+=p.vx;p.y+=p.vy;
       if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
       ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      ctx.fillStyle=G+p.a+')';ctx.fill();
-    });
-    requestAnimationFrame(draw);
+      ctx.fillStyle=G+p.a+')';ctx.fill();});
+    for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){
+      const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);
+      if(d<L){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);
+        ctx.strokeStyle=G+((1-d/L)*0.06)+')';ctx.lineWidth=0.5;ctx.stroke();}}
+    frame++;requestAnimationFrame(draw);}draw();
+})();
+
+/* Section */
+window.addEventListener('scroll',()=>{
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50);});
+
+/* Section */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const el=e.target,delay=parseInt(el.dataset.delay||0);
+    setTimeout(()=>el.classList.add('visible'),delay);
+    io.unobserve(el);});},{threshold:0.10});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* Section */
+function toggleMobileMenu(){
+  const menu = document.getElementById('mobile-menu');
+  const btn = document.querySelector('.mobile-toggle');
+  if(!menu || !btn) return;
+  const isOpen = menu.classList.toggle('open');
+  btn.classList.toggle('open', isOpen);
+  btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  document.body.classList.toggle('menu-open', isOpen);
+}
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 960) {
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.querySelector('.mobile-toggle');
+    if (menu) menu.classList.remove('open');
+    if (btn) {
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+    document.body.classList.remove('menu-open');
   }
-  draw();
+});
+
+/* Section */
+window.addEventListener('DOMContentLoaded', () => { 
+  const p = document.getElementById('preloader');
+  if(p) { p.style.opacity = 0; setTimeout(() => p.remove(), 600); }
+});
+
+/* Section */
+(function(){
+  // 1. Custom Cursor
+  if (document.getElementById('cursor')) {
+    const cursor = document.getElementById('cursor');
+    const hideCursor = () => {
+      cursor.classList.remove('visible');
+      cursor.classList.remove('hovered');
+    };
+    const showCursor = () => cursor.classList.add('visible');
+    document.addEventListener('mouseenter', showCursor);
+    document.addEventListener('mousemove', e => {
+      if (e.clientY <= 0 || e.clientX <= 0 || e.clientX >= window.innerWidth || e.clientY >= window.innerHeight) {
+        hideCursor();
+        return;
+      }
+      showCursor();
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+    document.addEventListener('mouseleave', hideCursor);
+    document.addEventListener('mouseout', e => {
+      if (!e.relatedTarget) hideCursor();
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) hideCursor();
+    });
+    window.addEventListener('blur', hideCursor);
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
+    });
+  }
+
+  // 2. Magnetic Buttons
+  document.querySelectorAll('.btn-hero-primary, .btn-hero-secondary').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      btn.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = 'translate(0px, 0px)';
+    });
+  });
+
+})();
+
 </script>
 </body>
 </html>
-
-
-
-
-
-
