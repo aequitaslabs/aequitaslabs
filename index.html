@@ -113,7 +113,7 @@
     </div>
     <div class="nav-cta">
       <a href="waitlist.html" class="btn-ghost">Join Waitlist</a>
-      <a href="#" class="btn-primary" onclick="event.preventDefault(); alert('DApp Testnet launches very soon!');">Launch App</a>
+      <a href="#" class="btn-primary" onclick="event.preventDefault(); if(document.getElementById('c-toast'))return; let t=document.createElement('div'); t.id='c-toast'; t.className='custom-toast'; t.innerText='DApp Testnet launches very soon!'; document.body.appendChild(t); setTimeout(()=>t.remove(), 2900);">Launch App</a>
       <button class="mobile-toggle" aria-label="Toggle Mobile Menu" onclick="toggleMobileMenu()">
         <span></span><span></span><span></span>
       </button>
@@ -153,7 +153,7 @@
     <p class="hero-sub">Deposit USDC. Your AI agent allocates into tokenized real estate on Base, hires specialized agents via ERC-8183, and distributes real yield straight to your wallet.</p>
 
     <div class="hero-actions">
-      <a href="#" class="btn-hero-primary" onclick="event.preventDefault(); alert('DApp Testnet launches very soon!');">
+      <a href="#" class="btn-hero-primary" onclick="event.preventDefault(); if(document.getElementById('c-toast'))return; let t=document.createElement('div'); t.id='c-toast'; t.className='custom-toast'; t.innerText='DApp Testnet launches very soon!'; document.body.appendChild(t); setTimeout(()=>t.remove(), 2900);">
         <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         Launch App
       </a>
@@ -937,6 +937,7 @@ window.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
+
 
 
 
