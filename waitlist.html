@@ -631,8 +631,8 @@ function showSuccess(){
   });
 
   // Countdown Logic
-  // Menggunakan fixed date: Sampai 4 April 2026, 23:59 waktu US (Eastern Time / UTC-4)
-  const endTime = new Date('2026-04-04T23:59:59-04:00').getTime();
+  // Menggunakan fixed date: Tepat 48 jam dari hari kemarin (sekitar 13:00 UTC)
+  const endTime = new Date('2026-04-04T13:00:00Z').getTime();
   
   function updateCD() {
     const now = Date.now();
