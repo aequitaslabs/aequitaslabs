@@ -1,102 +1,82 @@
-﻿# AequitasLabs
+# AequitasLabs
 
 **Trustless AI Execution Layer**
 
-AequitasLabs is a premium multi-page protocol website for a trustless AI execution layer centered on escrow, verification, and on-chain settlement.
+AequitasLabs provides a protocol for a trustless AI execution layer centered on escrow, verification, and on-chain settlement. This repository contains the complete frontend architecture for the protocol, spanning both the high-fidelity presentation layers and the interactive web3 application (DApp) deployed on the Base Sepolia testnet.
 
-This repository currently focuses on the presentation layer:
+---
 
-- landing page storytelling
-- protocol architecture pages
-- ecosystem and roadmap pages
-- FAQ and developer-facing documentation
-- waitlist onboarding flow
+## 🏗️ Repository Architecture
 
-## What The Site Communicates
+This repository is structured into two main environments:
 
-The product thesis is straightforward:
+### 1. Protocol Website (Root Directory)
+The static presentation and storytelling layer designed with a premium, crypto-native aesthetic.
+- **`index.html`**: Main landing page introducing the protocol.
+- **`protocol-design.html`** & **`whitepaper.html`**: Deep dives into architecture and tokenomics.
+- **`docs.html`**: Developer-facing documentation and integration guides.
+- **`waitlist.html`**: Onboarding flow for testnet access (Formspree integrated).
 
-1. A client defines a task and escrows funds.
-2. An autonomous agent claims and executes the work.
-3. Verifier agents evaluate the result against explicit criteria.
-4. Settlement happens only after successful verification.
+### 2. DApp (`/dapp` Directory)
+The functional Web3 application built with Next.js, allowing users to interact directly with the AequitasLabs protocol on the Base Sepolia network.
+- Built on React/Next.js
+- Tailwind CSS with fully customized AequitasLabs design tokens
+- Web3 wallet interaction for Agent deployment and Escrow funding
 
-The frontend is designed to communicate that system clearly across desktop and mobile.
+---
 
-## Project Status
+## ⚡ Core Protocol Flow
 
-- Developer preview
-- Static frontend
-- Multi-page architecture
-- Not presented as production-ready mainnet software
-- Waitlist requires a real Formspree endpoint before public use
+The product thesis is straightforward and trustless:
+1. **Task Definition**: A client defines a task and escrows funds via smart contracts.
+2. **Execution**: An autonomous agent claims and executes the work off-chain.
+3. **Verification**: Specialized verifier agents evaluate the result against explicitly defined criteria.
+4. **Settlement**: Funds are settled on-chain only after proof of successful verification.
 
-## Repository Structure
+---
 
-```text
-aequitaslabs-new/
-|-- index.html
-|-- protocol-design
-|-- applications
-|-- docs
-|-- whitepaper
-|-- faq
-|-- waitlist
-|-- 404
-|-- style.css
-|-- unmoji.ps1
-|-- LICENSE
-`-- README.md
-```
+## 🚀 Quick Start & Development
 
-## Design Direction
-
-The site intentionally leans into a premium protocol aesthetic:
-
-- dark editorial UI
-- gold-accented system styling
-- expressive typography
-- atmospheric backgrounds and motion
-- mobile-specific layout adjustments instead of simple desktop scaling
-
-## Content Principles
-
-To keep the site credible, the copy should follow a few rules:
-
-- prefer precise claims over hype
-- avoid implying completed audits unless they are actually published
-- treat animated demos and feeds as previews unless backed by real network data
-- keep roadmap, FAQ, docs, and homepage language aligned
-
-## Local Preview
-
-You can preview the site with any static server.
-
-Example:
-
-```powershell
+### Running the Protocol Website (Static)
+You can serve the static presentation layer using any simple local server from the root directory.
+```bash
+# Using Python
 python -m http.server 8080
+
+# Using Node.js
+npx serve .
 ```
+Then navigate to `http://localhost:8080`.
 
-Then open the local URL in a browser instead of double-clicking HTML files directly.
+### Running the DApp (Next.js)
+To test the interactive DApp interface:
+```bash
+cd dapp
+npm install
+npm run dev
+```
+The DApp will be available at `http://localhost:3000`.
 
-## Waitlist Setup
+---
 
-Before using the waitlist publicly:
+## 🎨 Design System & Principles
 
-1. Open [`waitlist`](./waitlist)
-2. Replace `https://formspree.io/f/YOUR_FORM_ID` with your real Formspree endpoint
-3. Test both success and failure flows
+AequitasLabs leans into a high-conviction, premium protocol aesthetic:
+- **Dark Editorial UI**: Deep blacks (`#07060C`) combined with sleek surface tokens.
+- **Gold Accents**: Semantic gold tones for actionable elements and highlighting.
+- **Atmospheric Motion**: Micro-animations, canvas-based ambient effects, and custom cursors for a living interface.
+- **Precision Copy**: Prioritizing technical accuracy, clear execution rules, and rigorous language over hype.
 
-Without that configuration, the waitlist should be treated as UI only.
+---
 
-## Recommended Next Steps
+## 🌐 Testnet & Setup Notes
 
-- Replace any mock metrics with verified public data or remove them entirely
-- Add deployment notes if the project gets a formal release workflow
-- Create a lightweight QA checklist for desktop, tablet, and mobile
-- Document brand assets and share-image generation if the site continues evolving
+- **Current Network**: Base Sepolia Testnet
+- **Status**: Developer Preview
+- **Waitlist Settings**: The Waitlist (`waitlist.html`) uses Formspree for lead capture. Ensure your endpoint id `https://formspree.io/f/xjgpoylo` is active and receiving submissions correctly.
 
-## License
+---
 
-Released under the [MIT License](./LICENSE).
+## 📄 License
+
+This project is released under the [MIT License](./LICENSE).
