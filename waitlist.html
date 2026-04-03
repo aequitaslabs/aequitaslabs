@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
@@ -631,11 +631,8 @@ function showSuccess(){
   });
 
   // Countdown Logic
-  let endTime = localStorage.getItem('waitlist_deadline');
-  if (!endTime) {
-    endTime = Date.now() + 48 * 3600 * 1000;
-    localStorage.setItem('waitlist_deadline', endTime);
-  }
+  // Menggunakan fixed date: Sampai 4 April 2026, 23:59 waktu US (Eastern Time / UTC-4)
+  const endTime = new Date('2026-04-04T23:59:59-04:00').getTime();
   
   function updateCD() {
     const now = Date.now();
