@@ -19,12 +19,12 @@
   --ink:        #0F0E16;
   --surface:    #141320;
   --rim:        rgba(255,255,255,0.07);
-  --gold:       #C9A84C;
+  --gold:       #9945FF;
   --gold-bright:#d4b560;
   --gold-dim:   #9a7e35;
-  --gold-glow:  rgba(201,168,76,0.22);
-  --gold-soft:  rgba(201,168,76,0.08);
-  --gold-pale:  rgba(201,168,76,0.04);
+  --gold-glow:  rgba(153,69,255,0.22);
+  --gold-soft:  rgba(153,69,255,0.08);
+  --gold-pale:  rgba(153,69,255,0.04);
   --text-1:     #EDE8DC;
   --text-2:     #9A9080;
   --text-3:     #7a746a;
@@ -104,7 +104,7 @@ nav{
 .glow-1{
   position:fixed;width:700px;height:700px;pointer-events:none;
   top:50%;left:50%;
-  background:radial-gradient(ellipse at center,rgba(201,168,76,0.09) 0%,transparent 65%);
+  background:radial-gradient(ellipse at center,rgba(153,69,255,0.09) 0%,transparent 65%);
   transform:translate(-50%,-54%);
   animation:glowPulse 8s ease-in-out infinite;
 }
@@ -133,7 +133,7 @@ nav{
 .card::before{
   content:'';position:absolute;
   top:0;left:20%;right:20%;height:1px;
-  background:linear-gradient(to right,transparent,rgba(201,168,76,0.4),transparent);
+  background:linear-gradient(to right,transparent,rgba(153,69,255,0.4),transparent);
 }
 @keyframes fadeUp{
   from{opacity:0;transform:translateY(28px);}
@@ -233,7 +233,7 @@ nav{
 }
 .form-input:focus{
   border-color:var(--gold-dim);
-  box-shadow:0 0 0 3px rgba(201,168,76,0.08);
+  box-shadow:0 0 0 3px rgba(153,69,255,0.08);
 }
 .form-input::placeholder{color:var(--text-4);}
 
@@ -271,7 +271,7 @@ nav{
 .submit-btn:hover{
   background:var(--gold-bright);
   transform:translateY(-2px);
-  box-shadow:0 12px 36px rgba(201,168,76,0.32);
+  box-shadow:0 12px 36px rgba(153,69,255,0.32);
 }
 .submit-btn:disabled{opacity:0.6;cursor:not-allowed;transform:none;box-shadow:none;}
 
@@ -386,12 +386,12 @@ nav{
       <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="ng" x1="32" y1="6" x2="32" y2="60" gradientUnits="userSpaceOnUse">
-            <stop offset="0%"  stop-color="#E8D070"/>
-            <stop offset="50%" stop-color="#C9A84C"/>
-            <stop offset="100%" stop-color="#8E6A18"/>
+            <stop offset="0%"  stop-color="#14F195"/>
+            <stop offset="50%" stop-color="#9945FF"/>
+            <stop offset="100%" stop-color="#6a2aba"/>
           </linearGradient>
         </defs>
-        <circle cx="32" cy="32" r="26.5" stroke="#C9A84C" stroke-width="0.55" opacity="0.30"/>
+        <circle cx="32" cy="32" r="26.5" stroke="#9945FF" stroke-width="0.55" opacity="0.30"/>
         <line x1="32" y1="11" x2="13.5" y2="44" stroke="url(#ng)" stroke-width="1.15" stroke-linecap="round"/>
         <line x1="32" y1="11" x2="50.5" y2="44" stroke="url(#ng)" stroke-width="1.15" stroke-linecap="round"/>
         <line x1="13.5" y1="44" x2="50.5" y2="44" stroke="url(#ng)" stroke-width="1.15" stroke-linecap="round"/>
@@ -534,7 +534,7 @@ nav{
 /* Section */
 (function(){
   const cv=document.getElementById('canvas-bg');if(!cv)return;const ctx=cv.getContext('2d');
-  let W,H,frame=0;const G='rgba(201,168,76,';
+  let W,H,frame=0;const G='rgba(153,69,255,';
   function resize(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight;}
   resize();window.addEventListener('resize',resize);
   const N=Math.min(40,Math.floor(window.innerWidth/28));
@@ -657,6 +657,7 @@ function showSuccess(){
 </script>
 </body>
 </html>
+
 
 
 
