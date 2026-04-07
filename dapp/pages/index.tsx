@@ -1,4 +1,4 @@
-import Head from 'next/head';
+﻿import Head from 'next/head';
 import Wallet from '../components/Wallet';
 import Deposit from '../components/Deposit';
 
@@ -25,9 +25,7 @@ export default function Home() {
       
       <header className="w-full flex justify-between items-center px-6 sm:px-12 py-8 absolute top-0 left-0 right-0 z-50">
         <a href="https://aequitaslabs.xyz" className="flex items-center gap-3 text-white transition-opacity hover:opacity-80" style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '26px', letterSpacing: '-0.02em' }}>
-          <div style={{ width: '24px', height: '24px', border: '1px solid #C9A84C', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <div style={{ width: '8px', height: '8px', background: '#C9A84C', borderRadius: '50%', boxShadow: '0 0 8px rgba(201,168,76,0.5)' }}></div>
-          </div>
+          <img src="https://aequitaslabs.xyz/assets/aequitas-pfp-400x400.png" alt="AequitasLabs Logo" style={{ width: '24px', height: '24px', objectFit: 'contain' }} />
           AequitasLabs
         </a>
         <Wallet />

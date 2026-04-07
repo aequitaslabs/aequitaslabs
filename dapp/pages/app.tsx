@@ -1,4 +1,4 @@
-import Head from 'next/head';
+﻿import Head from 'next/head';
 import Wallet from '../components/Wallet';
 import Deposit from '../components/Deposit';
 
