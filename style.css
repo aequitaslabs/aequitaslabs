@@ -663,12 +663,12 @@ footer{position:relative;z-index:2;padding:52px 64px;border-top:1px solid var(--
 .prim-index::after{content:'';flex:1;height:1px;background:rgba(0,82,255,0.22);}
 .prim-icon-wrap{
   width:48px;height:48px;border:1px solid var(--rim);border-radius:11px;
-  background:var(--base-blue);display:flex;align-items:center;justify-content:center;
+  background:rgba(0,82,255,0.08);display:flex;align-items:center;justify-content:center;
   color:var(--base-blue);margin-bottom:24px;transition:all 0.35s;
 }
 .prim-icon-wrap svg{width:22px;height:22px;stroke-width:1.4;}
 .prim-card:hover .prim-icon-wrap{
-  background:var(--base-blue);border-color:var(--base-blue);transform:scale(1.06);
+  background:var(--base-blue);border-color:var(--base-blue);color:var(--text-1);transform:scale(1.06);
   box-shadow:0 0 20px rgba(0,82,255,0.22);}
 .prim-name{
   font-family:'Coinbase Mono', 'JetBrains Mono', monospace;font-size:15px;font-weight:400;
