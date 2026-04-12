@@ -7,20 +7,20 @@ export default function Home() {
     <div className="flex-1 flex flex-col pt-32 pb-16 items-center bg-[radial-gradient(ellipse_at_top_right,rgba(201,168,76,0.06),transparent_50%)] relative min-h-screen">
       <Head>
         <title>Aequitas Labs | Autonomous Capital on Base</title>
-        <meta name="description" content="Deposit USDC. Let autonomous AI agents allocate capital into tokenized real estate on Base, hire specialized agents via Aequitas Agent Kit (AQL-1), and distribute real yield."/>
+        <meta name="description" content="Trustless AI. Verified Execution. Onchain Intelligence."/>
         
         <meta property="og:type" content="website"/>
         <meta property="og:url" content="https://app.base.xyz/"/>
         <meta property="og:title" content="Aequitas Labs" />
-        <meta property="og:description" content="Autonomous capital deployed by AI agents. Deposit USDC. Earn real yield. All onchain." />
-        <meta property="og:image" content="https://base.xyz/assets/base-base-banner.png"/>
+        <meta property="og:description" content="Trustless AI. Verified Execution. Onchain Intelligence." />
+        <meta property="og:image" content="https://www.aequitaslabs.xyz/assets/aequitaslabs-banner-1500x500.png?v=2"/>
         <meta property="og:site_name" content="Aequitas Labs" />
 
         <meta name="twitter:card" content="summary_large_image"/>
-        <meta name="twitter:site" content="@base"/>
+        <meta name="twitter:site" content="@AequitasLabs"/>
         <meta name="twitter:title" content="Base | Terminal"/>
-        <meta name="twitter:description" content="Deposit USDC. Let autonomous AI agents allocate capital into tokenized real estate on Base, hire specialized agents via Aequitas Agent Kit (AQL-1), and distribute real yield."/>
-        <meta name="twitter:image" content="https://base.xyz/assets/base-base-banner.png"/>
+        <meta name="twitter:description" content="Trustless AI. Verified Execution. Onchain Intelligence."/>
+        <meta name="twitter:image" content="https://www.aequitaslabs.xyz/assets/aequitaslabs-banner-1500x500.png?v=2"/>
       </Head>
       
       <header className="w-full flex justify-between items-center px-6 sm:px-12 py-8 absolute top-0 left-0 right-0 z-50">
