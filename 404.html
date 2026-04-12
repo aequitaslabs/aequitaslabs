@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Base | Autonomous Capital on Solana</title>
-<meta name="description" content="Deposit USDC. Let autonomous AI agents allocate capital into tokenized real estate on Solana, hire specialized agents via Solana Agent Kit (SAK-1), and distribute real yield."/>
+<title>Base | Autonomous Capital on Base</title>
+<meta name="description" content="Deposit USDC. Let autonomous AI agents allocate capital into tokenized real estate on Base, hire specialized agents via Base Agent Kit (BAK-1), and distribute real yield."/>
 <meta name="keywords" content="AI agents, trustless execution, on-chain AI, Base network, ERC-8183, autonomous agents, smart contract escrow, AI infrastructure, Web3 AI"/>
 <meta name="author" content="Base"/>
 <meta name="theme-color" content="#07060C"/>
@@ -60,14 +60,14 @@
 }
 .error-title {
   color: #ff4a4a;
-  font-family: 'DM Mono', monospace;
+  font-family: 'Coinbase Mono', monospace;
   font-size: 14px;
   letter-spacing: 0.1em;
   font-weight: 400;
   margin-bottom: 24px;
 }
 .error-code {
-  font-family: 'DM Mono', monospace;
+  font-family: 'Coinbase Mono', monospace;
   color: var(--text-2);
   font-size: 15px;
   line-height: 1.8;
@@ -85,7 +85,7 @@
   left: 0; right: 0;
   text-align: center;
   color: var(--gold);
-  font-family: 'DM Mono', monospace;
+  font-family: 'Coinbase Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.1em;
   opacity: 0.6;
@@ -205,7 +205,7 @@ document.addEventListener("DOMContentLoaded", () => {
 /* Canvas Background */
 (function(){
   const cv=document.getElementById('canvas-bg');if(!cv)return;const ctx=cv.getContext('2d');
-  let W,H,frame=0;const G='rgba(153,69,255,';
+  let W,H,frame=0;const G='rgba(0,82,255,';
   function resize(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight;}
   resize();window.addEventListener('resize',resize);
   const N=Math.min(55,Math.floor(window.innerWidth/22));
@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }));
   function draw(){
     ctx.clearRect(0,0,W,H);
-    const hex=88;ctx.strokeStyle='rgba(153,69,255,0.018)';ctx.lineWidth=0.4;
+    const hex=88;ctx.strokeStyle='rgba(0,82,255,0.018)';ctx.lineWidth=0.4;
     for(let r=-1;r<H/hex+2;r++){for(let c=-1;c<W/(hex*0.866)+2;c++){
       const cx=c*hex*0.866+(r%2===0 ? 0 : hex*0.433),cy=r*hex*0.75;
       ctx.beginPath();for(let k=0;k<6;k++){

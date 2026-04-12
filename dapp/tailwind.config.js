@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss').Config} */
+﻿/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -18,8 +18,8 @@ module.exports = {
       },
       fontFamily: {
         sans: ['"DM Sans"', 'sans-serif'],
-        mono: ['"DM Mono"', 'monospace'],
-        serif: ['"Cormorant Garamond"', 'serif'],
+        mono: ['"Coinbase Mono"', 'monospace'],
+        serif: ['"Coinbase Display"', 'serif'],
       }
     },
   },

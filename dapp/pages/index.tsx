@@ -6,25 +6,25 @@ export default function Home() {
   return (
     <div className="flex-1 flex flex-col pt-32 pb-16 items-center bg-[radial-gradient(ellipse_at_top_right,rgba(201,168,76,0.06),transparent_50%)] relative min-h-screen">
       <Head>
-        <title>Base | Autonomous Capital on Solana</title>
-        <meta name="description" content="Deposit USDC. Let autonomous AI agents allocate capital into tokenized real estate on Solana, hire specialized agents via Solana Agent Kit (SAK-1), and distribute real yield."/>
+        <title>Base | Autonomous Capital on Base</title>
+        <meta name="description" content="Deposit USDC. Let autonomous AI agents allocate capital into tokenized real estate on Base, hire specialized agents via Base Agent Kit (BAK-1), and distribute real yield."/>
         
         <meta property="og:type" content="website"/>
         <meta property="og:url" content="https://app.base.xyz/"/>
-        <meta property="og:title" content="Base | Autonomous Capital on Solana"/>
-        <meta property="og:description" content="Deposit USDC. Let autonomous AI agents allocate capital into tokenized real estate on Solana, hire specialized agents via Solana Agent Kit (SAK-1), and distribute real yield."/>
-        <meta property="og:image" content="https://base.xyz/assets/base-solana-banner.png"/>
-        <meta property="og:site_name" content="Base"/>
+        <meta property="og:title" content="Base" />
+        <meta property="og:description" content="Autonomous capital deployed by AI agents. Deposit USDC. Earn real yield. All onchain." />
+        <meta property="og:image" content="https://base.xyz/assets/base-base-banner.png"/>
+        <meta property="og:site_name" content="Base" />
 
         <meta name="twitter:card" content="summary_large_image"/>
         <meta name="twitter:site" content="@base"/>
         <meta name="twitter:title" content="Base | Terminal"/>
-        <meta name="twitter:description" content="Deposit USDC. Let autonomous AI agents allocate capital into tokenized real estate on Solana, hire specialized agents via Solana Agent Kit (SAK-1), and distribute real yield."/>
-        <meta name="twitter:image" content="https://base.xyz/assets/base-solana-banner.png"/>
+        <meta name="twitter:description" content="Deposit USDC. Let autonomous AI agents allocate capital into tokenized real estate on Base, hire specialized agents via Base Agent Kit (BAK-1), and distribute real yield."/>
+        <meta name="twitter:image" content="https://base.xyz/assets/base-base-banner.png"/>
       </Head>
       
       <header className="w-full flex justify-between items-center px-6 sm:px-12 py-8 absolute top-0 left-0 right-0 z-50">
-        <a href="https://base.xyz" className="flex items-center gap-3 text-white transition-opacity hover:opacity-80" style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '26px', letterSpacing: '-0.02em' }}>
+        <a href="https://base.xyz" className="flex items-center gap-3 text-white transition-opacity hover:opacity-80" style={{ fontFamily: '"Coinbase Display", serif', fontSize: '26px', letterSpacing: '-0.02em' }}>
           
           Base
         </a>

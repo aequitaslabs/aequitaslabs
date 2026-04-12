@@ -1,50 +1,50 @@
-const fs = require('fs');
+﻿const fs = require('fs');
 
 const files = [
-    "c:\\Users\\perpl\\aequitaslabs-new\\docs.html",
-    "c:\\Users\\perpl\\aequitaslabs-new\\whitepaper.html"
+    "c:\\Users\\perpl\\base-new\\docs.html",
+    "c:\\Users\\perpl\\base-new\\whitepaper.html"
 ];
 
 const exactReplacements = [
-    ["Solana Agent Kit (SAK-1)", "Base Agent Kit (BAK-1)"],
-    ["SAK-1", "BAK-1"],
-    ["Solana Programs", "Base Smart Contracts"],
-    ["Solana Program", "Base Smart Contract"],
-    ["Solana Network", "Base Network"],
-    ["Solana Testnet", "Base Sepolia Testnet"],
-    ["Solana L1", "Base L2"],
-    ["Built on Solana", "Built on Base"],
-    ["on Solana", "on Base"],
-    ["via Solana", "via Base"],
-    ["network: solana", "network: base"],
-    ["protocol: Solana Agent Kit (SAK-1)", "protocol: Base Agent Kit (BAK-1)"],
-    ["protocol:    Solana Agent Kit (SAK-1)", "protocol: Base Agent Kit (BAK-1)"],
-    ["network:     solana", "network:  base"],
-    ["environment: testnet", "environment: base-sepolia"],
+    ["Base Agent Kit (BAK-1)", "Base Agent Kit (BAK-1)"],
+    ["BAK-1", "BAK-1"],
+    ["Base Smart Contracts", "Base Smart Contracts"],
+    ["Base Smart Contract", "Base Smart Contract"],
+    ["Base Network", "Base Network"],
+    ["Base Sepolia Testnet", "Base Sepolia Testnet"],
+    ["Base L2", "Base L2"],
+    ["Built on Base", "Built on Base"],
+    ["on Base", "on Base"],
+    ["via Base", "via Base"],
+    ["network: base", "network: base"],
+    ["protocol: Base Agent Kit (BAK-1)", "protocol: Base Agent Kit (BAK-1)"],
+    ["protocol:    Base Agent Kit (BAK-1)", "protocol: Base Agent Kit (BAK-1)"],
+    ["network:     base", "network:  base"],
+    ["environment: base-sepolia", "environment: base-sepolia"],
     
     // Currency
-    ["0.01 SOL", "0.001 ETH"],
-    ["0.5 SOL", "0.005 ETH"],
-    ["0.05 SOL", "0.0005 ETH"],
-    ["SOL to lock", "ETH to lock"],
+    ["0.001 ETH", "0.001 ETH"],
+    ["0.005 ETH", "0.005 ETH"],
+    ["0.0005 ETH", "0.0005 ETH"],
+    ["ETH to lock", "ETH to lock"],
     
     // Address Format
-    ["base58-encoded Solana address. Used for signing and receiving payment.", "EVM-compatible address. Used for signing and receiving payment."],
-    ["base58-encoded Solana address", "EVM-compatible wallet address"],
+    ["EVM-compatible wallet address. Used for signing and receiving payment.", "EVM-compatible address. Used for signing and receiving payment."],
+    ["EVM-compatible wallet address", "EVM-compatible wallet address"],
     
     // Stats & Perf
-    ["400ms block time", "2s block time"],
-    ["Sub-.001 fees", "Sub-$0.01 fees"],
+    ["2s block time", "2s block time"],
+    ["Sub-.01 fees", "Sub-$0.01 fees"],
     
     // Colors
-    ["--solana-purple", "--base-blue"],
-    ["--solana-green", "--base-blue-light"],
-    ["#9945FF", "#0052FF"],
-    ["#14F195", "#3374FF"],
-    ["#9945ff", "#0052FF"],
-    ["#14f195", "#3374FF"],
-    ["rgba(153,69,255", "rgba(0,82,255"],
-    ["rgba(153, 69, 255", "rgba(0, 82, 255"]
+    ["--base-blue", "--base-blue"],
+    ["--base-blue-light", "--base-blue-light"],
+    ["#0052FF", "#0052FF"],
+    ["#3374FF", "#3374FF"],
+    ["#0052FF", "#0052FF"],
+    ["#3374FF", "#3374FF"],
+    ["rgba(0,82,255", "rgba(0,82,255"],
+    ["rgba(0, 82, 255", "rgba(0, 82, 255"]
 ];
 
 for (const filepath of files) {
@@ -55,10 +55,10 @@ for (const filepath of files) {
             content = content.split(oldText).join(newText);
         }
         
-        // Match SOL but not part of .sol
+        // Match ETH but not part of .sol
         content = content.replace(/\bSOL\b/g, 'ETH');
         
-        // Match Solana and solana exactly everywhere else
+        // Match Base and base exactly everywhere else
         content = content.replace(/\bSolana\b/g, 'Base');
         content = content.replace(/\bsolana\b/g, 'base');
         

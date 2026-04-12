@@ -16,9 +16,9 @@ function processFile(filepath) {
     let content = original;
 
     // 1. Standardize Title and og tags
-    content = content.replace(/<title>Base | Autonomous Capital on Solana</title>');
-    content = content.replace(/<meta property="og:title" content="Base | Autonomous Capital on Solana"/>');
-    content = content.replace(/<meta property="og:site_name" content="Base"/>');
+    content = content.replace(/<title>Base | Autonomous Capital on Base</title>');
+    content = content.replace(/<meta property="og:title" content="Base" />');
+    content = content.replace(/<meta property="og:site_name" content="Base" />');
 
     // 2. Logo replacements in HTML
     const logoInner = `<div class="logo-name" style="font-family: 'Coinbase Display', 'Inter', sans-serif; font-size: 24px; font-weight: 700; color: #0052FF; letter-spacing: -0.02em;">Base</div>`;

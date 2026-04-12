@@ -3,8 +3,7 @@ const path = require('path');
 
 const directory = 'c:\\Users\\perpl\\base-new';
 
-const logoPattern = /<div class="logo-mark">\s*<svg[\s\S]*?<\/svg>\s*<\/div>/g;
-const newLogo = '<div class="logo-mark"></div>';
+const logoPattern = /<span style="color:#0052FF;font-weight:800">Base</span>';
 
 const faviconPattern = /<link rel="icon" type="image\/svg\+xml" href="data:image\/svg\+xml,[^"]*"\/>/g;
 const newFavicon = '<link rel="icon" type="image/png" href="assets/base-pfp-400x400.png"/>';

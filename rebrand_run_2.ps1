@@ -1,66 +1,6 @@
-﻿@tailwind base;
-@tailwind components;
-@tailwind utilities;
+$dir = "c:\Users\perpl\aequitaslabs-new"
 
-@layer base {
-  body {
-    @apply bg-black text-white font-sans font-light;
-    cursor: auto;
-  }
-}
-
-/* ───── CUSTOM CURSOR ───── */
-#cursor {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  border: 1px solid rgba(201, 168, 76, 0.45);
-  background: rgba(201, 168, 76, 0.12);
-  box-shadow: 0 0 0 1px rgba(201, 168, 76, 0.06), 0 0 24px rgba(201, 168, 76, 0.18);
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.8);
-  transition: opacity 0.18s ease, transform 0.18s ease, width 0.18s ease, height 0.18s ease, background 0.18s ease, border-color 0.18s ease;
-  backdrop-filter: blur(2px);
-}
-#cursor.visible {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-}
-#cursor.hovered {
-  width: 34px;
-  height: 34px;
-  background: rgba(201, 168, 76, 0.08);
-  border-color: rgba(201, 168, 76, 0.75);
-}
-@media (pointer: fine) {
-  body, a, button, input, select, textarea {
-    cursor: none !important;
-  }
-}
-
-/* ───── CANVAS + NOISE BACKGROUND ───── */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  opacity: 0.028;
-  mix-blend-mode: overlay;
-}
-
-/* Animations from static site */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
+$cssBlock = @"
 
 /* =========================================================================
    BASE DESIGN OVERRIDES (Global Rebrand) 
@@ -207,3 +147,60 @@ pre, code, .demo-right, .code-block, .log-line {
   -webkit-text-fill-color: transparent !important;
 }
 #canvas-bg, #hero-canvas { display: none !important; }
+
+"@
+
+# Apply to style.css
+$cssPath = "$dir\style.css"
+if (Test-Path $cssPath) {
+    $content = [System.IO.File]::ReadAllText($cssPath, [System.Text.Encoding]::UTF8)
+    if ($content -notmatch "BASE DESIGN OVERRIDES") {
+        $content += "`n" + $cssBlock
+        [System.IO.File]::WriteAllText($cssPath, $content, [System.Text.Encoding]::UTF8)
+        Write-Host "Injected global overrides into style.css"
+    }
+}
+
+# Apply to dapp globals.css
+$dappCssPath = "$dir\dapp\styles\globals.css"
+if (Test-Path $dappCssPath) {
+    $content = [System.IO.File]::ReadAllText($dappCssPath, [System.Text.Encoding]::UTF8)
+    if ($content -notmatch "BASE DESIGN OVERRIDES") {
+        $content += "`n" + $cssBlock
+        [System.IO.File]::WriteAllText($dappCssPath, $content, [System.Text.Encoding]::UTF8)
+        Write-Host "Injected global overrides into globals.css"
+    }
+}
+
+# Apply to waitlist inline style
+$waitlistPath = "$dir\waitlist.html"
+if (Test-Path $waitlistPath) {
+    $content = [System.IO.File]::ReadAllText($waitlistPath, [System.Text.Encoding]::UTF8)
+    if ($content -notmatch "BASE DESIGN OVERRIDES") {
+        $content = [regex]::Replace($content, "</style>", "$cssBlock`n</style>")
+        [System.IO.File]::WriteAllText($waitlistPath, $content, [System.Text.Encoding]::UTF8)
+        Write-Host "Injected global overrides into waitlist.html"
+    }
+}
+
+# Apply copyright and taglines to all HTML files
+$extensions = @("*.html")
+$files = Get-ChildItem -Path $dir -Include $extensions -Recurse | Where-Object { $_.FullName -notmatch "node_modules|\.next|\.git" }
+
+foreach ($f in $files) {
+    if (Test-Path $f.FullName) {
+        $content = [System.IO.File]::ReadAllText($f.FullName, [System.Text.Encoding]::UTF8)
+        $orig = $content
+        
+        # Copyright
+        $content = [regex]::Replace($content, '(\u00A9|Copyright)\s*(?:\(c\))?\s*202\d\s*(?:Base|AequitasLabs|Aequitas)\.?', '© 2026 Base. All rights reserved.')
+        
+        # Ensure Alert toast works
+        $content = [regex]::Replace($content, 'alert\(', 'showToast(')
+
+        if ($content -cne $orig) {
+            [System.IO.File]::WriteAllText($f.FullName, $content, [System.Text.Encoding]::UTF8)
+            Write-Host "Updated semantic blocks in $($f.Name)"
+        }
+    }
+}
