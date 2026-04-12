@@ -6,20 +6,20 @@ export default function Home() {
   return (
     <div className="flex-1 flex flex-col pt-32 pb-16 items-center bg-[radial-gradient(ellipse_at_top_right,rgba(201,168,76,0.06),transparent_50%)] relative min-h-screen">
       <Head>
-        <title>Base | Autonomous Capital on Base</title>
-        <meta name="description" content="Deposit USDC. Let autonomous AI agents allocate capital into tokenized real estate on Base, hire specialized agents via Base Agent Kit (BAK-1), and distribute real yield."/>
+        <title>Aequitas Labs | Autonomous Capital on Base</title>
+        <meta name="description" content="Deposit USDC. Let autonomous AI agents allocate capital into tokenized real estate on Base, hire specialized agents via Aequitas Agent Kit (AQL-1), and distribute real yield."/>
         
         <meta property="og:type" content="website"/>
         <meta property="og:url" content="https://app.base.xyz/"/>
-        <meta property="og:title" content="Base" />
+        <meta property="og:title" content="Aequitas Labs" />
         <meta property="og:description" content="Autonomous capital deployed by AI agents. Deposit USDC. Earn real yield. All onchain." />
         <meta property="og:image" content="https://base.xyz/assets/base-base-banner.png"/>
-        <meta property="og:site_name" content="Base" />
+        <meta property="og:site_name" content="Aequitas Labs" />
 
         <meta name="twitter:card" content="summary_large_image"/>
         <meta name="twitter:site" content="@base"/>
         <meta name="twitter:title" content="Base | Terminal"/>
-        <meta name="twitter:description" content="Deposit USDC. Let autonomous AI agents allocate capital into tokenized real estate on Base, hire specialized agents via Base Agent Kit (BAK-1), and distribute real yield."/>
+        <meta name="twitter:description" content="Deposit USDC. Let autonomous AI agents allocate capital into tokenized real estate on Base, hire specialized agents via Aequitas Agent Kit (AQL-1), and distribute real yield."/>
         <meta name="twitter:image" content="https://base.xyz/assets/base-base-banner.png"/>
       </Head>
       
