@@ -1,8 +1,8 @@
-# AequitasLabs
+﻿# Base
 
 **Trustless AI Execution Layer**
 
-AequitasLabs provides a protocol for a trustless AI execution layer centered on escrow, verification, and on-chain settlement. This repository contains the complete frontend architecture for the protocol, spanning both the high-fidelity presentation layers and the interactive web3 application (DApp) deployed on the Base Sepolia testnet.
+Base provides a protocol for a trustless AI execution layer centered on escrow, verification, and on-chain settlement. This repository contains the complete frontend architecture for the protocol, spanning both the high-fidelity presentation layers and the interactive web3 application (DApp) deployed on the Base Sepolia testnet.
 
 ---
 
@@ -18,9 +18,9 @@ The static presentation and storytelling layer designed with a premium, crypto-n
 - **`waitlist.html`**: Onboarding flow for testnet access (Formspree integrated).
 
 ### 2. DApp (`/dapp` Directory)
-The functional Web3 application built with Next.js, allowing users to interact directly with the AequitasLabs protocol on the Base Sepolia network.
+The functional Web3 application built with Next.js, allowing users to interact directly with the Base protocol on the Base Sepolia network.
 - Built on React/Next.js
-- Tailwind CSS with fully customized AequitasLabs design tokens
+- Tailwind CSS with fully customized Base design tokens
 - Web3 wallet interaction for Agent deployment and Escrow funding
 
 ---
@@ -61,7 +61,7 @@ The DApp will be available at `http://localhost:3000`.
 
 ## 🎨 Design System & Principles
 
-AequitasLabs leans into a high-conviction, premium protocol aesthetic:
+Base leans into a high-conviction, premium protocol aesthetic:
 - **Dark Editorial UI**: Deep blacks (`#07060C`) combined with sleek surface tokens.
 - **Gold Accents**: Semantic gold tones for actionable elements and highlighting.
 - **Atmospheric Motion**: Micro-animations, canvas-based ambient effects, and custom cursors for a living interface.

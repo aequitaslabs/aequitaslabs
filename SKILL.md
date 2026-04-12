@@ -1,8 +1,8 @@
 ﻿---
-name: aequitaslabs
+name: base
 description: Trustless AI execution layer for autonomous agents â€” verifiable task execution, escrow-based payments, and on-chain reputation via ERC-8183.
 version: "1.0.0"
-author: AequitasLabs Protocol
+author: Base Protocol
 license: MIT
 protocol: ERC-8183
 network: ethereum
@@ -22,11 +22,11 @@ requires:
   - signing_key
 ---
 
-# AequitasLabs Skill
+# Base Skill
 
 ## Overview
 
-AequitasLabs is a trustless execution layer that enables AI agents to autonomously submit tasks, execute work, verify outputs, and settle payments on-chain without human intermediaries.
+Base is a trustless execution layer that enables AI agents to autonomously submit tasks, execute work, verify outputs, and settle payments on-chain without human intermediaries.
 
 All execution is mediated by ERC-8183 smart contracts. Payment is released only after cryptographic verification of task output. No party trusts another â€” the protocol enforces correctness.
 
@@ -62,7 +62,7 @@ This skill equips an agent to operate as a Worker Agent, Evaluator Agent, or bot
 
 ### `deploy_agent`
 
-**Description:** Register a new agent on the AequitasLabs protocol. Stakes collateral and records capability metadata on-chain.
+**Description:** Register a new agent on the Base protocol. Stakes collateral and records capability metadata on-chain.
 
 **Inputs:**
 ```yaml

@@ -1,36 +1,37 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>AequitasLabs - Join Waitlist</title>
-<meta name="description" content="Join the AequitasLabs waitlist to be among the first to deploy autonomous AI agents on Solana testnet."/>
-<meta property="og:title" content="AequitasLabs - Join Waitlist"/>
-<meta property="og:description" content="Join the AequitasLabs waitlist to be among the first to deploy autonomous AI agents on Solana testnet."/>
-<meta property="og:image" content="https://aequitaslabs.xyz/assets/aequitaslabs-solana-banner.png"/>
+<title>Base | Autonomous Capital on Solana</title>
+<meta name="description" content="Join the Base waitlist to be among the first to deploy autonomous AI agents on Solana testnet."/>
+<meta property="og:title" content="Base | Autonomous Capital on Solana"/>
+<meta property="og:description" content="Join the Base waitlist to be among the first to deploy autonomous AI agents on Solana testnet."/>
+<meta property="og:image" content="https://base.xyz/assets/base-solana-banner.png"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<link rel="icon" type="image/png" href="assets/aequitas-pfp-400x400.png"/>
+<link rel="icon" type="image/png" href="assets/base-pfp-400x400.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
 <style>
 :root {
-  --black:      #07060C;
-  --ink:        #0F0E16;
-  --surface:    #141320;
-  --rim:        rgba(255,255,255,0.07);
-  --gold:       #9945FF;
-  --gold-bright:#d4b560;
-  --gold-dim:   #9a7e35;
-  --gold-glow:  rgba(153,69,255,0.22);
-  --gold-soft:  rgba(153,69,255,0.08);
-  --gold-pale:  rgba(153,69,255,0.04);
-  --text-1:     #EDE8DC;
-  --text-2:     #9A9080;
-  --text-3:     #7a746a;
-  --text-4:     #55504a;
-  --green:      #6ddbb0;
-  --ease:       cubic-bezier(0.22,1,0.36,1);
+  --black:       #000000;
+  --ink:         #0A0A0A;
+  --surface:     #111111;
+  --rim:         #222222;
+  --gold:        #0052FF;
+  --gold-bright: #00A6FF;
+  --gold-dim:    #0042CC;
+  --gold-glow:   rgba(0, 82, 255, 0.22);
+  --gold-soft:   rgba(0, 82, 255, 0.08);
+  --gold-pale:   rgba(0, 82, 255, 0.04);
+  --text-1:      #FFFFFF;
+  --text-2:      #8A8A8A;
+  --text-3:      #555555;
+  --text-4:      #333333;
+  --green:       #00C851;
+  --ease:        cubic-bezier(0.22,1,0.36,1);
+  --base-blue:   #0052FF;
 }
 
 /* Section */
@@ -371,6 +372,43 @@ nav{
   .stat-item{border-right:none; border-bottom:1px solid var(--rim); padding:16px;}
   .stat-item:last-child{border-bottom:none;}
 }
+
+/* Toast Notifications */
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 99999;
+}
+.base-toast {
+  background: var(--surface);
+  border: 1px solid var(--rim);
+  border-left: 4px solid var(--base-blue);
+  color: var(--text-1);
+  padding: 16px 20px;
+  border-radius: 12px;
+  font-family: 'Coinbase Display', 'Inter', 'DM Sans', sans-serif;
+  font-size: 14px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transform: translateX(20px);
+  animation: toastFadeIn 0.3s ease forwards;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.base-toast.hiding {
+  animation: toastFadeOut 0.3s ease forwards;
+}
+@keyframes toastFadeIn {
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes toastFadeOut {
+  to { opacity: 0; transform: translateX(20px); }
+}
 </style>
 </head>
 <body>
@@ -382,9 +420,7 @@ nav{
 <!-- Section -->
 <nav>
       <a class="nav-logo" href="/">
-    <div class="logo-mark"><img src="assets/aequitas-pfp-400x400.png" alt="AequitasLabs Logo" style="width:100%;height:100%;object-fit:contain;"></div>
-    <div class="logo-wordmark">
-      <div class="logo-name">Aequitas</div>
+    <div class="logo-name" style="font-family: 'Coinbase Display', 'Inter', sans-serif; font-size: 24px; font-weight: 700; color: #0052FF; letter-spacing: -0.02em;">Base</div>
       <div class="logo-rule"></div>
       <div class="logo-sub">Labs</div>
     </div>
@@ -407,7 +443,7 @@ nav{
           Testnet Ã‚Â· Limited Access
         </div>
         <div class="card-title">Join the<br><em>Waitlist</em></div>
-        <div class="card-sub">Be among the first to deploy agents, execute tasks, and earn on-chain through the AequitasLabs protocol.</div>
+        <div class="card-sub">Be among the first to deploy agents, execute tasks, and earn on-chain through the Base protocol.</div>
 
         <div class="countdown-wrap">
           <div class="cd-item"><div class="cd-val" id="cd-h">48</div><div class="cd-lbl">Hours</div></div>
@@ -503,7 +539,7 @@ nav{
       <div class="success-sub">We'll reach out when your testnet access is ready. Stay tuned on Twitter for updates.</div>
       <a class="success-back" href="/">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-        Back to AequitasLabs
+        Back to Base
       </a>
     </div>
 
@@ -571,8 +607,29 @@ async function handleSubmit(e){
     console.error('Waitlist submission failed.', error);
     btn.disabled = false;
     span.textContent = 'Submit Request';
-    alert('Submission failed. Please try again in a moment.');
+    showToast('Submission failed. Please try again in a moment.');
   }
+}
+
+function showToast(message) {
+  let container = document.getElementById('toast-container');
+  if (!container) {
+    container = document.createElement('div');
+    container.id = 'toast-container';
+    container.className = 'toast-container';
+    document.body.appendChild(container);
+  }
+  const toast = document.createElement('div');
+  toast.className = 'base-toast';
+  toast.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--base-blue); flex-shrink:0;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg><span>${message}</span>`;
+  container.appendChild(toast);
+  
+  setTimeout(() => {
+    toast.classList.add('hiding');
+    setTimeout(() => {
+      toast.remove();
+    }, 300);
+  }, 3500);
 }
 
 function showSuccess(){

@@ -1,14 +1,14 @@
-const fs = require('fs');
+﻿const fs = require('fs');
 const path = require('path');
 
-const directory = 'c:\\Users\\perpl\\aequitaslabs-new';
+const directory = 'c:\\Users\\perpl\\base-new';
 
 const logoPattern = /<div class="logo-mark">\s*<svg[\s\S]*?<\/svg>\s*<\/div>/g;
-const newLogo = '<div class="logo-mark"><img src="assets/aequitas-pfp-400x400.png" alt="AequitasLabs Logo" style="width:100%;height:100%;object-fit:contain;"></div>';
+const newLogo = '<div class="logo-mark"></div>';
 
 const faviconPattern = /<link rel="icon" type="image\/svg\+xml" href="data:image\/svg\+xml,[^"]*"\/>/g;
-const newFavicon = '<link rel="icon" type="image/png" href="assets/aequitas-pfp-400x400.png"/>';
-const newFaviconAbs = '<link rel="icon" type="image/png" href="https://aequitaslabs.xyz/assets/aequitas-pfp-400x400.png"/>';
+const newFavicon = '<link rel="icon" type="image/png" href="assets/base-pfp-400x400.png"/>';
+const newFaviconAbs = '<link rel="icon" type="image/png" href="https://base.xyz/assets/base-pfp-400x400.png"/>';
 
 function walkDir(dir) {
     let results = [];
@@ -46,7 +46,7 @@ files.forEach(file => {
         //             <div style={{ width: '8px', height: '8px', background: '#C9A84C', ... }}></div>
         //           </div>
         const dummyLogoPatt2 = /<div style={{ width: '24px', height: '24px', border: '1px solid #C9A84C[\s\S]{1,300}?<\/div>/g;
-        content = content.replace(dummyLogoPatt2, '<img src="https://aequitaslabs.xyz/assets/aequitas-pfp-400x400.png" alt="AequitasLabs Logo" style={{ width: \'24px\', height: \'24px\', objectFit: \'contain\' }} />');
+        content = content.replace(dummyLogoPatt2, '');
     }
 
     if (content !== original) {

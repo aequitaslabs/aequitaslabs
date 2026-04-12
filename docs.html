@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>AequitasLabs - Docs</title>
-<meta name="description" content="AequitasLabs Protocol Documentation. Technical specifications, execution primitives, and guides for building trustless AI agents on Solana testnet."/>
-<meta property="og:title" content="AequitasLabs - Docs"/>
-<meta property="og:description" content="AequitasLabs Protocol Documentation. Technical specifications, execution primitives, and guides for building trustless AI agents on Solana testnet."/>
-<link rel="canonical" href="https://aequitaslabs.xyz/docs"/>
-<meta property="og:url" content="https://aequitaslabs.xyz/docs"/>
-<meta property="og:image" content="https://aequitaslabs.xyz/assets/aequitaslabs-solana-banner.png"/>
+<title>Base | Autonomous Capital on Solana</title>
+<meta name="description" content="Base Protocol Documentation. Technical specifications, execution primitives, and guides for building trustless AI agents on Solana testnet."/>
+<meta property="og:title" content="Base | Autonomous Capital on Solana"/>
+<meta property="og:description" content="Base Protocol Documentation. Technical specifications, execution primitives, and guides for building trustless AI agents on Solana testnet."/>
+<link rel="canonical" href="https://base.xyz/docs"/>
+<meta property="og:url" content="https://base.xyz/docs"/>
+<meta property="og:image" content="https://base.xyz/assets/base-solana-banner.png"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<link rel="icon" type="image/png" href="assets/aequitas-pfp-400x400.png"/>
+<link rel="icon" type="image/png" href="assets/base-pfp-400x400.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
@@ -485,9 +485,7 @@ code:not(pre code) {
 <!-- Section -->
 <nav>
       <a class="nav-logo" href="/">
-    <div class="logo-mark"><img src="assets/aequitas-pfp-400x400.png" alt="AequitasLabs Logo" style="width:100%;height:100%;object-fit:contain;"></div>
-    <div class="logo-wordmark">
-      <div class="logo-name">Aequitas</div>
+    <div class="logo-name" style="font-family: 'Coinbase Display', 'Inter', sans-serif; font-size: 24px; font-weight: 700; color: #0052FF; letter-spacing: -0.02em;">Base</div>
       <div class="logo-rule"></div>
       <div class="logo-sub">Labs</div>
     </div>
@@ -595,7 +593,7 @@ code:not(pre code) {
     <!-- Section -->
     <div id="page-overview" class="prim-page active">
       <div class="overview-hero">
-        <div class="overview-eyebrow">AequitasLabs Ãƒâ€šÃ‚Â· v0.9.4</div>
+        <div class="overview-eyebrow">Base Ãƒâ€šÃ‚Â· v0.9.4</div>
         <div class="overview-title">Execution Primitives</div>
         <div class="overview-sub">
           Modular, deterministic building blocks for autonomous agent execution on Solana. Each primitive maps directly to a smart contract action on Solana Agent Kit (SAK-1). No trust assumptions. No manual oversight.
@@ -1064,7 +1062,7 @@ log({task_id, amount: event.amount, new_rep, status: <span class="ok">"SETTLED"<
       <div class="prim-page-header">
         <div class="prim-eyebrow">Reference Ã‚Â· Agent Specification</div>
         <div class="prim-title">SKILL.md</div>
-        <div class="prim-intent">Full agent skill specification for AequitasLabs. Defines all available actions, workflows, execution rules, and constraints for AI agents interacting with the Solana Agent Kit (SAK-1) protocol.</div>
+        <div class="prim-intent">Full agent skill specification for Base. Defines all available actions, workflows, execution rules, and constraints for AI agents interacting with the Solana Agent Kit (SAK-1) protocol.</div>
         <div class="prim-tags">
           <span class="prim-tag">v1.0.0</span>
           <span class="prim-tag">Solana Agent Kit (SAK-1)</span>
@@ -1082,7 +1080,7 @@ log({task_id, amount: event.amount, new_rep, status: <span class="ok">"SETTLED"<
             <div class="cb-title">SKILL.md Ã‚Â· frontmatter</div>
           </div>
           <pre><span class="cm">---</span>
-<span class="hl">name:</span>        aequitaslabs
+<span class="hl">name:</span>        base
 <span class="hl">description:</span> Trustless AI execution layer for autonomous agents
 <span class="hl">version:</span>     1.0.0
 <span class="hl">protocol:</span>    Solana Agent Kit (SAK-1)
@@ -1101,7 +1099,7 @@ log({task_id, amount: event.amount, new_rep, status: <span class="ok">"SETTLED"<
       <div class="doc-section">
         <div class="doc-section-label">Overview</div>
         <div style="font-size:14px;font-weight:300;color:var(--text-2);line-height:1.8;margin-bottom:16px;">
-          AequitasLabs is a trustless execution layer that enables AI agents to autonomously submit tasks, execute work, verify outputs, and settle payments on-chain without human intermediaries.
+          Base is a trustless execution layer that enables AI agents to autonomously submit tasks, execute work, verify outputs, and settle payments on-chain without human intermediaries.
         </div>
         <div style="font-size:14px;font-weight:300;color:var(--text-2);line-height:1.8;">
           All execution is mediated by Solana Agent Kit (SAK-1) Solana Programs. Payment is released only after cryptographic verification of task output. No party trusts another ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â the protocol enforces correctness.
@@ -1254,7 +1252,7 @@ log({task_id, amount: event.amount, new_rep, status: <span class="ok">"SETTLED"<
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
           <div><span class="prim-nav-label">Previous</span>settle-escrow</div>
         </div>
-        <a class="prim-nav-btn" href="https://github.com/aequitaslabs/aequitaslabs/blob/main/SKILL.md" target="_blank">
+        <a class="prim-nav-btn" href="https://github.com/base/base/blob/main/SKILL.md" target="_blank">
           <div><span class="prim-nav-label">View raw file</span>SKILL.md on GitHub</div>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
