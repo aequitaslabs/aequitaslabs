@@ -89,8 +89,8 @@ nav.scrolled{background:rgba(6,5,10,0.55);backdrop-filter:blur(32px) saturate(2)
 #cursor.hovered{
   width:34px;
   height:34px;
-  background:rgba(0,82,255,0.08);
-  border-color:rgba(0,82,255,0.75);
+  background:rgba(255,255,255,0.08);
+  border-color:rgba(255,255,255,0.75);
 }
 @media (pointer:fine){
   body,a,button,input,select,textarea{
